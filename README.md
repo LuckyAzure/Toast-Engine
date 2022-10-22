@@ -14,5 +14,5 @@ wip description
  - [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
  - [Kawai Sprite](https://twitter.com/kawaisprite) - Music
 
-### FunkinLucky
+### LuckyFunkin
 - [Lucky](https://twitter.com/Luckysy_) - Maintainer and lead programmer
