@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Overlay="*res://src/Overlay/Overlay.tscn"
+ScreenEffects="*res://src/Overlay/ScreenEffects/ScreenEffects.tscn"
 
 [debug]
 
