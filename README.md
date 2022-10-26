@@ -1,7 +1,7 @@
 # LuckyFunkin
 Another Friday Night Funkin' engine that made in Godot Engine
 
-# The reason why I'm developing this engine.
+# The reason why I want to make this engine.
 
 I've lost the motivation to make my own fnf mod, so my goal will be to make an engine that is completely clean and optimized.
 
