@@ -1,16 +1,18 @@
 extends Node2D
 
 # Options (Node's name)
-var menu_options = ["Story","Free","Online","Extras","Credits","Options","Exit"]
+var menu_all_options = ["Story","Free","Online","Extras","Credits","Options","Exit"]
+var menu_options = ["Free","Credits","Options"]
 
 # Menu Choose Variables
 var select = 0
 var selected = false
 
 func _ready():
+	Overlay.state = "Menu"
 	# Menu Background Load (as an image)
 	var BG = Image.new()
-	BG.load("res://assets/images/menuBG.png")
+	BG.load("res://assets/images/menu/menuBG.png")
 	var texture = ImageTexture.new()
 	texture.create_from_image(BG)
 	$Background.texture = texture
@@ -39,18 +41,18 @@ func _Input():
 			select = 0
 		_reloadchar()
 	if Input.is_action_just_pressed("ui_accept"):
-		ScreenEffects._flash()
+		Overlay.flash()
 		selected = true
 		get_node(menu_options[select]).rect_rotation = -360
 
 func _Animations(delta):
 	# Smooth Option Vanishing
-	for i in menu_options.size():
-		if menu_options[select] != menu_options[i]:
+	for i in menu_all_options.size():
+		if menu_options[select] != menu_all_options[i]:
 			if selected:
-				get_node(menu_options[i]).modulate.a = lerp(get_node(menu_options[i]).modulate.a,0,20 * delta)
+				get_node(menu_all_options[i]).modulate.a = lerp(get_node(menu_all_options[i]).modulate.a,0,20 * delta)
 			else:
-				get_node(menu_options[i]).modulate.a = lerp(get_node(menu_options[i]).modulate.a,0.5,20 * delta)
+				get_node(menu_all_options[i]).modulate.a = lerp(get_node(menu_all_options[i]).modulate.a,0.5,20 * delta)
 		else:
 			get_node(menu_options[select]).modulate.a = lerp(get_node(menu_options[select]).modulate.a,1,20 * delta)
 	if selected:
@@ -62,7 +64,7 @@ func _Animations(delta):
 
 func _reloadchar():
 	var Char = Image.new()
-	Char.load("res://assets/images/" + menu_options[select] + ".png")
+	Char.load("res://assets/images/menu/" + menu_options[select] + ".png")
 	var ctexture = ImageTexture.new()
 	ctexture.create_from_image(Char)
 	$Char.texture = ctexture

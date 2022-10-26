@@ -4,5 +4,5 @@ extends Node2D
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		get_tree().change_scene("res://src/Scenes/Menu/Menu.tscn")
-		ScreenEffects._resetfade()
+		Overlay.change_scene("res://src/Scenes/Menu/Menu.tscn",false,"Fade")
+

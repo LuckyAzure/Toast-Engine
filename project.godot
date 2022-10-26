@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "AudioLoader",
+"language": "GDScript",
+"path": "res://addons/GDScriptAudioImport.gd"
+}, {
+"base": "Reference",
+"class": "SaveData",
+"language": "GDScript",
+"path": "res://src/SaveData.gd"
+} ]
+_global_script_class_icons={
+"AudioLoader": "",
+"SaveData": ""
+}
+
 [application]
 
 config/name="Friday Night Funkin': Lucky's Engine"
@@ -21,7 +37,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Overlay="*res://src/Overlay/Overlay.tscn"
-ScreenEffects="*res://src/Overlay/ScreenEffects/ScreenEffects.tscn"
+AudioImport="*res://addons/GDScriptAudioImport.gd"
 
 [debug]
 

@@ -1,0 +1,25 @@
+{
+	"Songlist": {
+		"Vs Zardy": [
+			{
+			"name": "bushwhack",
+			"stage": "test",
+			"songspeed": "3"
+			}
+		],
+		"Mario's Madness": [
+			{
+			"name": "powerdown",
+			"stage": "test",
+			"songspeed": "2.4"
+			}
+		],
+		"Entity": [
+			{
+			"name": "promenade",
+			"stage": "test",
+			"songspeed": "1"
+			}
+		]
+	}
+}

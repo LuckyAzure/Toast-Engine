@@ -1,0 +1,88 @@
+{
+   "Stage": {
+      "Camera": {
+         "offsetx": 0,
+         "offsety": -300,
+         "zoom": 1.4,
+	 "speed": 0.05
+      },
+      "Enemy": {
+         "x": -500,
+         "y": 300,
+         "cameraoffsetx": 200,
+         "cameraoffsety": 0
+      },
+      "GF": {
+         "x": 0,
+         "y": 80,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "Player": {
+         "x": 500,
+         "y": 300,
+         "cameraoffsetx": -200,
+         "cameraoffsety": 0
+      },
+      "StageTexture": [
+         {
+            "filename": "2.png",
+            "name": "Background",
+            "index": 1,
+            "becentered": true,
+            "x": 0,
+            "y": 100,
+            "width": 2400,
+            "height": 1206
+         },
+         {
+            "filename": "1.png",
+            "name": "Head",
+            "index": 0,
+            "becentered": true,
+            "x": 400,
+            "y": -130,
+            "width": 150,
+            "height": 150,
+            "animations": [
+                {
+                  "x": 400,
+                  "y": -130,
+                  "width": 150,
+                  "height": 150
+                },
+                {
+                  "x": 400,
+                  "y": -100,
+                  "width": 180,
+                  "height": 120
+                }
+             ]
+         },
+         {
+            "filename": "1.png",
+            "name": "Head2",
+            "index": 0,
+            "becentered": true,
+            "x": 550,
+            "y": -180,
+            "width": 300,
+            "height": 300,
+            "animations": [
+                {
+                  "x": 550,
+                  "y": -150,
+                  "width": 320,
+                  "height": 280
+                },
+                {
+                  "x": 550,
+                  "y": -180,
+                  "width": 280,
+                  "height": 320
+                }
+             ]
+         }
+      ]
+   }
+}

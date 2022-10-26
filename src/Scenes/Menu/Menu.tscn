@@ -46,6 +46,7 @@ rect_rotation = 5.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Story" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 64.0
 margin_top = 75.0
 margin_right = 564.0
@@ -68,6 +69,7 @@ align = 1
 valign = 1
 
 [node name="Online" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 96.0
 margin_top = 225.0
 margin_right = 596.0
@@ -79,6 +81,7 @@ align = 1
 valign = 1
 
 [node name="Extras" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 112.0
 margin_top = 300.0
 margin_right = 612.0
@@ -112,6 +115,7 @@ align = 1
 valign = 1
 
 [node name="Exit" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 176.0
 margin_top = 525.0
 margin_right = 676.0
