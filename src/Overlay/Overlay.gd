@@ -35,7 +35,6 @@ var Stats = {
 }
 
 func _Debug_Tick():
-	Performance.MEMORY_STATIC
 	# Changes the "Stats" variables 
 	Stats.FPS.value = Engine.get_frames_per_second()
 	Stats.Memory.value = stepify(Performance.get_monitor(Performance.MEMORY_STATIC) / 1048576.0,0.01)

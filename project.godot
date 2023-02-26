@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Friday Night Funkin': Lucky's Engine"
+config/name="Friday Night Funkin': Toast Engine"
 run/main_scene="res://src/Scenes/Menu/Title.tscn"
 boot_splash/show_image=false
 boot_splash/fullsize=false
