@@ -11,7 +11,6 @@ script = ExtResource( 1 )
 position = Vector2( 640, 360 )
 rotating = true
 current = true
-zoom = Vector2( 1.5, 1.5 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -21,17 +20,6 @@ margin_top = 8.0
 margin_right = 1272.0
 margin_bottom = 145.0
 color = Color( 0.247059, 0.247059, 0.247059, 1 )
-
-[node name="Animations" type="OptionButton" parent="HUD"]
-margin_left = 959.0
-margin_top = 37.0
-margin_right = 1111.0
-margin_bottom = 57.0
-text = "Idle"
-align = 1
-icon_align = 1
-items = [ "Idle", null, false, 0, null, "Left", null, false, 1, null, "Down", null, false, 2, null, "Up", null, false, 3, null, "Right", null, false, 4, null, "Left_Miss", null, false, 5, null, "Down_Miss", null, false, 6, null, "Up_Miss", null, false, 7, null, "Right_Miss", null, false, 8, null ]
-selected = 0
 
 [node name="CharName" type="TextEdit" parent="HUD"]
 margin_left = 1032.0
@@ -46,6 +34,40 @@ margin_top = 12.0
 margin_right = 1028.0
 margin_bottom = 33.0
 text = "Load"
+
+[node name="CheckBox" type="CheckBox" parent="HUD"]
+margin_left = 1060.0
+margin_top = 59.0
+margin_right = 1119.0
+margin_bottom = 83.0
+text = "Loop"
+
+[node name="SpinBox" type="SpinBox" parent="HUD"]
+margin_left = 986.0
+margin_top = 59.0
+margin_right = 1060.0
+margin_bottom = 83.0
+min_value = 1.0
+value = 24.0
+
+[node name="Label" type="Label" parent="HUD"]
+margin_left = 959.0
+margin_top = 59.0
+margin_right = 986.0
+margin_bottom = 83.0
+text = "FPS:"
+valign = 1
+
+[node name="Animations" type="OptionButton" parent="HUD"]
+margin_left = 959.0
+margin_top = 37.0
+margin_right = 1111.0
+margin_bottom = 57.0
+text = "Idle"
+align = 1
+icon_align = 1
+items = [ "Idle", null, false, 0, null, "Left", null, false, 1, null, "Down", null, false, 2, null, "Up", null, false, 3, null, "Right", null, false, 4, null, "Left_Miss", null, false, 5, null, "Down_Miss", null, false, 6, null, "Up_Miss", null, false, 7, null, "Right_Miss", null, false, 8, null ]
+selected = 0
 
 [node name="CharAnimations" type="OptionButton" parent="HUD"]
 margin_left = 1116.0

@@ -1,7 +1,20 @@
 extends Node2D
 
+const def_animations = [
+	"Idle",
+	"Left",
+	"Down",
+	"Up",
+	"Right",
+	"Left_Miss",
+	"Down_Miss",
+	"Up_Miss",
+	"Right_Miss"
+	]
+
 var charname = "LordXEncore"
 var data
+var animations = []
 
 func _ready():
 	load_char()
@@ -25,8 +38,6 @@ var asd = 0
 var framepos = 0
 var framemax = 0
 var frames = 0
-
-
 
 func _physics_process(delta):
 	var frame = data.TextureAtlas.frames[int(asd)]
@@ -122,7 +133,10 @@ func load_animations_from_data():
 	for i in animationnames.size():
 		$HUD/CharAnimations.add_item(animationnames[i][0])
 	
-	print(animationnames)
+	asd = animationnames[0][1]
+	framepos = animationnames[0][1]
+	framemax = animationnames[0][2]
+	frames = animationnames[0][2]
 	
 
 func _on_CharAnimations_item_selected(index):
@@ -130,3 +144,4 @@ func _on_CharAnimations_item_selected(index):
 	framepos = animationnames[index][1]
 	framemax = animationnames[index][2]
 	frames = animationnames[index][2]
+	
