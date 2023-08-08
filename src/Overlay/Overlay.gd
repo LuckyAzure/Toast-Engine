@@ -10,8 +10,6 @@ func _ready():
 var state = ""
 
 func _process(delta):
-	if !$Music.playing and state == "Menu":
-		Check_Music()
 	
 	# Important Functions
 	_Fullscreen()
@@ -24,7 +22,7 @@ func _process(delta):
 func _Fullscreen():
 	# Toggles Fullscreen
 	if Input.is_action_just_pressed("ui_fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
 	
 # ------------------------------------------------------------------------
 
@@ -37,8 +35,8 @@ var Stats = {
 func _Debug_Tick():
 	# Changes the "Stats" variables 
 	Stats.FPS.value = Engine.get_frames_per_second()
-	Stats.Memory.value = stepify(Performance.get_monitor(Performance.MEMORY_STATIC) / 1048576.0,0.01)
-	Stats.Memory_Peak.value = stepify(Performance.get_monitor(Performance.MEMORY_STATIC_MAX) / 1048576.0,0.01)
+	Stats.Memory.value = snapped(Performance.get_monitor(Performance.MEMORY_STATIC) / 1048576.0,0.01)
+	Stats.Memory_Peak.value = snapped(Performance.get_monitor(Performance.MEMORY_STATIC_MAX) / 1048576.0,0.01)
 	
 	$Debug.text = "" # Clears text
 	
@@ -85,14 +83,12 @@ func _Scene_Tick():
 	if scenechange.boolean and $Fade.modulate.a == 1:
 		scenechange.boolean = false
 		reversefade = false
-		scene = get_tree().change_scene(scene)
-		Check_Music()
+		scene = get_tree().change_scene_to_file(scene)
 		resetfade()
 
-func change_scene(next_scene,instant,type):
+func change_scene_to_file(next_scene,instant,type):
 	if instant: # Instantly goes to the next scene
-		scene = get_tree().change_scene(next_scene)
-		Check_Music()
+		scene = get_tree().change_scene_to_file(next_scene)
 	else: # Goes to the next scene with effect
 		scenechange.type = type
 		match type:
@@ -106,18 +102,3 @@ func change_scene(next_scene,instant,type):
 				reversefade = true
 
 # ------------------------------------------------------------------------
-
-func Check_Music():
-	if !$Music.playing:
-		var path
-		match state:
-			"Menu":
-				path = "res://assets/musics/sereneLoop.ogg"
-		if state == "":
-			pass
-		else:
-			var audio_loader = AudioLoader.new()
-			$Music.set_stream(audio_loader.loadfile(path))
-			$Music.volume_db = 1
-			$Music.pitch_scale = 1
-			$Music.play()

@@ -1,0 +1,3 @@
+res://default_env.tres
+res://src/Scenes/Char-Editor/Char-Editor.tscn
+res://src/Scenes/Char-Editor/Char-Editor.gd

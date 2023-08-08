@@ -6,49 +6,33 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Reference",
-"class": "AudioLoader",
-"language": "GDScript",
-"path": "res://addons/GDScriptAudioImport.gd"
-}, {
-"base": "Reference",
-"class": "SaveData",
-"language": "GDScript",
-"path": "res://src/SaveData.gd"
-} ]
-_global_script_class_icons={
-"AudioLoader": "",
-"SaveData": ""
-}
+config_version=5
 
 [application]
 
 config/name="Friday Night Funkin': Toast Engine"
 run/main_scene="res://src/Scenes/Menu/Title.tscn"
+config/features=PackedStringArray("4.1")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
 Overlay="*res://src/Overlay/Overlay.tscn"
-AudioImport="*res://addons/GDScriptAudioImport.gd"
 
 [debug]
 
-settings/fps/force_fps=144
+settings/fps/force_fps=240
 
 [display]
 
-window/size/width=1280
-window/size/height=720
-window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [gui]
 
@@ -58,8 +42,8 @@ common/drop_mouse_on_gui_input_disabled=true
 
 ui_fullscreen={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 
 [physics]
@@ -68,5 +52,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_clear_color=Color( 0.0666667, 0.0666667, 0.0666667, 1 )
-environment/default_environment="res://default_env.tres"
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_environment="res://default_env.tres"
