@@ -12,10 +12,17 @@ const def_animations = [
 	"Right_Miss"
 ]
 
-var charname = "LordXEncore"
-var data
+const def_char = {
+	"name": null,
+	"scale": 1.0,
+	"animations": {},
+	"xml_data": {},
+}
+
+var charname = "boyfriend"
+var chardata = {}
+var xml_data
 var animations = []
-var xml_parser
 
 func _ready():
 	for i in def_animations.size():
@@ -27,8 +34,19 @@ func _on_Load_pressed():
 	load_char()
 
 func load_char():
+	# Check if the JSON file exists
+	var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
+	if not FileAccess.file_exists(json_path):
+		create_default_json_file(json_path)
+	else:
+		var file = FileAccess.open(json_path, FileAccess.READ)
+		chardata = JSON.parse_string(file.get_as_text())
+		file.close()
+		print(chardata)
+	
 	convert_xml_to_json_data()
 	load_animations_from_data()
+	load_animation("Idle")
 
 	# Load the image file from the specified path
 	var image_path = "res://assets/characters/" + charname + "/" + charname + ".png"
@@ -41,29 +59,58 @@ func load_char():
 	else:
 		print("Failed to load image:", image_path)
 
+func create_default_json_file(json_path):
+	chardata.merge(def_char,true)
+	chardata.name = charname
+	print(chardata)
+	var file = FileAccess.open(json_path, FileAccess.WRITE)
+	file.store_string(JSON.stringify(chardata))
+	file.close()
+
+func save_char():
+	var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
+	var file = FileAccess.open(json_path, FileAccess.WRITE)
+	file.store_string(JSON.stringify(chardata))
+	file.close()
+
 var current_frame = 0
 var frame_start_position = 0
 var frame_max = 0
 var remaining_frames = 0
 
-func _physics_process(delta):
-	var frame = data.TextureAtlas.frames[int(current_frame)]
+func _process(delta):
+	animation(delta)
+	status()
+
+func animation(delta):
+	var fps = $HUD/FPS.value
+	var loop = $HUD/Loop.button_pressed
+
+	if remaining_frames > 0.0:
+		current_frame += delta * fps
+		remaining_frames -= delta * fps
+	if remaining_frames <= 0.0:
+		if loop:
+			current_frame = frame_start_position 
+			remaining_frames = frame_max
+		else:
+			current_frame = frame_start_position + frame_max
+	
+	var frame = chardata["xml_data"].TextureAtlas.frames[int(current_frame)]
 	$Char/Image.region_rect = Rect2(frame.x, frame.y, frame.width, frame.height)
+
 	if frame.has('frameX'):
 		$Char/Image.offset = Vector2(
 			-frame.frameX,
 			-frame.frameY
 		)
-	var fps = $HUD/SpinBox.value
-	var loop = $HUD/Loop.button_pressed
-	if remaining_frames > 0:
-		current_frame += delta * fps
-		remaining_frames -= delta * fps
-	if remaining_frames <= 0 and loop:
-		current_frame = frame_start_position
-		remaining_frames = frame_max
-	elif remaining_frames <= 0:
-		current_frame = frame_start_position + frame_max - 1
+
+
+func status():
+	var status = ""
+	var sprite = $Char.position
+	status += "x: " + str(int(sprite.x)) + " | y: " + str(int(sprite.y))
+	$HUD/Status.text = status
 
 func convert_xml_to_json_data():
 	var xml_parser = XMLParser.new()
@@ -103,15 +150,15 @@ func convert_xml_to_json_data():
 	json_data["TextureAtlas"]["frames"] = frame_data
 
 	# Print the formatted JSON data
-	data = json_data
+	chardata.xml_data = json_data
 
 var animationnames = []
 
 func load_animations_from_data():
 	animationnames.clear()
-	for i in data.TextureAtlas.frames.size():
+	for i in chardata.xml_data.TextureAtlas.frames.size():
 		#get name
-		var framename = data.TextureAtlas.frames[i].name
+		var framename = chardata.xml_data.TextureAtlas.frames[i].name
 		framename = framename.erase(framename.length() - 4, 4)
 		
 		#check if its a new animation
@@ -121,7 +168,7 @@ func load_animations_from_data():
 				animationnames[j][2] += 1
 				alreadyexist = true
 		if !alreadyexist:
-			animationnames.append([framename,i,1])
+			animationnames.append([framename,i,0])
 	
 	$HUD/CharAnimations.clear()
 	for i in animationnames.size():
@@ -137,3 +184,33 @@ func _on_CharAnimations_item_selected(index):
 	frame_start_position = animationnames[index][1]
 	frame_max = animationnames[index][2]
 	remaining_frames = animationnames[index][2]
+
+func save_animation():
+	var animation_name = $HUD/Animations.get_item_text($HUD/Animations.selected)
+	var animation = {animation_name: 
+		{
+		"fps": $HUD/FPS.value,
+		"loop": $HUD/Loop.button_pressed,
+		"x": $Char.position.x,
+		"y": $Char.position.y,
+		"start_position": frame_start_position,
+		"max": frame_max
+		}
+	}
+	
+	# Assuming chardata.animations is a dictionary
+	if not chardata.animations.has(animation_name):
+		chardata.animations.merge({animation_name:{}})
+	chardata.animations[animation_name] = animation[animation_name]  # Merge the nested dictionary directly
+
+func load_animation(anim):
+	if chardata.animations.has(anim):
+		var animation = chardata.animations[anim]
+		$HUD/FPS.value = animation.fps
+		$HUD/Loop.button_pressed = animation.loop
+		$Char.position.x = animation.x
+		$Char.position.y = animation.y
+		current_frame = animation.start_position
+		frame_start_position = animation.start_position
+		frame_max = animation.max
+		remaining_frames = animation.max

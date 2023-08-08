@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmqfxmkrh82mi"]
+[gd_scene load_steps=5 format=3 uid="uid://bmqfxmkrh82mi"]
 
 [ext_resource type="Script" path="res://src/Scenes/Char-Editor/Char-Editor.gd" id="1"]
-[ext_resource type="Script" path="res://src/Scenes/Char-Editor/Image.gd" id="2"]
+[ext_resource type="FontFile" uid="uid://bl1fltam42vw3" path="res://src/Fonts/pixel.otf" id="2_e3vst"]
+[ext_resource type="Script" path="res://src/Scenes/Char-Editor/Char.gd" id="2_ordas"]
+[ext_resource type="Script" path="res://src/Scenes/Char-Editor/HUD.gd" id="2_vhxn2"]
 
 [node name="Char-Editor" type="Node2D"]
 script = ExtResource("1")
@@ -9,18 +11,20 @@ script = ExtResource("1")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
 ignore_rotation = false
+zoom = Vector2(0.5, 0.5)
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_vhxn2")
 
 [node name="ColorRect" type="ColorRect" parent="HUD"]
 offset_left = 955.0
 offset_top = 8.0
 offset_right = 1272.0
-offset_bottom = 145.0
+offset_bottom = 141.0
 color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="CharName" type="TextEdit" parent="HUD"]
-offset_left = 1032.0
+offset_left = 1103.0
 offset_top = 12.0
 offset_right = 1268.0
 offset_bottom = 48.0
@@ -33,14 +37,21 @@ offset_right = 1028.0
 offset_bottom = 46.0
 text = "Load"
 
+[node name="Save" type="Button" parent="HUD"]
+offset_left = 1030.0
+offset_top = 12.0
+offset_right = 1099.0
+offset_bottom = 46.0
+text = "Save"
+
 [node name="Loop" type="CheckBox" parent="HUD"]
-offset_left = 1109.0
-offset_top = 80.0
-offset_right = 1176.0
-offset_bottom = 111.0
+offset_left = 1087.0
+offset_top = 82.0
+offset_right = 1154.0
+offset_bottom = 113.0
 text = "Loop"
 
-[node name="SpinBox" type="SpinBox" parent="HUD"]
+[node name="FPS" type="SpinBox" parent="HUD"]
 offset_left = 998.0
 offset_top = 82.0
 offset_right = 1081.06
@@ -69,16 +80,33 @@ offset_right = 1269.0
 offset_bottom = 79.0
 icon_alignment = 1
 
+[node name="Apply" type="Button" parent="HUD"]
+offset_left = 1163.0
+offset_top = 82.0
+offset_right = 1265.0
+offset_bottom = 113.0
+text = "Apply"
+
+[node name="Status" type="Label" parent="HUD"]
+offset_left = 959.0
+offset_top = 142.0
+offset_right = 1270.0
+offset_bottom = 166.0
+theme_override_fonts/font = ExtResource("2_e3vst")
+theme_override_font_sizes/font_size = 8
+text = "x"
+horizontal_alignment = 1
+
 [node name="Char" type="Marker2D" parent="."]
 position = Vector2(640, 360)
+script = ExtResource("2_ordas")
 
 [node name="Image" type="Sprite2D" parent="Char"]
-scale = Vector2(0.5, 0.5)
+position = Vector2(-100, -100)
 centered = false
 offset = Vector2(10, 10)
 region_enabled = true
 region_rect = Rect2(32, 32, 32, 32)
-script = ExtResource("2")
 
 [node name="Lines" type="Node2D" parent="."]
 position = Vector2(640, 360)
@@ -86,20 +114,23 @@ position = Vector2(640, 360)
 [node name="Z" type="Line2D" parent="Lines"]
 z_index = -1
 points = PackedVector2Array(-2000, -100, 2000, 100)
-width = 2.0
+width = 4.0
 default_color = Color(0, 0, 1, 1)
 
 [node name="X" type="Line2D" parent="Lines"]
 z_index = -1
 points = PackedVector2Array(-2000, 0, 2000, 0)
-width = 2.0
+width = 4.0
 default_color = Color(1, 0, 0, 1)
 
 [node name="Y" type="Line2D" parent="Lines"]
 z_index = -1
 points = PackedVector2Array(0, -2000, 0, 2000)
-width = 2.0
+width = 4.0
 default_color = Color(0, 1, 0, 1)
 
 [connection signal="pressed" from="HUD/Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="HUD/Save" to="HUD" method="_on_save_pressed"]
+[connection signal="item_selected" from="HUD/Animations" to="HUD" method="_on_animations_item_selected"]
 [connection signal="item_selected" from="HUD/CharAnimations" to="." method="_on_CharAnimations_item_selected"]
+[connection signal="pressed" from="HUD/Apply" to="HUD" method="_on_apply_pressed"]

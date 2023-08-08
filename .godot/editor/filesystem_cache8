@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1691436708
-default_env.tres::Environment::668206244813342936::1691427213::0::1::::<><>::
+::res://::1691481988
+default_env.tres::Environment::668206244813342936::1691448433::0::1::::<><>::
 icon.png::CompressedTexture2D::9023116541327072613::1691283925::1691350507::1::::<><>::
 LordXEncore.png::CompressedTexture2D::6238720365266050342::1691283925::1691422211::1::::<><>::
 README.md::TextFile::-1::1691283925::0::1::::<><>::
@@ -17,7 +17,7 @@ vcr.ttf::FontFile::7672332610919064086::1691283925::1691350507::1::::<><>::
 Overlay.gd::GDScript::-1::1691350983::0::1::::<>CanvasLayer<>::
 Overlay.tscn::PackedScene::-1::1691350497::0::1::::<><>::res://src/Fonts/vcr.ttf<>res://src/Overlay/Overlay.gd
 ::res://src/Scenes/::1691423440
-::res://src/Scenes/Char-Editor/::1691427213
-Char-Editor.gd::GDScript::-1::1691425109::0::1::::<>Node2D<>::
-Char-Editor.tscn::PackedScene::3262062156149422116::1691427213::0::1::::<><>::res://src/Scenes/Char-Editor/Char-Editor.gd<>res://src/Scenes/Char-Editor/Image.gd
+::res://src/Scenes/Char-Editor/::1691448433
+Char-Editor.gd::GDScript::-1::1691448085::0::1::::<>Node2D<>::
+Char-Editor.tscn::PackedScene::3262062156149422116::1691448433::0::1::::<><>::res://src/Scenes/Char-Editor/Char-Editor.gd<>res://src/Scenes/Char-Editor/Image.gd
 Image.gd::GDScript::-1::1691350497::0::1::::<>Sprite2D<>::

@@ -13,6 +13,7 @@ config_version=5
 config/name="Friday Night Funkin': Toast Engine"
 run/main_scene="res://src/Scenes/Menu/Title.tscn"
 config/features=PackedStringArray("4.1")
+run/max_fps=240
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
@@ -22,10 +23,6 @@ config/icon="res://icon.png"
 [autoload]
 
 Overlay="*res://src/Overlay/Overlay.tscn"
-
-[debug]
-
-settings/fps/force_fps=240
 
 [display]
 
@@ -53,5 +50,5 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.219608, 0.219608, 0.219608, 1)
 environment/defaults/default_environment="res://default_env.tres"
