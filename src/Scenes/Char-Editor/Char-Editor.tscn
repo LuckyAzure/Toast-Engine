@@ -17,85 +17,86 @@ zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_vhxn2")
 
 [node name="ColorRect" type="ColorRect" parent="HUD"]
-offset_left = 955.0
+offset_left = 854.0
 offset_top = 8.0
 offset_right = 1272.0
-offset_bottom = 141.0
+offset_bottom = 118.0
 color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="CharName" type="TextEdit" parent="HUD"]
-offset_left = 1103.0
-offset_top = 12.0
-offset_right = 1268.0
-offset_bottom = 48.0
+offset_left = 1034.0
+offset_top = 11.0
+offset_right = 1267.0
+offset_bottom = 47.0
 text = "boyfriend"
 
 [node name="Load" type="Button" parent="HUD"]
-offset_left = 959.0
+offset_left = 857.0
 offset_top = 12.0
-offset_right = 1028.0
+offset_right = 944.0
 offset_bottom = 46.0
 text = "Load"
 
 [node name="Save" type="Button" parent="HUD"]
-offset_left = 1030.0
+offset_left = 947.0
 offset_top = 12.0
-offset_right = 1099.0
+offset_right = 1031.0
 offset_bottom = 46.0
 text = "Save"
 
 [node name="Loop" type="CheckBox" parent="HUD"]
 offset_left = 1087.0
-offset_top = 82.0
+offset_top = 83.0
 offset_right = 1154.0
-offset_bottom = 113.0
+offset_bottom = 114.0
 text = "Loop"
 
 [node name="FPS" type="SpinBox" parent="HUD"]
-offset_left = 998.0
+offset_left = 930.0
 offset_top = 82.0
-offset_right = 1081.06
+offset_right = 1013.06
 offset_bottom = 113.0
 min_value = 1.0
 value = 24.0
 
 [node name="Label" type="Label" parent="HUD"]
-offset_left = 960.0
-offset_top = 84.0
-offset_right = 992.0
-offset_bottom = 110.0
+offset_left = 887.0
+offset_top = 86.0
+offset_right = 919.0
+offset_bottom = 112.0
 text = "FPS:"
 
 [node name="Animations" type="OptionButton" parent="HUD"]
-offset_left = 959.0
+offset_left = 857.0
 offset_top = 50.0
-offset_right = 1111.0
+offset_right = 1031.0
 offset_bottom = 79.0
 icon_alignment = 1
 
 [node name="CharAnimations" type="OptionButton" parent="HUD"]
-offset_left = 1117.0
+offset_left = 1034.0
 offset_top = 50.0
-offset_right = 1269.0
+offset_right = 1268.0
 offset_bottom = 79.0
 icon_alignment = 1
 
 [node name="Apply" type="Button" parent="HUD"]
 offset_left = 1163.0
-offset_top = 82.0
+offset_top = 83.0
 offset_right = 1265.0
-offset_bottom = 113.0
+offset_bottom = 114.0
 text = "Apply"
 
 [node name="Status" type="Label" parent="HUD"]
-offset_left = 959.0
-offset_top = 142.0
-offset_right = 1270.0
-offset_bottom = 166.0
+offset_left = 854.0
+offset_top = 119.0
+offset_right = 1272.0
+offset_bottom = 143.0
 theme_override_fonts/font = ExtResource("2_e3vst")
 theme_override_font_sizes/font_size = 8
 text = "x"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Char" type="Marker2D" parent="."]
 position = Vector2(640, 360)

@@ -34,6 +34,7 @@ func _on_Load_pressed():
 	load_char()
 
 func load_char():
+	chardata = {}
 	# Check if the JSON file exists
 	var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
 	if not FileAccess.file_exists(json_path):
