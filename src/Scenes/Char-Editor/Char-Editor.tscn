@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmqfxmkrh82mi"]
+[gd_scene load_steps=6 format=3 uid="uid://bmqfxmkrh82mi"]
 
 [ext_resource type="Script" path="res://src/Scenes/Char-Editor/Char-Editor.gd" id="1"]
+[ext_resource type="Script" path="res://src/Scenes/Char-Editor/Camera.gd" id="2_6i50t"]
 [ext_resource type="FontFile" uid="uid://bl1fltam42vw3" path="res://src/Fonts/pixel.otf" id="2_e3vst"]
 [ext_resource type="Script" path="res://src/Scenes/Char-Editor/Char.gd" id="2_ordas"]
 [ext_resource type="Script" path="res://src/Scenes/Char-Editor/HUD.gd" id="2_vhxn2"]
@@ -8,10 +9,11 @@
 [node name="Char-Editor" type="Node2D"]
 script = ExtResource("1")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 position = Vector2(640, 360)
 ignore_rotation = false
 zoom = Vector2(0.5, 0.5)
+script = ExtResource("2_6i50t")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("2_vhxn2")
@@ -80,13 +82,6 @@ offset_right = 1268.0
 offset_bottom = 79.0
 icon_alignment = 1
 
-[node name="Apply" type="Button" parent="HUD"]
-offset_left = 1163.0
-offset_top = 83.0
-offset_right = 1265.0
-offset_bottom = 114.0
-text = "Apply"
-
 [node name="Status" type="Label" parent="HUD"]
 offset_left = 854.0
 offset_top = 119.0
@@ -130,8 +125,7 @@ points = PackedVector2Array(0, -2000, 0, 2000)
 width = 4.0
 default_color = Color(0, 1, 0, 1)
 
-[connection signal="pressed" from="HUD/Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="HUD/Load" to="HUD" method="_on_Load_pressed"]
 [connection signal="pressed" from="HUD/Save" to="HUD" method="_on_save_pressed"]
 [connection signal="item_selected" from="HUD/Animations" to="HUD" method="_on_animations_item_selected"]
 [connection signal="item_selected" from="HUD/CharAnimations" to="." method="_on_CharAnimations_item_selected"]
-[connection signal="pressed" from="HUD/Apply" to="HUD" method="_on_apply_pressed"]

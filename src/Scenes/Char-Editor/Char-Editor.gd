@@ -23,14 +23,13 @@ var charname = "boyfriend"
 var chardata = {}
 var xml_data
 var animations = []
+var current_animation = ""
 
 func _ready():
+	discord_sdk.details = "Character Editor"
+	discord_sdk.refresh()
 	for i in def_animations.size():
 		$HUD/Animations.add_item(def_animations[i])
-	load_char()
-
-func _on_Load_pressed():
-	charname = $HUD/CharName.text
 	load_char()
 
 func load_char():
@@ -186,8 +185,8 @@ func _on_CharAnimations_item_selected(index):
 	frame_max = animationnames[index][2]
 	remaining_frames = animationnames[index][2]
 
-func save_animation():
-	var animation_name = $HUD/Animations.get_item_text($HUD/Animations.selected)
+func save_animation(anim_name):
+	var animation_name = anim_name
 	var animation = {animation_name: 
 		{
 		"fps": $HUD/FPS.value,
@@ -205,6 +204,7 @@ func save_animation():
 	chardata.animations[animation_name] = animation[animation_name]  # Merge the nested dictionary directly
 
 func load_animation(anim):
+	current_animation = anim
 	if chardata.animations.has(anim):
 		var animation = chardata.animations[anim]
 		$HUD/FPS.value = animation.fps

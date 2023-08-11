@@ -3,6 +3,20 @@ extends CanvasLayer
 # ------------------------------------------------------------------------
 
 func _ready():
+	discord_sdk.app_id = 1139369364974473336 # Application ID
+	print("Discord working: " + str(discord_sdk.get_is_discord_working())) # A boolean if everything worked
+	#discord_sdk.details = "A demo activity by vaporvee#1231"
+	#discord_sdk.state = "Checkpoint 23/23"
+	
+	discord_sdk.large_image = "sandwich" # Image key from "Art Assets"
+	#discord_sdk.large_image_text = "Try it now!"
+	#discord_sdk.small_image = "boss" # Image key from "Art Assets"
+	#discord_sdk.small_image_text = "Fighting the end boss! D:"
+
+	discord_sdk.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
+	# discord_sdk.end_timestamp = int(Time.get_unix_time_from_system()) + 3600 # +1 hour in unix time / "01:00 remaining"
+
+	discord_sdk.refresh() # Always refresh after changing the values!
 	$Flash.modulate.a = 0
 
 # ------------------------------------------------------------------------

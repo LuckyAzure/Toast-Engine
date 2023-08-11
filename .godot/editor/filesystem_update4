@@ -1,3 +1,7 @@
 res://default_env.tres
 res://src/Scenes/Char-Editor/Char-Editor.tscn
+res://src/Overlay/Overlay.gd
+res://src/Scenes/Char-Editor/Char-Editor.gd
 res://src/Scenes/Char-Editor/HUD.gd
+res://src/Scenes/Char-Editor/Char.gd
+res://src/Scenes/Char-Editor/Camera.gd
