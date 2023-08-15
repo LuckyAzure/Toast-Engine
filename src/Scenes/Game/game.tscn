@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://w3iacwd70ape"]
+
+[ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
+[ext_resource type="Script" path="res://src/Scenes/Game/Chart.gd" id="2_g4b56"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_e8eki")
+
+[node name="HUD" type="Node" parent="."]
+
+[node name="Chart" type="Node" parent="HUD"]
+script = ExtResource("2_g4b56")
+
+[node name="Instrumental" type="AudioStreamPlayer" parent="HUD/Chart"]
+
+[node name="Voices" type="AudioStreamPlayer" parent="HUD/Chart"]
+
+[node name="Status" type="Node" parent="HUD"]
+
+[node name="Custom" type="Node" parent="HUD"]
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Characters" type="Node" parent="Background"]
+
+[node name="Stage" type="Node" parent="Background"]
+
+[node name="Custom" type="Node" parent="Background"]
