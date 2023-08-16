@@ -56,4 +56,4 @@ func load_chart():
 	chart_data.erase("events")
 	chart.info = chart_data
 	chart.notes.sort()
-	print(chart.notes)
+	print(chart.info)

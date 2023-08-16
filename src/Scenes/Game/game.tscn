@@ -14,6 +14,8 @@ transform = Transform2D(1, 0, 0, 1, 640, 360)
 [node name="Chart" type="Node" parent="HUD"]
 script = ExtResource("2_g4b56")
 
+[node name="Notes" type="Node" parent="HUD/Chart"]
+
 [node name="Instrumental" type="AudioStreamPlayer" parent="HUD/Chart"]
 
 [node name="Voices" type="AudioStreamPlayer" parent="HUD/Chart"]
