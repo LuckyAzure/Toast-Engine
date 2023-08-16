@@ -4,7 +4,7 @@ extends CanvasLayer
 
 func _ready():
 	discord_sdk.app_id = 1139369364974473336 # Application ID
-	#print("Discord working: " + str(discord_sdk.get_is_discord_working())) # A boolean if everything worked
+	print("Discord working: " + str(discord_sdk.get_is_discord_working())) # A boolean if everything worked
 	#discord_sdk.details = "A demo activity by vaporvee#1231"
 	#discord_sdk.state = "Checkpoint 23/23"
 	

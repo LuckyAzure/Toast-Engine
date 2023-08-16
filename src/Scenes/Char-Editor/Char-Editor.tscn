@@ -16,6 +16,7 @@ zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_6i50t")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+layer = 128
 script = ExtResource("2_vhxn2")
 
 [node name="ColorRect" type="ColorRect" parent="HUD"]
