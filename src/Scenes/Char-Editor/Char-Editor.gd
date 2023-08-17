@@ -54,7 +54,7 @@ func load_char():
 	var image_loaded = image.load(image_path)
 
 	if image_loaded == OK:
-		var texture = ImageTexture.create_from_image(image)
+		var texture = ImageTexture.create_from_image(image_path)
 		$Char/Image.texture = texture
 	else:
 		print("Failed to load image:", image_path)

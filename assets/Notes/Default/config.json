@@ -1,0 +1,230 @@
+{
+	"Left": {
+		"Note": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Left_Note.png"
+			]
+		},
+		"HUD_Idle": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Left.png"
+			]
+		},
+		"HUD_Glow": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Left_Glow0.png",
+				"Left_Glow1.png",
+				"Left_Glow2.png"
+			]
+		},
+		"HUD_Hold": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Left_Hold0.png",
+				"Left_Hold1.png"
+			]
+		},
+		"HUD_Splash": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Splash0.png",
+				"Splash1.png",
+				"Splash2.png"
+			]
+		}
+	},
+	"Down": {
+		"Note": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Down_Note.png"
+			]
+		},
+		"HUD_Idle": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Down.png"
+			]
+		},
+		"HUD_Glow": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Down_Glow0.png",
+				"Down_Glow1.png",
+				"Down_Glow2.png"
+			]
+		},
+		"HUD_Hold": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Down_Hold0.png",
+				"Down_Hold1.png"
+			]
+		},
+		"HUD_Splash": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Splash0.png",
+				"Splash1.png",
+				"Splash2.png"
+			]
+		}
+	},
+	"Up": {
+		"Note": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Up_Note.png"
+			]
+		},
+		"HUD_Idle": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Up.png"
+			]
+		},
+		"HUD_Glow": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Up_Glow0.png",
+				"Up_Glow1.png",
+				"Up_Glow2.png"
+			]
+		},
+		"HUD_Hold": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Up_Hold0.png",
+				"Up_Hold1.png"
+			]
+		},
+		"HUD_Splash": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Splash0.png",
+				"Splash1.png",
+				"Splash2.png"
+			]
+		}
+	},
+	"Right": {
+		"Note": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Right_Note.png"
+			]
+		},
+		"HUD_Idle": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Right.png"
+			]
+		},
+		"HUD_Glow": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Right_Glow0.png",
+				"Right_Glow1.png",
+				"Right_Glow2.png"
+			]
+		},
+		"HUD_Hold": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Right_Hold0.png",
+				"Right_Hold1.png"
+			]
+		},
+		"HUD_Splash": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Splash0.png",
+				"Splash1.png",
+				"Splash2.png"
+			]
+		}
+	}
+}
