@@ -7,4 +7,9 @@ func _ready():
 	show()
 
 func _process(delta):
-	position.y = (get_tree().get_current_scene().song_time - data[0]) * 2.4
+	if (get_tree().get_current_scene().song_time - (data[0] + data[2])) > 0:
+		queue_free()
+	if (get_tree().get_current_scene().song_time - data[0]) <= 0:
+		position.y = (get_tree().get_current_scene().song_time - data[0]) * 2.4
+	else:
+		position.y = 0
