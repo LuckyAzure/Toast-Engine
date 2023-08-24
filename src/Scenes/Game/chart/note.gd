@@ -55,7 +55,7 @@ func _process(delta):
 				elif (note_position + data[2]) < time - 150:
 					queue_free()
 					chart.NoteOrder[data[1]].pop_front()
-				if data[2] < 64 and note_holdable and note_hittable and !Input.is_key_pressed(note_data.input):
+				if data[2] < 75 and note_holdable and note_hittable and !Input.is_key_pressed(note_data.input):
 					queue_free()
 					chart.NoteOrder[data[1]].pop_front()
 				if note_position < time - 150 and miss_cooldown <= 0:
