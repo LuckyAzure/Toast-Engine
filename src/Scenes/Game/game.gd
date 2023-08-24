@@ -1,7 +1,7 @@
 extends Node2D
 
-var song_name = "Suffering-Siblings"
-var song_speed = 2.4
+var song_name = "untold-loneliness"
+var song_speed = 2
 var note_skin = "default"
 
 var input = [KEY_A,KEY_S,KEY_K,KEY_L]

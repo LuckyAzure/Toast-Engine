@@ -36,6 +36,10 @@ window/vsync/vsync_mode=0
 
 enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

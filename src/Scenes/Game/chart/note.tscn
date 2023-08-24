@@ -10,7 +10,6 @@ texture = ExtResource("1_ssobm")
 script = ExtResource("2_0uvtw")
 
 [node name="Sustain" type="Sprite2D" parent="."]
-visible = false
 rotation = 3.14159
 texture = ExtResource("3_brxnl")
 centered = false

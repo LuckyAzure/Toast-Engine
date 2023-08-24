@@ -1,8 +1,11 @@
 extends Node
 
 var data
-var note_skin 
+var note_skin
 var note_path
+
+func _process(delta):
+	$P1.P1_HUD_TICK(delta)
 
 func load_notes_texture():
 	note_skin = get_tree().get_current_scene().note_skin
@@ -11,7 +14,6 @@ func load_notes_texture():
 	replace_paths_to_preloaded_textures()
 
 func load_config(note_name):
-	var note_skin = get_tree().get_current_scene().note_skin
 	#Check if the JSON file exists
 	var json_path = "res://assets/notes/" + note_name + "/config.json"
 	if not FileAccess.file_exists(json_path):
@@ -37,7 +39,6 @@ func replace_paths_to_preloaded_textures():
 					data[type][state]["texture"][textures] = texture
 				else:
 					print(type + " of " + state + " not works.")
-	
 		#Now you can use the updated data dictionary to access textures for different note types and states
 		#For example: data["Left"]["Note"]["texture"][0] will be a Texture object
 	

@@ -69,11 +69,11 @@ func process_notes():
 			var instance = note.instantiate()
 			get_node(def_note_nodes[chart.notes[count][1]]).add_child(instance)
 			instance.data = chart.notes[count]
+			instance.note_position = chart.notes[count][0]
 			if chart.notes[count][1] > 3:
 				instance.note_data.bot = true
 			else:
 				NoteOrder[chart.notes[count][1]].append(chart.notes[count][0])
-				NoteOrder[chart.notes[count][1]].sort()
 				instance.note_data.bot = false
 				instance.note_data.input = inputs[chart.notes[count][1]]
 			instance.texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note"]["texture"][0]
@@ -85,10 +85,10 @@ func load_hud_notes_texture():
 
 func load_audio():
 	var song_name = get_tree().get_current_scene().song_name
-	var inst_path = "res://assets/songs/" + song_name + "/inst.ogg"
-	var voices_path = "res://assets/songs/" + song_name + "/voices.ogg"
-	$Instrumental.stream = ResourceImporterOggVorbis.load_from_file(inst_path)
-	$Voices.stream = ResourceImporterOggVorbis.load_from_file(voices_path)
+	var inst_path = "res://assets/songs/" + song_name + "/Inst.ogg"
+	var voices_path = "res://assets/songs/" + song_name + "/Voices.ogg"
+	$Instrumental.stream = AudioStreamOggVorbis.load_from_file(inst_path)
+	$Voices.stream = AudioStreamOggVorbis.load_from_file(voices_path)
 
 func load_chart():
 	var song_name = get_tree().get_current_scene().song_name
@@ -126,9 +126,16 @@ func load_chart():
 	chart.notes.sort_custom(func(a, b): return a[0] < b[0])
 
 func notemiss(order):
-	NoteOrder[order].pop_front()
+	get_parent().get_node("Status").maxscore += 350
 	get_parent().get_node("Status").misses += 1
 
-func notehit(order):
-	NoteOrder[order].pop_front()
-	get_parent().get_node("Status").score += 350
+func notehit(order,distance):
+	get_parent().get_node("Status").maxscore += 350
+	if distance < 45:
+		get_parent().get_node("Status").score += 350
+	elif distance < 90:
+		get_parent().get_node("Status").score += 200
+	elif distance < 135:
+		get_parent().get_node("Status").score += 100
+	else:
+		get_parent().get_node("Status").score += 50
