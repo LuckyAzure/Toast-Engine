@@ -1,7 +1,8 @@
+ProgressBar
+Label
 Sprite2D
 Marker2D
 Node
 CanvasLayer
-Label
 AudioStreamPlayer
 Button

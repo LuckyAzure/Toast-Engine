@@ -27,7 +27,7 @@ func _process(delta):
 		var playback_adjusted_time = (song_time + time_since_last_mix - output_latency) * 1000.0
 
 		var time_difference = playback_adjusted_time - scene_song_time
-		var max_adjustment = delta * 1000.0  #Adjust this factor for smoother interpolation
+		var max_adjustment = delta * 1000.0 * $Instrumental.pitch_scale #Adjust this factor for smoother interpolation
 		var adjustment = clamp(time_difference, -max_adjustment, max_adjustment)
 
 		current_scene.song_time += adjustment
@@ -37,10 +37,10 @@ func _process(delta):
 		var delay = int(playback_adjusted_time) - int(scene_song_time)
 		$Label.text = "delay: " + str(delay)
 
-
-
 var count = 0
 var note = preload("res://src/Scenes/Game/chart/note.tscn")
+
+var NoteOrder = [[],[],[],[],[],[],[],[]]
 
 var def_note_nodes = [
 	"Notes/P1/Left",
@@ -63,11 +63,19 @@ var def_notes = [
 
 func process_notes():
 	var song_time = get_tree().get_current_scene().song_time
+	var inputs = get_tree().get_current_scene().input
 	if chart.notes.size() > count:
-		if chart.notes[count][0] > song_time - 5000:
+		if chart.notes[count][0] < song_time + 2000:
 			var instance = note.instantiate()
 			get_node(def_note_nodes[chart.notes[count][1]]).add_child(instance)
 			instance.data = chart.notes[count]
+			if chart.notes[count][1] > 3:
+				instance.note_data.bot = true
+			else:
+				NoteOrder[chart.notes[count][1]].append(chart.notes[count][0])
+				NoteOrder[chart.notes[count][1]].sort()
+				instance.note_data.bot = false
+				instance.note_data.input = inputs[chart.notes[count][1]]
 			instance.texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note"]["texture"][0]
 			count += 1
 
@@ -111,7 +119,16 @@ func load_chart():
 			chart.notes.append([time, note_type, sustain, misc])
 	
 	chart_data.erase("notes")
-	chart.psych_events = chart_data.events
-	chart_data.erase("events")
+	if chart_data.has("events"):
+		chart.psych_events = chart_data.events
+		chart_data.erase("events")
 	chart.info = chart_data
-	chart.notes.sort()
+	chart.notes.sort_custom(func(a, b): return a[0] < b[0])
+
+func notemiss(order):
+	NoteOrder[order].pop_front()
+	get_parent().get_node("Status").misses += 1
+
+func notehit(order):
+	NoteOrder[order].pop_front()
+	get_parent().get_node("Status").score += 350

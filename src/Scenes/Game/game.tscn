@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://w3iacwd70ape"]
+[gd_scene load_steps=13 format=3 uid="uid://w3iacwd70ape"]
 
 [ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
 [ext_resource type="Script" path="res://src/Scenes/Game/Chart.gd" id="2_g4b56"]
@@ -8,6 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://chf2cpmkx8j3m" path="res://src/Scenes/Game/images/Down.png" id="5_3oe43"]
 [ext_resource type="Texture2D" uid="uid://4pd1208i6inf" path="res://src/Scenes/Game/images/Up.png" id="6_pwnwc"]
 [ext_resource type="Texture2D" uid="uid://dj20x2yoqp61w" path="res://src/Scenes/Game/images/Right.png" id="7_t1brj"]
+[ext_resource type="Script" path="res://src/Scenes/Game/Status.gd" id="9_jmjuk"]
+[ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="9_y34d1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cerk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4kil"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_color = Color(0, 0, 0, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_e8eki")
@@ -21,6 +33,7 @@ transform = Transform2D(1, 0, 0, 1, 640, 360)
 script = ExtResource("2_g4b56")
 
 [node name="Img4" type="Sprite2D" parent="HUD/Chart"]
+visible = false
 position = Vector2(1604, 94)
 scale = Vector2(1, -1)
 texture = ExtResource("3_xpyfo")
@@ -73,12 +86,38 @@ texture = ExtResource("7_t1brj")
 [node name="Voices" type="AudioStreamPlayer" parent="HUD/Chart"]
 
 [node name="Label" type="Label" parent="HUD/Chart"]
+visible = false
 offset_left = -93.0
 offset_top = -99.0
 offset_right = 102.0
 offset_bottom = -72.0
 
 [node name="Status" type="Node" parent="HUD"]
+script = ExtResource("9_jmjuk")
+
+[node name="Score" type="Label" parent="HUD/Status"]
+offset_left = -640.0
+offset_top = -325.0
+offset_right = 640.0
+offset_bottom = -278.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("9_y34d1")
+theme_override_font_sizes/font_size = 16
+text = "Score: 0 | Misses: 0 | Accuracy: N/A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="ProgressBar" parent="HUD/Status"]
+offset_left = -640.0
+offset_top = 351.0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/outline_size = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1cerk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p4kil")
+value = 10.0
+show_percentage = false
 
 [node name="Custom" type="Node" parent="HUD"]
 
