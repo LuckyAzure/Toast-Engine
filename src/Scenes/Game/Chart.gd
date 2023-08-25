@@ -17,24 +17,24 @@ func _ready():
 
 func _process(delta):
 	var current_scene = get_tree().get_current_scene()
-
+	
 	var song_time = $Instrumental.get_playback_position()
 	var scene_song_time = current_scene.song_time
-
+	
 	if $Instrumental.playing:
 		var output_latency = AudioServer.get_output_latency()
 		var time_since_last_mix = AudioServer.get_time_since_last_mix()
 		var playback_adjusted_time = (song_time + time_since_last_mix - output_latency) * 1000.0
-
+		
 		var time_difference = playback_adjusted_time - scene_song_time
-		var max_adjustment = delta * 1000.0 * $Instrumental.pitch_scale #Adjust this factor for smoother interpolation
+		var max_adjustment = delta * 1000.0 * $Instrumental.pitch_scale
 		var adjustment = clamp(time_difference, -max_adjustment, max_adjustment)
-
+		
 		current_scene.song_time += adjustment
-
 		process_notes()
-
+		
 		var delay = int(playback_adjusted_time) - int(scene_song_time)
+		if delay > 30: current_scene.song_time = playback_adjusted_time
 		$Label.text = "delay: " + str(delay)
 
 var count = 0
