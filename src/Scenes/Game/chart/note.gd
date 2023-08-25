@@ -1,7 +1,5 @@
 extends Sprite2D
 
-enum NoteType { SINGLE, SUSTAIN }
-
 var data = [0, 0, 0, 0]
 var note_data = {
 	"bot": true,
@@ -17,7 +15,6 @@ var note_position
 var sustain_end_texture_height
 var miss_cooldown = 0
 var downscroll = false
-var note_type = NoteType.SINGLE
 
 func _ready():
 	song_speed = get_tree().get_current_scene().song_speed
@@ -29,7 +26,7 @@ func _ready():
 func _process(delta):
 	sustain_end_texture_height = $Sustain/End.texture.get_height()
 	var time = get_tree().get_current_scene().song_time
-	var is_sustain = note_type == NoteType.SUSTAIN
+	var is_sustain = false
 	note_hittable = false
 	
 	$Sustain.rotation_degrees = 180 if downscroll else 0
@@ -115,6 +112,8 @@ func _process(delta):
 				queue_free()
 				note_order.pop_front()
 				chart.notemiss(data[1])
+
+		
 
 func _input(event):
 	if event is InputEventMouseButton or event is InputEventMouseMotion:
