@@ -77,6 +77,8 @@ func process_notes():
 				instance.note_data.bot = false
 				instance.note_data.input = inputs[chart.notes[count][1]]
 			instance.texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note"]["texture"][0]
+			instance.get_node("Sustain").texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note_Long"]["texture"][0]
+			instance.get_node("Sustain/End").texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note_Long_End"]["texture"][0]
 			count += 1
 
 func load_hud_notes_texture():
@@ -107,6 +109,9 @@ func load_chart():
 		
 		var must_hit_section = note.mustHitSection
 		for note_data in section_notes:
+			if note_data[1] == -1 or note_data[1] > 7:
+				continue
+			
 			var time = note_data[0]
 			var note_type = note_data[1]
 			var sustain = note_data[2]

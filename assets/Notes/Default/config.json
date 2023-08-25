@@ -10,6 +10,26 @@
 				"Left_Note.png"
 			]
 		},
+		"Note_Long": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Left_Long.png"
+			]
+		},
+		"Note_Long_End": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Left_Long_End.png"
+			]
+		},
 		"HUD_Idle": {
 			"offset": {
 				"x": 0,
@@ -65,6 +85,26 @@
 			},
 			"texture": [
 				"Down_Note.png"
+			]
+		},
+		"Note_Long": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Down_Long.png"
+			]
+		},
+		"Note_Long_End": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Down_Long_End.png"
 			]
 		},
 		"HUD_Idle": {
@@ -124,6 +164,26 @@
 				"Up_Note.png"
 			]
 		},
+		"Note_Long": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Up_Long.png"
+			]
+		},
+		"Note_Long_End": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Up_Long_End.png"
+			]
+		},
 		"HUD_Idle": {
 			"offset": {
 				"x": 0,
@@ -179,6 +239,26 @@
 			},
 			"texture": [
 				"Right_Note.png"
+			]
+		},
+		"Note_Long": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Right_Long.png"
+			]
+		},
+		"Note_Long_End": {
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"scale": 1.0
+			},
+			"texture": [
+				"Right_Long_End.png"
 			]
 		},
 		"HUD_Idle": {

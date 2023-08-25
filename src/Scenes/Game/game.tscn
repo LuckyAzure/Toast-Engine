@@ -43,9 +43,16 @@ texture = ExtResource("3_xpyfo")
 script = ExtResource("4_bvybj")
 
 [node name="P1" type="Marker2D" parent="HUD/Chart/Notes"]
-position = Vector2(370, 256)
+position = Vector2(370, -256)
 scale = Vector2(0.6, 0.6)
 script = ExtResource("5_q3v8y")
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Chart/Notes/P1"]
+offset_left = -320.0
+offset_top = -2000.0
+offset_right = 320.0
+offset_bottom = 2000.0
+color = Color(0, 0, 0, 0.533333)
 
 [node name="Left" type="Sprite2D" parent="HUD/Chart/Notes/P1"]
 position = Vector2(-240, 0)
@@ -64,7 +71,7 @@ position = Vector2(240, 0)
 texture = ExtResource("7_t1brj")
 
 [node name="P2" type="Marker2D" parent="HUD/Chart/Notes"]
-position = Vector2(-370, 256)
+position = Vector2(-370, -256)
 scale = Vector2(0.6, 0.6)
 
 [node name="Left" type="Sprite2D" parent="HUD/Chart/Notes/P2"]
@@ -88,7 +95,6 @@ texture = ExtResource("7_t1brj")
 [node name="Voices" type="AudioStreamPlayer" parent="HUD/Chart"]
 
 [node name="Label" type="Label" parent="HUD/Chart"]
-visible = false
 offset_left = -93.0
 offset_top = -99.0
 offset_right = 102.0
@@ -99,9 +105,9 @@ script = ExtResource("9_jmjuk")
 
 [node name="Score" type="Label" parent="HUD/Status"]
 offset_left = -640.0
-offset_top = -325.0
+offset_top = 304.0
 offset_right = 640.0
-offset_bottom = -278.0
+offset_bottom = 351.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("9_y34d1")

@@ -24,7 +24,7 @@ func load_config(note_name):
 		file.close()
 
 var def_notes = ["Left", "Down", "Up", "Right"]
-var def_note_state = ["Note", "HUD_Idle", "HUD_Glow", "HUD_Hold", "HUD_Splash"]
+var def_note_state = ["Note", "Note_Long", "Note_Long_End", "HUD_Idle", "HUD_Glow", "HUD_Hold", "HUD_Splash"]
 
 func replace_paths_to_preloaded_textures():
 	for type in def_notes:
