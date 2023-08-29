@@ -5,7 +5,8 @@ var note_skin
 var note_path
 
 func _process(delta):
-	$P1.P1_HUD_TICK(delta)
+	$P1.HUD_TICK(delta)
+	$P2.HUD_TICK(delta)
 
 func load_notes_texture():
 	note_skin = get_tree().get_current_scene().note_skin

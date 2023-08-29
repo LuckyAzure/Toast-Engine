@@ -16,6 +16,8 @@ var sustain_end_texture_height
 var miss_cooldown = 0
 var downscroll = false
 
+var remove = false
+
 func _ready():
 	song_speed = get_tree().get_current_scene().song_speed
 	position.y = (get_tree().get_current_scene().song_time - data[0]) * song_speed
@@ -39,6 +41,7 @@ func _process(delta):
 	if note_data.bot:
 		if (time - (note_position + data[2])) > 0:
 			queue_free()
+			get_parent().get_parent().animation[int(data[1]) % 4] = "HUD_Glow"
 		if (time - note_position) <= 0:
 			position.y = (note_position - time) * song_speed
 			if downscroll:
@@ -48,6 +51,7 @@ func _process(delta):
 		else:
 			position.y = 0
 			self_modulate.a = 0
+			get_parent().get_parent().animation[int(data[1]) % 4] = "HUD_Glow"
 			var sustain_size = ((note_position + data[2] - time) * song_speed) - sustain_end_texture_height
 			$Sustain.region_rect.size.y = sustain_size
 			$Sustain/End.position.y = sustain_size
@@ -83,20 +87,7 @@ func _process(delta):
 
 				if note_order_time == data[0] and note_position_difference > -150 and note_position - time <= 150:
 					note_hittable = true
-				elif note_position_difference < -150:
-					queue_free()
-					note_order.pop_front()
-
-				if data[2] < 75 and note_holdable and note_hittable and !Input.is_key_pressed(note_data.input):
-					queue_free()
-					note_order.pop_front()
-
-				if note_position < time - 150 and miss_cooldown <= 0:
-					chart.notemiss(data[1])
-					miss_cooldown = 3
-				elif miss_cooldown > 0:
-					miss_cooldown -= delta * 20
-
+					
 				if note_hittable and Input.is_key_pressed(note_data.input) and note_holdable:
 					get_parent().get_parent().animation[data[1]] = "HUD_Glow"
 					var diff = data[2] - (time - note_position)
@@ -104,14 +95,28 @@ func _process(delta):
 					data[2] = diff
 
 					if data[2] < 0:
-						queue_free()
-						note_order.pop_front()
+						remove = true
+					
+				elif note_position_difference < -150:
+					remove = true
+
+				if data[2] < 75 and note_holdable and note_hittable and !Input.is_key_pressed(note_data.input):
+					remove = true
+
+				if note_position < time - 150 and miss_cooldown <= 0:
+					chart.notemiss(data[1],data[3])
+					miss_cooldown = 3
+				elif miss_cooldown > 0:
+					miss_cooldown -= delta * 20
+			
 			elif abs(note_position - time) <= 150 and note_order_time == data[0]:
 				note_hittable = true
 			elif note_position < time - 150:
-				queue_free()
-				note_order.pop_front()
-				chart.notemiss(data[1])
+				remove = true
+				chart.notemiss(data[1],data[3])
+		if remove:
+			queue_free()
+			note_order.pop_front()
 
 		
 
@@ -125,13 +130,12 @@ func _input(event):
 	var just_pressed = event.is_pressed() and not event.is_echo()
 	if data[2] == 0:
 		if just_pressed and !note_data.bot and note_hittable and event.keycode == note_data.input:
-			queue_free()
-			chart.NoteOrder[data[1]].pop_front()
+			remove = true
 			get_parent().get_parent().animation[data[1]] = "HUD_Glow"
-			chart.notehit(data[1],(time - data[0]))
+			chart.notehit(data[1],(time - data[0]),data[3])
 	else:
 		if just_pressed and !note_data.bot and note_hittable and event.keycode == note_data.input and !note_holdable:
 			get_parent().get_parent().animation[data[1]] = "HUD_Glow"
-			chart.notehit(data[1],(time - data[0]))
+			chart.notehit(data[1],(time - data[0]),data[3])
 			self_modulate.a = 0
 			note_holdable = true

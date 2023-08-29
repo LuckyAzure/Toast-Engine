@@ -12,8 +12,11 @@ func _ready():
 	load_hud_notes_texture()
 	load_audio()
 	load_chart()
+	$Timeline.initialize()
 	$Instrumental.play(0)
 	$Voices.play(0)
+
+var last_update_time = 0.0
 
 func _process(delta):
 	var current_scene = get_tree().get_current_scene()
@@ -22,20 +25,23 @@ func _process(delta):
 	var scene_song_time = current_scene.song_time
 	
 	if $Instrumental.playing:
-		var output_latency = AudioServer.get_output_latency()
-		var time_since_last_mix = AudioServer.get_time_since_last_mix()
-		var playback_adjusted_time = (song_time + time_since_last_mix - output_latency) * 1000.0
-		
+		var playback_adjusted_time = (song_time + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()) * 1000.0
+
 		var time_difference = playback_adjusted_time - scene_song_time
 		var max_adjustment = delta * 1000.0 * $Instrumental.pitch_scale
 		var adjustment = clamp(time_difference, -max_adjustment, max_adjustment)
-		
-		current_scene.song_time += adjustment
-		process_notes()
-		
-		var delay = int(playback_adjusted_time) - int(scene_song_time)
-		if delay > 30: current_scene.song_time = playback_adjusted_time
-		$Label.text = "delay: " + str(delay)
+
+		if abs(adjustment) > 0.01:
+			current_scene.song_time += adjustment
+			process_notes()
+
+			var delay = int(playback_adjusted_time) - int(scene_song_time)
+			if delay > 40:
+				current_scene.song_time = playback_adjusted_time
+
+			if Time.get_ticks_msec() - last_update_time > 100:
+				$Label.text = "delay: " + str(delay)
+				last_update_time = Time.get_ticks_msec()
 
 var count = 0
 var note = preload("res://src/Scenes/Game/chart/note.tscn")
@@ -105,7 +111,9 @@ func load_chart():
 	#Process and organize notes
 	for note in chart_data.notes:
 		var section_notes = note.sectionNotes
-		chart.sections.append(note.duplicate().erase("sectionNotes"))
+		var section = note
+		section.erase("sectionNotes")
+		chart.sections.append(section)
 		
 		var must_hit_section = note.mustHitSection
 		for note_data in section_notes:
@@ -130,11 +138,15 @@ func load_chart():
 	chart.info = chart_data
 	chart.notes.sort_custom(func(a, b): return a[0] < b[0])
 
-func notemiss(order):
-	get_parent().get_node("Status").maxscore += 350
-	get_parent().get_node("Status").misses += 1
+signal char_animation
 
-func notehit(order,distance):
+func notemiss(order,type):
+	char_animation.emit(order,type,true)
+	get_parent().get_node("Status").misses += 1
+	get_parent().get_node("Status").maxscore += 350
+
+func notehit(order,distance,type):
+	char_animation.emit(order,type,false)
 	get_parent().get_node("Status").maxscore += 350
 	if distance < 45:
 		get_parent().get_node("Status").score += 350

@@ -1,10 +1,11 @@
+PointLight2D
+Node
 ColorRect
 CanvasModulate
 ProgressBar
 Label
 Sprite2D
 Marker2D
-Node
 CanvasLayer
 AudioStreamPlayer
 Button

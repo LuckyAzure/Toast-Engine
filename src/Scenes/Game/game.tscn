@@ -1,16 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://w3iacwd70ape"]
+[gd_scene load_steps=18 format=3 uid="uid://w3iacwd70ape"]
 
 [ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
+[ext_resource type="Script" path="res://src/Scenes/Game/HUD.gd" id="2_a0jha"]
 [ext_resource type="Script" path="res://src/Scenes/Game/Chart.gd" id="2_g4b56"]
 [ext_resource type="Texture2D" uid="uid://c5ywvg6r4xb72" path="res://src/Scenes/Game/images/img4.jpg" id="3_xpyfo"]
 [ext_resource type="Script" path="res://src/Scenes/Game/chart/Notes.gd" id="4_bvybj"]
 [ext_resource type="Texture2D" uid="uid://cco7p4rk761gb" path="res://src/Scenes/Game/images/Left.png" id="4_xxp5s"]
 [ext_resource type="Texture2D" uid="uid://chf2cpmkx8j3m" path="res://src/Scenes/Game/images/Down.png" id="5_3oe43"]
+[ext_resource type="Script" path="res://src/Scenes/Game/chart/Timeline.gd" id="5_hhoua"]
 [ext_resource type="Script" path="res://src/Scenes/Game/P1.gd" id="5_q3v8y"]
 [ext_resource type="Texture2D" uid="uid://4pd1208i6inf" path="res://src/Scenes/Game/images/Up.png" id="6_pwnwc"]
 [ext_resource type="Texture2D" uid="uid://dj20x2yoqp61w" path="res://src/Scenes/Game/images/Right.png" id="7_t1brj"]
 [ext_resource type="Script" path="res://src/Scenes/Game/Status.gd" id="9_jmjuk"]
 [ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="9_y34d1"]
+[ext_resource type="Script" path="res://src/Scenes/Game/chart/P2.gd" id="12_fyd0v"]
+[ext_resource type="Script" path="res://src/Scenes/Game/background/Characters.gd" id="15_oinxd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cerk"]
 bg_color = Color(0, 0, 0, 1)
@@ -29,6 +33,7 @@ script = ExtResource("1_e8eki")
 layer = 120
 offset = Vector2(640, 360)
 transform = Transform2D(1, 0, 0, 1, 640, 360)
+script = ExtResource("2_a0jha")
 
 [node name="Chart" type="Node" parent="HUD"]
 script = ExtResource("2_g4b56")
@@ -38,6 +43,9 @@ visible = false
 position = Vector2(1604, 94)
 scale = Vector2(1, -1)
 texture = ExtResource("3_xpyfo")
+
+[node name="Timeline" type="Node" parent="HUD/Chart"]
+script = ExtResource("5_hhoua")
 
 [node name="Notes" type="Node" parent="HUD/Chart"]
 script = ExtResource("4_bvybj")
@@ -73,6 +81,7 @@ texture = ExtResource("7_t1brj")
 [node name="P2" type="Marker2D" parent="HUD/Chart/Notes"]
 position = Vector2(-370, -256)
 scale = Vector2(0.6, 0.6)
+script = ExtResource("12_fyd0v")
 
 [node name="Left" type="Sprite2D" parent="HUD/Chart/Notes/P2"]
 position = Vector2(-240, 0)
@@ -132,7 +141,11 @@ show_percentage = false
 [node name="Background" type="Node" parent="."]
 
 [node name="Characters" type="Node" parent="Background"]
+script = ExtResource("15_oinxd")
 
 [node name="Stage" type="Node" parent="Background"]
 
 [node name="Custom" type="Node" parent="Background"]
+
+[connection signal="char_animation" from="HUD/Chart" to="Background/Characters" method="_on_chart_char_animation"]
+[connection signal="section_changed" from="HUD/Chart/Timeline" to="HUD" method="_on_timeline_section_changed"]

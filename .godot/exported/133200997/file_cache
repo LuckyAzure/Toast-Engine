@@ -2,6 +2,6 @@ res://addons/discord-sdk-gd/nodes/Debug.tscn::281149808077634b529cc514c7aa9d2f::
 res://src/Fonts/font_alphabet.tres::802575e5fec0e57e29b0ca5e50b48a8d::1692779190::res://.godot/exported/133200997/export-217e66446271b84f36e6ef35a752f621-font_alphabet.res
 res://src/Overlay/Overlay.tscn::7d912f511d7de4b1927f79a61a378415::1692779190::res://.godot/exported/133200997/export-e59430943f6763a9118bf776ea1a075d-Overlay.scn
 res://src/Scenes/Char-Editor/Char-Editor.tscn::f02b5bd7d3960502b1345caab97c026a::1692786213::res://.godot/exported/133200997/export-bf3ce5d0ccc11e8ab3a70753c084bcb5-Char-Editor.scn
-res://src/Scenes/Game/chart/note.tscn::25be7b59aa87b586c9fd02fd2284f0bd::1692881558::res://.godot/exported/133200997/export-16c015444ba0ee9918ce2c8eaa4f4d66-note.scn
-res://src/Scenes/Game/game.tscn::223995ad83204ff42128fb8b2a1efce3::1692881558::res://.godot/exported/133200997/export-0171cd5b64f49b036743e45b5ebb75b2-game.scn
-res://default_env.tres::2828e99eff8f1348997fcf3fd1b425cb::1692881558::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
+res://src/Scenes/Game/chart/note.tscn::0e541a519b377b0afb940911900231c0::1692960299::res://.godot/exported/133200997/export-16c015444ba0ee9918ce2c8eaa4f4d66-note.scn
+res://src/Scenes/Game/game.tscn::b2fe6d016c09458cba44d20c1f0beea8::1692960299::res://.godot/exported/133200997/export-0171cd5b64f49b036743e45b5ebb75b2-game.scn
+res://default_env.tres::2828e99eff8f1348997fcf3fd1b425cb::1692960299::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res

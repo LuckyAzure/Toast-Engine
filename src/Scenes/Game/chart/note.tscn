@@ -6,10 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://cnl4pmgbw7mhh" path="res://src/Scenes/Game/images/Right_Long_End.png" id="4_1idkm"]
 
 [node name="Note" type="Sprite2D"]
+z_index = 1
 texture = ExtResource("1_ssobm")
 script = ExtResource("2_0uvtw")
 
 [node name="Sustain" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+z_index = -1
 texture = ExtResource("3_brxnl")
 centered = false
 offset = Vector2(-25, 0)
