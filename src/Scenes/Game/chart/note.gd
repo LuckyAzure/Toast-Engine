@@ -62,19 +62,6 @@ func _process(delta):
 				clamp(sustain_size, 0.0, $Sustain/End.texture.get_height())
 			)
 	else:
-		position.y = (note_position - time) * song_speed
-		if downscroll:
-			position.y = -position.y
-		var sustain_size = (data[2] * song_speed) - sustain_end_texture_height
-		$Sustain.region_rect.size.y = max(sustain_size, 0)
-		$Sustain/End.position.y = sustain_size
-		$Sustain/End.region_rect = Rect2(
-			0,
-			$Sustain/End.texture.get_height() - clamp(sustain_size, 0, $Sustain/End.texture.get_height()),
-			$Sustain/End.texture.get_width(),
-			clamp(sustain_size, 0.0, $Sustain/End.texture.get_height())
-		)
-
 		var chart = get_tree().get_current_scene().chart
 		var note_order = chart.NoteOrder[data[1]]
 		var note_order_size = note_order.size()
@@ -117,7 +104,18 @@ func _process(delta):
 		if remove:
 			queue_free()
 			note_order.pop_front()
-
+		position.y = (note_position - time) * song_speed
+		if downscroll:
+			position.y = -position.y
+		var sustain_size = (data[2] * song_speed) - sustain_end_texture_height
+		$Sustain.region_rect.size.y = max(sustain_size, 0)
+		$Sustain/End.position.y = sustain_size
+		$Sustain/End.region_rect = Rect2(
+			0,
+			$Sustain/End.texture.get_height() - clamp(sustain_size, 0, $Sustain/End.texture.get_height()),
+			$Sustain/End.texture.get_width(),
+			clamp(sustain_size, 0.0, $Sustain/End.texture.get_height())
+		)
 		
 
 func _input(event):

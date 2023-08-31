@@ -2,6 +2,5 @@ res://default_env.tres
 res://src/Scenes/Game/game.tscn
 res://src/Scenes/Game/Chart.gd
 res://src/Scenes/Game/chart/note.gdshader
-res://src/Scenes/Game/chart/Timeline.gd
-res://src/Scenes/Game/HUD.gd
 res://src/Scenes/Game/game.gd
+res://src/Scenes/Game/chart/note.gd

@@ -1,6 +1,6 @@
 extends Node2D
 
-var song_name = "senpai"
+var song_name = "Suffering-Siblings"
 var song_speed = 2.4
 var note_skin = "default"
 

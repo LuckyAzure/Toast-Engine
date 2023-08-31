@@ -13,7 +13,7 @@ config_version=5
 config/name="Friday Night Funkin': Toast Engine"
 run/main_scene="res://src/Scenes/Game/game.tscn"
 config/features=PackedStringArray("4.2")
-run/max_fps=144
+run/max_fps=520
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
@@ -30,6 +30,7 @@ DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 
