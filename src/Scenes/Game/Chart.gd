@@ -12,17 +12,23 @@ func _ready():
 	load_hud_notes_texture()
 	load_audio()
 	load_chart()
+	
+
+func start_song():
 	$Timeline.initialize()
 	$Instrumental.play(0)
 	$Voices.play(0)
 
 var last_update_time = 0.0
 
+var play = true
+
 func _process(delta):
 	var current_scene = get_tree().get_current_scene()
 	
 	var song_time = $Instrumental.get_playback_position()
 	var scene_song_time = current_scene.song_time
+	$Label.text = "song_time: " + str(current_scene.song_time) + "\n"
 	
 	if $Instrumental.playing:
 		var playback_adjusted_time = (song_time + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()) * 1000.0
@@ -39,9 +45,12 @@ func _process(delta):
 			if delay > 40:
 				current_scene.song_time = playback_adjusted_time
 
-			if Time.get_ticks_msec() - last_update_time > 100:
-				$Label.text = "delay: " + str(delay)
-				last_update_time = Time.get_ticks_msec()
+			$Label.text += "delay: " + str(delay)
+	elif current_scene.song_time < 0:
+		current_scene.song_time += delta * 1000.0 * $Instrumental.pitch_scale
+	elif play:
+		play = false
+		start_song()
 
 var count = 0
 var note = preload("res://src/Scenes/Game/chart/note.tscn")
@@ -141,12 +150,10 @@ func load_chart():
 signal char_animation
 
 func notemiss(order,type):
-	char_animation.emit(order,type,true)
 	get_parent().get_node("Status").misses += 1
 	get_parent().get_node("Status").maxscore += 350
 
 func notehit(order,distance,type):
-	char_animation.emit(order,type,false)
 	get_parent().get_node("Status").maxscore += 350
 	if distance < 45:
 		get_parent().get_node("Status").score += 350

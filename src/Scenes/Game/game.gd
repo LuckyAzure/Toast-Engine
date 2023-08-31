@@ -1,6 +1,6 @@
 extends Node2D
 
-var song_name = "Suffering-Siblings"
+var song_name = "kero"
 var song_speed = 2.4
 var note_skin = "default"
 
@@ -15,5 +15,5 @@ func _ready():
 		$HUD/Chart/Notes/P1.position.y = -$HUD/Chart/Notes/P1.position.y
 		$HUD/Chart/Notes/P2.position.y = -$HUD/Chart/Notes/P2.position.y
 
-var song_time = 0
+var song_time = -2000
 var chart

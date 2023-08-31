@@ -1,11 +1,13 @@
+CanvasLayer
+Camera2D
+Timer
+Sprite2D
+Marker2D
 PointLight2D
 Node
 ColorRect
 CanvasModulate
 ProgressBar
 Label
-Sprite2D
-Marker2D
-CanvasLayer
 AudioStreamPlayer
 Button

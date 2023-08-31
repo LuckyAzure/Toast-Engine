@@ -83,6 +83,8 @@ func _process(delta):
 	status()
 
 func animation(delta):
+	chardata.scale = $HUD/Scale.value
+	$Char.scale = Vector2(chardata.scale,chardata.scale)
 	var fps = $HUD/FPS.value
 	var loop = $HUD/Loop.button_pressed
 
@@ -108,7 +110,7 @@ func animation(delta):
 
 func status():
 	var status = ""
-	var sprite = $Char.position
+	var sprite = $Char/Image.position
 	status += "x: " + str(int(sprite.x)) + " | y: " + str(int(sprite.y))
 	$HUD/Status.text = status
 
@@ -191,10 +193,11 @@ func save_animation(anim_name):
 		{
 		"fps": $HUD/FPS.value,
 		"loop": $HUD/Loop.button_pressed,
-		"x": $Char.position.x,
-		"y": $Char.position.y,
+		"aa": $HUD/AA.button_pressed,
+		"x": $Char/Image.position.x,
+		"y": $Char/Image.position.y,
 		"start_position": frame_start_position,
-		"max": frame_max
+		"max": frame_max,
 		}
 	}
 	
@@ -209,8 +212,8 @@ func load_animation(anim):
 		var animation = chardata.animations[anim]
 		$HUD/FPS.value = animation.fps
 		$HUD/Loop.button_pressed = animation.loop
-		$Char.position.x = animation.x
-		$Char.position.y = animation.y
+		$Char/Image.position.x = animation.x
+		$Char/Image.position.y = animation.y
 		current_frame = animation.start_position
 		frame_start_position = animation.start_position
 		frame_max = animation.max

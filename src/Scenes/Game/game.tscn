@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://w3iacwd70ape"]
+[gd_scene load_steps=19 format=3 uid="uid://w3iacwd70ape"]
 
 [ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
 [ext_resource type="Script" path="res://src/Scenes/Game/HUD.gd" id="2_a0jha"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/Scenes/Game/Status.gd" id="9_jmjuk"]
 [ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="9_y34d1"]
 [ext_resource type="Script" path="res://src/Scenes/Game/chart/P2.gd" id="12_fyd0v"]
+[ext_resource type="Script" path="res://src/Scenes/Game/background/Background.gd" id="15_alv4b"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/Characters.gd" id="15_oinxd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cerk"]
@@ -138,7 +139,11 @@ show_percentage = false
 
 [node name="Custom" type="Node" parent="HUD"]
 
-[node name="Background" type="Node" parent="."]
+[node name="Background" type="CanvasLayer" parent="."]
+offset = Vector2(640, 360)
+scale = Vector2(0.75, 0.75)
+transform = Transform2D(0.75, 0, 0, 0.75, 640, 360)
+script = ExtResource("15_alv4b")
 
 [node name="Characters" type="Node" parent="Background"]
 script = ExtResource("15_oinxd")
@@ -149,3 +154,4 @@ script = ExtResource("15_oinxd")
 
 [connection signal="char_animation" from="HUD/Chart" to="Background/Characters" method="_on_chart_char_animation"]
 [connection signal="section_changed" from="HUD/Chart/Timeline" to="HUD" method="_on_timeline_section_changed"]
+[connection signal="section_changed" from="HUD/Chart/Timeline" to="Background/Characters" method="_on_timeline_section_changed"]

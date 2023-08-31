@@ -48,26 +48,50 @@ offset_bottom = 46.0
 text = "Save"
 
 [node name="Loop" type="CheckBox" parent="HUD"]
-offset_left = 1087.0
+offset_left = 1139.0
 offset_top = 83.0
-offset_right = 1154.0
+offset_right = 1206.0
 offset_bottom = 114.0
 text = "Loop"
 
+[node name="AA" type="CheckBox" parent="HUD"]
+offset_left = 1208.0
+offset_top = 83.0
+offset_right = 1268.0
+offset_bottom = 114.0
+text = "AA"
+
 [node name="FPS" type="SpinBox" parent="HUD"]
-offset_left = 930.0
+offset_left = 900.0
 offset_top = 82.0
-offset_right = 1013.06
+offset_right = 983.063
 offset_bottom = 113.0
 min_value = 1.0
 value = 24.0
 
 [node name="Label" type="Label" parent="HUD"]
-offset_left = 887.0
+offset_left = 861.0
 offset_top = 86.0
-offset_right = 919.0
+offset_right = 893.0
 offset_bottom = 112.0
 text = "FPS:"
+
+[node name="Scale" type="SpinBox" parent="HUD"]
+offset_left = 1045.0
+offset_top = 82.0
+offset_right = 1128.06
+offset_bottom = 113.0
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 1.0
+
+[node name="Label2" type="Label" parent="HUD"]
+offset_left = 991.0
+offset_top = 86.0
+offset_right = 1036.0
+offset_bottom = 112.0
+text = "Scale:"
 
 [node name="Animations" type="OptionButton" parent="HUD"]
 offset_left = 857.0
@@ -99,7 +123,6 @@ position = Vector2(640, 360)
 script = ExtResource("2_ordas")
 
 [node name="Image" type="Sprite2D" parent="Char"]
-position = Vector2(-100, -100)
 centered = false
 offset = Vector2(10, 10)
 region_enabled = true

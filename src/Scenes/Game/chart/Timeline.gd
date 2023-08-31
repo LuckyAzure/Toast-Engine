@@ -11,7 +11,7 @@ func initialize():
 	current_section = -1
 	bpm = get_parent().chart.info.bpm
 
-func _process(delta):
+func _process(_delta):
 	var chart = get_parent().chart
 	var audio_player = get_parent().get_node_or_null("Instrumental")
 	
@@ -28,8 +28,9 @@ func _process(delta):
 			current_section += 1
 			emit_signal("section_changed")
 			
-			var section_info = chart.sections[current_section]
-			process_section(section_info)
+			if(chart.sections.has(current_section)):
+				var section_info = chart.sections[current_section]
+				process_section(section_info)
 
 func process_section(section_info):
 	var changeBPM = section_info.has("changeBPM") and section_info["changeBPM"]
