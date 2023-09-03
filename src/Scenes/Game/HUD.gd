@@ -11,4 +11,4 @@ func _process(delta):
 	scale = scale.lerp(Vector2(Zoom,Zoom), delta * scroll_speed)
 
 func _on_timeline_section_changed():
-	scale = Vector2(1.05,1.05)
+	scale += Vector2(0.025,0.025)

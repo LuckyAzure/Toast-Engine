@@ -18,24 +18,22 @@ func load_players(characters):
 	create_char(characters[0],Vector2(300,300))
 	create_char(characters[1],Vector2(-300,300))
 
-func create_char(char,pos):
-	if char != null:
+func create_char(character,pos):
+	if character != null:
 		var instance = char_node.instantiate()
 		add_child(instance)
-		instance.charname = char
+		instance.charname = character
 		instance.position = pos
 		instance._load()
 		character_nodes.append(instance)
 	else:
 		character_nodes.append(null)
 
-func _set_anim(type,order,charorder):
+func _set_anim(type,_order,charorder):
 	if character_nodes[charorder] != null:
 		character_nodes[charorder].set_anim(def_animations[type])
 
-
-
-func _on_timeline_section_changed():
+func _on_timeline_second_beat():
 	for i in character_nodes.size():
 		if character_nodes[i] != null:
 			if character_nodes[i].current_animation == "Idle" and !character_nodes[i].loop:

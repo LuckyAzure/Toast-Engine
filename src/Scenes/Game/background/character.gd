@@ -59,15 +59,14 @@ func animation(delta):
 		)
 
 func set_anim(anim):
-	print(anim)
 	current_animation = anim
 	if chardata.animations.has(anim):
-		var animation = chardata.animations[anim]
-		fps = animation.fps
-		loop = animation.loop
-		$Texture.position.x = animation.x
-		$Texture.position.y = animation.y
-		current_frame = animation.start_position
-		frame_start_position = animation.start_position
-		frame_max = animation.max
-		remaining_frames = animation.max
+		var anim_data = chardata.animations[anim]
+		fps = anim_data.fps
+		loop = anim_data.loop
+		$Texture.position.x = anim_data.x
+		$Texture.position.y = anim_data.y
+		current_frame = anim_data.start_position
+		frame_start_position = anim_data.start_position
+		frame_max = anim_data.max
+		remaining_frames = anim_data.max

@@ -1,6 +1,6 @@
 extends Node2D
 
-var song_name = "Come-Along-With-Me"
+var song_name = "My-Amazing-World"
 var song_speed = 2.4
 var note_skin = "default"
 

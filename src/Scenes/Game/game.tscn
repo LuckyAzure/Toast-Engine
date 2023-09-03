@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://w3iacwd70ape"]
+[gd_scene load_steps=20 format=3 uid="uid://w3iacwd70ape"]
 
 [ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
 [ext_resource type="Script" path="res://src/Scenes/Game/HUD.gd" id="2_a0jha"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://src/Scenes/Game/chart/P2.gd" id="12_fyd0v"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/Background.gd" id="15_alv4b"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/Characters.gd" id="15_oinxd"]
+[ext_resource type="Script" path="res://src/Scenes/Game/background/Stage.gd" id="17_6vn3o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cerk"]
 bg_color = Color(0, 0, 0, 1)
@@ -57,6 +58,7 @@ scale = Vector2(0.6, 0.6)
 script = ExtResource("5_q3v8y")
 
 [node name="ColorRect" type="ColorRect" parent="HUD/Chart/Notes/P1"]
+visible = false
 offset_left = -320.0
 offset_top = -2000.0
 offset_right = 320.0
@@ -150,9 +152,11 @@ script = ExtResource("15_alv4b")
 script = ExtResource("15_oinxd")
 
 [node name="Stage" type="Node" parent="Background"]
+script = ExtResource("17_6vn3o")
 
 [node name="Custom" type="Node" parent="Background"]
 
 [connection signal="char_animation" from="HUD/Chart" to="Background/Characters" method="_on_chart_char_animation"]
+[connection signal="second_beat" from="HUD/Chart/Timeline" to="Background/Characters" method="_on_timeline_second_beat"]
 [connection signal="section_changed" from="HUD/Chart/Timeline" to="HUD" method="_on_timeline_section_changed"]
-[connection signal="section_changed" from="HUD/Chart/Timeline" to="Background/Characters" method="_on_timeline_section_changed"]
+[connection signal="section_changed" from="HUD/Chart/Timeline" to="Background" method="_on_timeline_section_changed"]

@@ -111,36 +111,36 @@ func load_audio():
 func load_chart():
 	var song_name = get_tree().get_current_scene().song_name
 	var song_path = "res://assets/songs/" + song_name + "/" + song_name + ".json"
-	
-	#Load the JSON data
+
+	# Load the JSON data
 	var file = FileAccess.open(song_path, FileAccess.READ)
 	var json_text = file.get_as_text()
 	file.close()
 	var chart_data = JSON.parse_string(json_text).song
-	
-	#Process and organize notes
-	for note in chart_data.notes:
-		var section_notes = note.sectionNotes
-		var section = note
+
+	# Process and organize notes
+	for note_item in chart_data.notes:  # Rename the iterator variable
+		var section_notes = note_item.sectionNotes
+		var section = note_item
 		section.erase("sectionNotes")
 		chart.sections.append(section)
-		
-		var must_hit_section = note.mustHitSection
+
+		var must_hit_section = note_item.mustHitSection
 		for note_data in section_notes:
 			if note_data[1] == -1 or note_data[1] > 7:
 				continue
-			
+
 			var time = note_data[0]
 			var note_type = note_data[1]
 			var sustain = note_data[2]
 			var misc = 0
 			if note_data.size() > 3:
 				misc = note_data[3]
-			
+
 			if !must_hit_section:
 				note_type = int(note_type + 4) % 8
 			chart.notes.append([time, note_type, sustain, misc])
-	
+
 	chart_data.erase("notes")
 	if chart_data.has("events"):
 		chart.psych_events = chart_data.events
@@ -148,19 +148,20 @@ func load_chart():
 	chart.info = chart_data
 	chart.notes.sort_custom(func(a, b): return a[0] < b[0])
 
+
 signal char_animation
 
-func notemiss(order,type):
+func notemiss(_order,_type):
 	get_parent().get_node("Status").misses += 1
 	get_parent().get_node("Status").maxscore += 350
 
-func notehit(order,distance,type):
+func notehit(_order,_distance,_type):
 	get_parent().get_node("Status").maxscore += 350
-	if distance < 45:
+	if _distance < 45:
 		get_parent().get_node("Status").score += 350
-	elif distance < 90:
+	elif _distance < 90:
 		get_parent().get_node("Status").score += 200
-	elif distance < 135:
+	elif _distance < 135:
 		get_parent().get_node("Status").score += 100
 	else:
 		get_parent().get_node("Status").score += 50
