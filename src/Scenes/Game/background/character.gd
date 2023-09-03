@@ -28,6 +28,9 @@ func _load():
 	else:
 		print("Failed to load image:", image_path)
 	
+	scale = Vector2(chardata.scale,chardata.scale)
+	$Texture.texture_filter = chardata.aa
+	
 	set_anim("Idle")
 
 func _process(delta):

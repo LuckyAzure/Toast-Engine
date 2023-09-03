@@ -48,6 +48,7 @@ func _process(delta):
 			$Label.text += "delay: " + str(delay)
 	elif current_scene.song_time < 0:
 		current_scene.song_time += delta * 1000.0 * $Instrumental.pitch_scale
+		process_notes()
 	elif play:
 		play = false
 		start_song()

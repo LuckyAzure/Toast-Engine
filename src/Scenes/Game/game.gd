@@ -1,8 +1,11 @@
 extends Node2D
 
-var song_name = "kero"
+var song_name = "Come-Along-With-Me"
 var song_speed = 2.4
 var note_skin = "default"
+
+var characters = ["boyfriend","finn-cn"]
+var stage = "test"
 
 var input = [KEY_A,KEY_S,KEY_K,KEY_L]
 var downscroll = true

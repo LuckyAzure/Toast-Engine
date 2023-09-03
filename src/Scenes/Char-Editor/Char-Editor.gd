@@ -3,9 +3,13 @@ extends Node2D
 const def_animations = [
 	"Idle",
 	"Left",
+	"Left_Alt",
 	"Down",
+	"Down_Alt",
 	"Up",
+	"Up_Alt",
 	"Right",
+	"Right_Alt",
 	"Left_Miss",
 	"Down_Miss",
 	"Up_Miss",
@@ -15,6 +19,7 @@ const def_animations = [
 const def_char = {
 	"name": null,
 	"scale": 1.0,
+	"aa": 0,
 	"animations": {},
 	"xml_data": {},
 }
@@ -42,7 +47,8 @@ func load_char():
 		var file = FileAccess.open(json_path, FileAccess.READ)
 		chardata = JSON.parse_string(file.get_as_text())
 		file.close()
-		print(chardata)
+		$HUD/Scale.value = chardata.scale
+		$HUD/AA.button_pressed = chardata.aa
 	
 	convert_xml_to_json_data()
 	load_animations_from_data()
@@ -68,6 +74,9 @@ func create_default_json_file(json_path):
 	file.close()
 
 func save_char():
+	chardata.scale = $HUD/Scale.value
+	chardata.aa = $HUD/AA.button_pressed
+	
 	var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
 	var file = FileAccess.open(json_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(chardata))
@@ -83,8 +92,8 @@ func _process(delta):
 	status()
 
 func animation(delta):
-	chardata.scale = $HUD/Scale.value
-	$Char.scale = Vector2(chardata.scale,chardata.scale)
+	$Char.scale = Vector2($HUD/Scale.value,$HUD/Scale.value)
+	$Char/Image.texture_filter = $HUD/AA.button_pressed
 	var fps = $HUD/FPS.value
 	var loop = $HUD/Loop.button_pressed
 
@@ -193,7 +202,6 @@ func save_animation(anim_name):
 		{
 		"fps": $HUD/FPS.value,
 		"loop": $HUD/Loop.button_pressed,
-		"aa": $HUD/AA.button_pressed,
 		"x": $Char/Image.position.x,
 		"y": $Char/Image.position.y,
 		"start_position": frame_start_position,
