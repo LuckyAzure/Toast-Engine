@@ -5,7 +5,7 @@ var song_speed = 2.4
 var note_skin = "default"
 
 var characters = ["boyfriend","trickymask"]
-var stage = "test"
+var stage = "bg_oswald"
 
 var input = [KEY_A,KEY_S,KEY_K,KEY_L]
 var downscroll = true

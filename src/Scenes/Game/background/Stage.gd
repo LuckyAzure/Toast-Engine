@@ -38,8 +38,8 @@ func _load(stname):
 		texture.position.y = local_texture_data.y
 		texture.y = local_texture_data.y
 		#width
-		texture.scale.x = local_texture_data.width / texture.texture.get_size().x
-		texture.sx = local_texture_data.width / texture.texture.get_size().x
+		texture.scale.x = local_texture_data.width
+		texture.sx = local_texture_data.width
 		#height
-		texture.scale.y = local_texture_data.height / texture.texture.get_size().y
-		texture.sy = local_texture_data.height / texture.texture.get_size().y
+		texture.scale.y = local_texture_data.height
+		texture.sy = local_texture_data.height

@@ -32,8 +32,8 @@
             "becentered": true,
             "x": 0,
             "y": 100,
-            "width": 2400,
-            "height": 1206
+            "width": 3,
+            "height": 3
          },
          {
             "filename": "1.png",
@@ -42,20 +42,20 @@
             "becentered": true,
             "x": 400,
             "y": -130,
-            "width": 150,
-            "height": 150,
+            "width": 3,
+            "height": 3,
             "animations": [
                 {
                   "x": 400,
                   "y": -130,
-                  "width": 150,
-                  "height": 150
+                  "width": 3,
+                  "height": 3
                 },
                 {
                   "x": 400,
                   "y": -100,
-                  "width": 180,
-                  "height": 120
+                  "width": 3,
+                  "height": 3
                 }
              ]
          },
@@ -66,20 +66,20 @@
             "becentered": true,
             "x": 550,
             "y": -180,
-            "width": 300,
-            "height": 300,
+            "width": 3,
+            "height": 3,
             "animations": [
                 {
                   "x": 550,
                   "y": -150,
-                  "width": 320,
-                  "height": 280
+                  "width": 3,
+                  "height": 3
                 },
                 {
                   "x": 550,
                   "y": -180,
-                  "width": 280,
-                  "height": 320
+                  "width": 3,
+                  "height": 3
                 }
              ]
          }

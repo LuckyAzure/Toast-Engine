@@ -26,7 +26,7 @@ func _Animation(delta):
 	sy = lerp(sy, target.height, lerp_speed)
 	
 	position = Vector2(x, y)
-	scale = Vector2(sx / texture.get_size().x, sy / texture.get_size().y)
+	scale = Vector2(sx, sy)
 
 func section_changed():
 	if texture_data.has("animations") and (texture_data.animations.size() - 1) > Anim:
