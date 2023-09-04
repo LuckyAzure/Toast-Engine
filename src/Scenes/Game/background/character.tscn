@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://src/Scenes/Game/background/character.gd" id="1_xedd0"]
 
 [node name="Character" type="Marker2D"]
-position = Vector2(22, 31)
 script = ExtResource("1_xedd0")
 
 [node name="Texture" type="Sprite2D" parent="."]

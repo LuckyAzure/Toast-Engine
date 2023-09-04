@@ -1,10 +1,10 @@
 extends Node2D
 
-var song_name = "My-Amazing-World"
+var song_name = "improbable-outset"
 var song_speed = 2.4
 var note_skin = "default"
 
-var characters = ["boyfriend","finn-cn"]
+var characters = ["boyfriend","trickymask"]
 var stage = "test"
 
 var input = [KEY_A,KEY_S,KEY_K,KEY_L]

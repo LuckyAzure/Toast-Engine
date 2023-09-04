@@ -2,14 +2,14 @@
    "Stage": {
       "Camera": {
          "offsetx": 0,
-         "offsety": -300,
-         "zoom": 1.4,
+         "offsety": 0,
+         "zoom": 0.8,
 	 "speed": 0.05
       },
       "Enemy": {
          "x": -500,
          "y": 300,
-         "cameraoffsetx": 200,
+         "cameraoffsetx": 0,
          "cameraoffsety": 0
       },
       "GF": {
@@ -21,7 +21,7 @@
       "Player": {
          "x": 500,
          "y": 300,
-         "cameraoffsetx": -200,
+         "cameraoffsetx": 0,
          "cameraoffsety": 0
       },
       "StageTexture": [

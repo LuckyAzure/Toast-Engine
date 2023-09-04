@@ -144,9 +144,11 @@ show_percentage = false
 
 [node name="Background" type="CanvasLayer" parent="."]
 offset = Vector2(640, 360)
-scale = Vector2(0.75, 0.75)
-transform = Transform2D(0.75, 0, 0, 0.75, 640, 360)
+transform = Transform2D(1, 0, 0, 1, 640, 360)
+follow_viewport_enabled = true
 script = ExtResource("15_alv4b")
+
+[node name="Camera" type="Camera2D" parent="Background"]
 
 [node name="Characters" type="Node" parent="Background"]
 script = ExtResource("15_oinxd")

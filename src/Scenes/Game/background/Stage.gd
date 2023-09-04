@@ -1,7 +1,7 @@
 extends Node
 
 #Stage Name
-var stage_name = "test"
+var stage_name = null
 
 #Stage Datas
 var stage_data = null
@@ -10,7 +10,8 @@ var texture_data = null
 var textureobjload = preload("res://src/Scenes/Game/background/StageTexture.tscn")
 
 #Loads Stage Textures
-func _ready():
+func _load(stname):
+	stage_name = stname
 	var data_file = FileAccess.open("res://assets/Stages/" + stage_name + "/stage.json", FileAccess.READ)
 	var data_json = JSON.parse_string(data_file.get_as_text())
 	data_file.close()

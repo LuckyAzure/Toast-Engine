@@ -14,9 +14,9 @@ const def_animations = [
 var char_node = preload("res://src/Scenes/Game/background/character.tscn")
 var character_nodes = []
 
-func load_players(characters):
-	create_char(characters[0],Vector2(300,300))
-	create_char(characters[1],Vector2(-300,300))
+func _load(characters,stagedata):
+	create_char(characters[0],Vector2(stagedata.Player.x,stagedata.Player.y))
+	create_char(characters[1],Vector2(stagedata.Enemy.x,stagedata.Enemy.y))
 
 func create_char(character,pos):
 	if character != null:

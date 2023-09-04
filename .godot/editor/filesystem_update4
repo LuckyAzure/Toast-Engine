@@ -10,3 +10,7 @@ res://src/Scenes/Game/background/StageTexture.tscn
 res://src/Scenes/Game/background/Characters.gd
 res://src/Scenes/Game/background/character.gd
 res://src/Scenes/Game/chart/Timeline.gd
+res://src/Scenes/Game/background/Background.gd
+res://src/Scenes/Char-Editor/Char-Editor.gd
+res://src/Scenes/Game/HUD.gd
+res://src/Scenes/Game/game.gd

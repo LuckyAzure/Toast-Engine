@@ -22,9 +22,9 @@ func _process(_delta):
 		var audio_position = get_tree().get_current_scene().song_time
 
 		if current_section == -1:
-			emit_signal("section_changed")
 			sections.append(section_duration)
 			current_section += 1
+			emit_signal("section_changed",chart.sections[current_section])
 
 		if audio_position > sections[current_section] - (section_duration / 2) and beat_count == 0:
 			emit_signal("second_beat")
@@ -35,7 +35,7 @@ func _process(_delta):
 			beat_count = 0
 			sections.append(sections[current_section] + section_duration)
 			current_section += 1
-			emit_signal("section_changed")
+			emit_signal("section_changed",chart.sections[current_section])
 
 			if chart.sections.has(current_section):
 				var section_info = chart.sections[current_section]

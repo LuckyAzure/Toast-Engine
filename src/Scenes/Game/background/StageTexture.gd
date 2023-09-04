@@ -10,7 +10,7 @@ var sy = 0
 const ANIMATION_SPEED = 10
 
 func _ready():
-	get_tree().get_current_scene().get_node("HUD/Chart/Timeline").section_changed.connect(section_changed)
+	get_tree().get_current_scene().get_node("HUD/Chart/Timeline").second_beat.connect(section_changed)
 
 func _process(delta):
 	if texture_data.has("animations"):

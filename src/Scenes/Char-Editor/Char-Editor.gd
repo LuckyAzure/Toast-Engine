@@ -18,6 +18,7 @@ const def_animations = [
 
 const def_char = {
 	"name": null,
+	"cameraoffset": {"x":0,"y":0},
 	"scale": 1.0,
 	"aa": 0,
 	"animations": {},
@@ -49,6 +50,8 @@ func load_char():
 		file.close()
 		$HUD/Scale.value = chardata.scale
 		$HUD/AA.button_pressed = chardata.aa
+		$HUD/CameraX.value = chardata.cameraoffset.x
+		$HUD/CameraY.value = chardata.cameraoffset.y
 	
 	convert_xml_to_json_data()
 	load_animations_from_data()
@@ -76,6 +79,8 @@ func create_default_json_file(json_path):
 func save_char():
 	chardata.scale = $HUD/Scale.value
 	chardata.aa = $HUD/AA.button_pressed
+	chardata.cameraoffset.x = $HUD/CameraX.value
+	chardata.cameraoffset.y = $HUD/CameraY.value
 	
 	var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
 	var file = FileAccess.open(json_path, FileAccess.WRITE)
@@ -122,6 +127,7 @@ func status():
 	var sprite = $Char/Image.position
 	status += "x: " + str(int(sprite.x)) + " | y: " + str(int(sprite.y))
 	$HUD/Status.text = status
+	$Char/Line2D.position = Vector2($HUD/CameraX.value,$HUD/CameraY.value)
 
 func convert_xml_to_json_data():
 	var xml_parser = XMLParser.new()

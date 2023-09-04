@@ -23,7 +23,7 @@ script = ExtResource("2_vhxn2")
 offset_left = 854.0
 offset_top = 8.0
 offset_right = 1272.0
-offset_bottom = 118.0
+offset_bottom = 158.0
 color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="CharName" type="TextEdit" parent="HUD"]
@@ -93,6 +93,29 @@ offset_right = 1036.0
 offset_bottom = 112.0
 text = "Scale:"
 
+[node name="CameraX" type="SpinBox" parent="HUD"]
+offset_left = 1001.0
+offset_top = 119.0
+offset_right = 1084.06
+offset_bottom = 150.0
+min_value = -1000.0
+max_value = 1000.0
+
+[node name="CameraY" type="SpinBox" parent="HUD"]
+offset_left = 1089.0
+offset_top = 119.0
+offset_right = 1172.06
+offset_bottom = 150.0
+min_value = -1000.0
+max_value = 1000.0
+
+[node name="Label3" type="Label" parent="HUD"]
+offset_left = 861.0
+offset_top = 122.0
+offset_right = 993.0
+offset_bottom = 148.0
+text = "Camera Position:"
+
 [node name="Animations" type="OptionButton" parent="HUD"]
 offset_left = 857.0
 offset_top = 50.0
@@ -109,9 +132,9 @@ icon_alignment = 1
 
 [node name="Status" type="Label" parent="HUD"]
 offset_left = 854.0
-offset_top = 119.0
+offset_top = 167.0
 offset_right = 1272.0
-offset_bottom = 143.0
+offset_bottom = 191.0
 theme_override_fonts/font = ExtResource("2_e3vst")
 theme_override_font_sizes/font_size = 8
 text = "x"
@@ -121,6 +144,11 @@ vertical_alignment = 1
 [node name="Char" type="Marker2D" parent="."]
 position = Vector2(640, 360)
 script = ExtResource("2_ordas")
+
+[node name="Line2D" type="Line2D" parent="Char"]
+z_index = 5
+points = PackedVector2Array(-20, 0, 20, 0, 0, 0, 0, -20, 0, 20)
+width = 2.0
 
 [node name="Image" type="Sprite2D" parent="Char"]
 centered = false
