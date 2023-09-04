@@ -1,11 +1,11 @@
 extends Node2D
 
-var song_name = "improbable-outset"
+var song_name = "my-amazing-world"
 var song_speed = 2.4
 var note_skin = "default"
 
-var characters = ["boyfriend","trickymask"]
-var stage = "bg_oswald"
+var characters = ["cartoon_bf_Gun","gumball"]
+var stage = "school"
 
 var input = [KEY_A,KEY_S,KEY_K,KEY_L]
 var downscroll = true

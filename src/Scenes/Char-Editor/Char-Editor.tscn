@@ -141,14 +141,15 @@ text = "x"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 5
+position = Vector2(640, 360)
+points = PackedVector2Array(-20, 0, 20, 0, 0, 0, 0, -20, 0, 20)
+width = 2.0
+
 [node name="Char" type="Marker2D" parent="."]
 position = Vector2(640, 360)
 script = ExtResource("2_ordas")
-
-[node name="Line2D" type="Line2D" parent="Char"]
-z_index = 5
-points = PackedVector2Array(-20, 0, 20, 0, 0, 0, 0, -20, 0, 20)
-width = 2.0
 
 [node name="Image" type="Sprite2D" parent="Char"]
 centered = false

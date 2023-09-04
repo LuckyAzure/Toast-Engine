@@ -127,7 +127,7 @@ func status():
 	var sprite = $Char/Image.position
 	status += "x: " + str(int(sprite.x)) + " | y: " + str(int(sprite.y))
 	$HUD/Status.text = status
-	$Char/Line2D.position = Vector2($HUD/CameraX.value,$HUD/CameraY.value)
+	$Line2D.position = Vector2(640,360) + Vector2($HUD/CameraX.value,$HUD/CameraY.value)
 
 func convert_xml_to_json_data():
 	var xml_parser = XMLParser.new()

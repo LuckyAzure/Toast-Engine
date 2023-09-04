@@ -28,13 +28,18 @@ var Char_Offsets = {
 const scroll_speed = 5
 
 func _process(delta):
-	$Camera.position = $Camera.position.lerp(Position + Offsets.Position + Char_Offsets.Position, delta * scroll_speed)
+	timer2 += delta * 5
+	timer += delta * 10 * abs(sin(timer2) )
+	var camerathingy = Vector2(sin(timer) * 50,cos(timer) * 50)
+	
+	$Camera.position = $Camera.position.lerp(Position + Offsets.Position + Char_Offsets.Position + camerathingy, delta * scroll_speed)
 	$Camera.zoom = $Camera.zoom.lerp(Vector2(Zoom,Zoom), delta * scroll_speed)
 
 func _on_timeline_section_changed(info):
 	$Camera.zoom += Vector2(0.05,0.05)
 	var pos = $Characters.character_nodes[int(!info.mustHitSection)].position
-	print(pos)
 	var campos = $Characters.character_nodes[int(!info.mustHitSection)].chardata.cameraoffset
 	Char_Offsets.Position = pos + Vector2(campos.x,campos.y)
-	Vector2(campos.x,campos.y)
+
+var timer = 0
+var timer2 = 0

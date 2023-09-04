@@ -28,7 +28,7 @@ func _load(stname):
 		
 		texture.texture_data = local_texture_data
 		#index
-		texture.z_index = local_texture_data.index - 64
+		texture.z_index = local_texture_data.index
 		#becentered
 		texture.centered = local_texture_data.becentered
 		#x

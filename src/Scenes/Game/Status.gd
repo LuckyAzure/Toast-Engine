@@ -21,3 +21,5 @@ func update_status():
 	if maxscore != 0 or score != 0:
 		var accuracy = (float(score) / float(maxscore)) * 100.0
 		$Score.text = "Score: " + str(score) + " | Misses: " + str(misses) + " | Accuracy: " + str(snapped(accuracy, 0.01)) + "%"
+	discord_sdk.state = $Score.text
+	discord_sdk.refresh()

@@ -14,8 +14,10 @@ var pressed = false
 var note_position
 
 var sustain_end_texture_height
+var sustain_anim_cooldown = 0
 var miss_cooldown = 0
 var downscroll = false
+
 
 var remove = false
 
@@ -54,7 +56,12 @@ func _process(delta):
 		else:
 			position.y = 0
 			self_modulate.a = 0
-			backchars._set_anim(data[1] - 4,data[0],1)
+			if sustain_anim_cooldown <= 0:
+				backchars._set_anim(data[1] - 4,data[0],1)
+				get_parent().get_parent().frames[int(data[1]) % 4] = 0
+				sustain_anim_cooldown = 1
+			else:
+				sustain_anim_cooldown -= delta * 10
 			get_parent().get_parent().animation[int(data[1]) % 4] = "HUD_Glow"
 			var sustain_size = ((note_position + data[2] - time) * song_speed) - sustain_end_texture_height
 			$Sustain.region_rect.size.y = sustain_size
@@ -81,7 +88,13 @@ func _process(delta):
 					
 				if note_hittable and Input.is_key_pressed(note_data.input) and note_holdable:
 					get_parent().get_parent().animation[data[1]] = "HUD_Glow"
-					backchars._set_anim(data[1],(time - data[0]),0)
+					if sustain_anim_cooldown <= 0:
+						backchars._set_anim(data[1],(time - data[0]),0)
+						get_parent().get_parent().frames[data[1]] = 0
+						sustain_anim_cooldown = 1
+						print("huh")
+					else:
+						sustain_anim_cooldown -= delta * 10
 					var diff = data[2] - (time - note_position)
 					note_position = time
 					data[2] = diff

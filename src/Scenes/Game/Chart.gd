@@ -18,6 +18,9 @@ func start_song():
 	$Timeline.initialize()
 	$Instrumental.play(0)
 	$Voices.play(0)
+	discord_sdk.start_timestamp = int(Time.get_unix_time_from_system())
+	discord_sdk.end_timestamp = int(Time.get_unix_time_from_system()) + $Instrumental.stream.get_length()
+	discord_sdk.refresh()
 
 var last_update_time = 0.0
 
