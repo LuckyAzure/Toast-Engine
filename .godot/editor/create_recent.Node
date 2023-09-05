@@ -1,3 +1,5 @@
+Node
+ColorRect
 Camera2D
 Marker2D
 Line2D
@@ -5,8 +7,6 @@ Sprite2D
 CanvasLayer
 Timer
 PointLight2D
-Node
-ColorRect
 CanvasModulate
 ProgressBar
 Label

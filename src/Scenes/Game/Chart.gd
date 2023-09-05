@@ -12,6 +12,7 @@ func _ready():
 	load_hud_notes_texture()
 	load_audio()
 	load_chart()
+	load_script()
 	
 
 func start_song():
@@ -151,6 +152,12 @@ func load_chart():
 	chart.info = chart_data
 	chart.notes.sort_custom(func(a, b): return a[0] < b[0])
 
+func load_script():
+	var song_name = get_tree().get_current_scene().song_name
+	var song_path = "res://assets/songs/" + song_name + "/script.gd"
+
+	if FileAccess.file_exists(song_path):
+		get_tree().get_current_scene().get_node("Script").set_script(load(song_path))
 
 signal char_animation
 

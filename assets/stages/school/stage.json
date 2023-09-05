@@ -41,11 +41,11 @@
             "name": "Background2",
             "index": 1,
             "becentered": true,
-            "x": 0,
+            "x": -100,
             "y": 0,
             "width": 1.4,
             "height": 1.4,
-            "sensitivity": {"x":0.15,"y":0.15}
+            "sensitivity": {"x":0.3,"y":0.3}
          },
          {
             "filename": "Ilustracion_sin_titulo-3.png",
