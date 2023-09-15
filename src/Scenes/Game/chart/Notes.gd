@@ -8,10 +8,9 @@ func _process(delta):
 	$P1.HUD_TICK(delta)
 	$P2.HUD_TICK(delta)
 
-func load_notes_texture():
-	note_skin = get_tree().get_current_scene().note_skin
-	note_path = "res://assets/notes/" + note_skin
-	load_config(note_skin)
+func load_notes_texture(note_skin_load):
+	note_path = "res://assets/notes/" + note_skin_load
+	load_config(note_skin_load)
 	replace_paths_to_preloaded_textures()
 
 func load_config(note_name):

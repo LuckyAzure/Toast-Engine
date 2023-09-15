@@ -17,6 +17,7 @@ var character_nodes = []
 func _load(characters,stagedata):
 	create_char(characters[0],Vector2(stagedata.Player.x,stagedata.Player.y))
 	create_char(characters[1],Vector2(stagedata.Enemy.x,stagedata.Enemy.y))
+	create_char(characters[2],Vector2(stagedata.GF.x,stagedata.GF.y))
 
 func create_char(character,pos):
 	if character != null:

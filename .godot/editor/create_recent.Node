@@ -1,9 +1,10 @@
+WorldEnvironment
+Marker2D
+Sprite2D
 Node
 ColorRect
 Camera2D
-Marker2D
 Line2D
-Sprite2D
 CanvasLayer
 Timer
 PointLight2D
@@ -11,4 +12,3 @@ CanvasModulate
 ProgressBar
 Label
 AudioStreamPlayer
-Button

@@ -5,7 +5,7 @@ var score = 0
 var maxscore = 0
 var time_node = null
 
-func _ready():
+func _load():
 	time_node = get_parent().get_node("Chart/Instrumental")
 	$Time.max_value = time_node.stream.get_length()
 

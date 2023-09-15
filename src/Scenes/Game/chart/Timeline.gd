@@ -19,7 +19,7 @@ func _process(_delta):
 
 	if audio_player.playing:
 		var section_duration = 2400 / (bpm * 0.01)
-		var audio_position = get_tree().get_current_scene().song_time
+		var audio_position = get_parent().song_time
 
 		if current_section == -1:
 			sections.append(section_duration)

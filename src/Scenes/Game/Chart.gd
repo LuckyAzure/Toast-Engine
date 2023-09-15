@@ -1,5 +1,11 @@
 extends Node
 
+var song_time = -2000
+var song_data = {
+	"name":null,
+	"speed":1.0,
+}
+
 var chart = {
 	"notes": [],
 	"sections": [],
@@ -7,12 +13,12 @@ var chart = {
 	"psych_events": []
 }
 
-func _ready():
-	$Notes.load_notes_texture()
-	load_hud_notes_texture()
+func _load(song_name,note_skin):
+	song_data.name = song_name
+	$Notes.load_notes_texture(note_skin)
 	load_audio()
 	load_chart()
-	load_script()
+	song_data.speed = chart.info.speed * 1.0
 	
 
 func start_song():
@@ -28,30 +34,26 @@ var last_update_time = 0.0
 var play = true
 
 func _process(delta):
-	var current_scene = get_tree().get_current_scene()
-	
-	var song_time = $Instrumental.get_playback_position()
-	var scene_song_time = current_scene.song_time
-	$Label.text = "song_time: " + str(current_scene.song_time) + "\n"
+	$Label.text = "song_time: " + str(song_time) + "\n"
 	
 	if $Instrumental.playing:
-		var playback_adjusted_time = (song_time + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()) * 1000.0
+		var playback_adjusted_time = ($Instrumental.get_playback_position() + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()) * 1000.0
 
-		var time_difference = playback_adjusted_time - scene_song_time
+		var time_difference = playback_adjusted_time - song_time
 		var max_adjustment = delta * 1000.0 * $Instrumental.pitch_scale
 		var adjustment = clamp(time_difference, -max_adjustment, max_adjustment)
 
 		if abs(adjustment) > 0.01:
-			current_scene.song_time += adjustment
+			song_time += adjustment
 			process_notes()
 
-			var delay = int(playback_adjusted_time) - int(scene_song_time)
+			var delay = int(playback_adjusted_time) - int(song_time)
 			if delay > 40:
-				current_scene.song_time = playback_adjusted_time
+				song_time = playback_adjusted_time
 
 			$Label.text += "delay: " + str(delay)
-	elif current_scene.song_time < 0:
-		current_scene.song_time += delta * 1000.0 * $Instrumental.pitch_scale
+	elif song_time < 0:
+		song_time += delta * 1000.0 * $Instrumental.pitch_scale
 		process_notes()
 	elif play:
 		play = false
@@ -82,7 +84,6 @@ var def_notes = [
 ]
 
 func process_notes():
-	var song_time = get_tree().get_current_scene().song_time
 	var inputs = get_tree().get_current_scene().input
 	if chart.notes.size() > count:
 		if chart.notes[count][0] < song_time + 2000:
@@ -101,20 +102,14 @@ func process_notes():
 			instance.get_node("Sustain/End").texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note_Long_End"]["texture"][0]
 			count += 1
 
-func load_hud_notes_texture():
-	for type in def_note_nodes.size():
-		get_node(def_note_nodes[type]).texture = $Notes.data[def_notes[type % 4]]["HUD_Idle"]["texture"][0]
-
 func load_audio():
-	var song_name = get_tree().get_current_scene().song_name
-	var inst_path = "res://assets/songs/" + song_name + "/Inst.ogg"
-	var voices_path = "res://assets/songs/" + song_name + "/Voices.ogg"
+	var inst_path = "res://assets/songs/" + song_data.name + "/Inst.ogg"
+	var voices_path = "res://assets/songs/" + song_data.name + "/Voices.ogg"
 	$Instrumental.stream = AudioStreamOggVorbis.load_from_file(inst_path)
 	$Voices.stream = AudioStreamOggVorbis.load_from_file(voices_path)
 
 func load_chart():
-	var song_name = get_tree().get_current_scene().song_name
-	var song_path = "res://assets/songs/" + song_name + "/" + song_name + ".json"
+	var song_path = "res://assets/songs/" + song_data.name + "/" + song_data.name + ".json"
 
 	# Load the JSON data
 	var file = FileAccess.open(song_path, FileAccess.READ)
@@ -140,6 +135,8 @@ func load_chart():
 			var misc = 0
 			if note_data.size() > 3:
 				misc = note_data[3]
+				if note_data[3] == "Sword":
+					continue
 
 			if !must_hit_section:
 				note_type = int(note_type + 4) % 8
@@ -151,13 +148,6 @@ func load_chart():
 		chart_data.erase("events")
 	chart.info = chart_data
 	chart.notes.sort_custom(func(a, b): return a[0] < b[0])
-
-func load_script():
-	var song_name = get_tree().get_current_scene().song_name
-	var song_path = "res://assets/songs/" + song_name + "/script.gd"
-
-	if FileAccess.file_exists(song_path):
-		get_tree().get_current_scene().get_node("Script").set_script(load(song_path))
 
 signal char_animation
 

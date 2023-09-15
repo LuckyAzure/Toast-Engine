@@ -22,16 +22,16 @@ var downscroll = false
 var remove = false
 
 func _ready():
-	backchars = get_tree().get_current_scene().get_node("Background/Characters")
-	song_speed = get_tree().get_current_scene().song_speed
-	position.y = (get_tree().get_current_scene().song_time - data[0]) * song_speed
-	sustain_end_texture_height = $Sustain/End.texture.get_height()
-	downscroll = get_tree().get_current_scene().downscroll
+	backchars = Global.get_node_scene("Background/Characters")
+	var chart_node = Global.get_node_scene("HUD/Chart")
+	song_speed = chart_node.song_data.speed * 0.7
+	position.y = (chart_node.song_time - data[0]) * song_speed
+	downscroll = Global.scene().downscroll
 	show()
 
 func _process(delta):
 	sustain_end_texture_height = $Sustain/End.texture.get_height()
-	var time = get_tree().get_current_scene().song_time
+	var time = Global.get_node_scene("HUD/Chart").song_time
 	var is_sustain = false
 	note_hittable = false
 	
@@ -73,7 +73,7 @@ func _process(delta):
 				clamp(sustain_size, 0.0, $Sustain/End.texture.get_height())
 			)
 	else:
-		var chart = get_tree().get_current_scene().chart
+		var chart = Global.get_node_scene("HUD/Chart")
 		var note_order = chart.NoteOrder[data[1]]
 		var note_order_size = note_order.size()
 
@@ -92,7 +92,6 @@ func _process(delta):
 						backchars._set_anim(data[1],(time - data[0]),0)
 						get_parent().get_parent().frames[data[1]] = 0
 						sustain_anim_cooldown = 1
-						print("huh")
 					else:
 						sustain_anim_cooldown -= delta * 10
 					var diff = data[2] - (time - note_position)
@@ -142,8 +141,8 @@ func _input(event):
 	if event is InputEventMouseButton or event is InputEventMouseMotion:
 		return
 	
-	var time = get_tree().get_current_scene().song_time
-	var chart = get_tree().get_current_scene().chart
+	var chart = Global.get_node_scene("HUD/Chart")
+	var time = chart.song_time
 	
 	var just_pressed = event.is_pressed() and not event.is_echo()
 	if data[2] == 0:

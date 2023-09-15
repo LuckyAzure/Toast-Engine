@@ -1,22 +1,42 @@
 extends Node2D
 
-var song_name = "my-amazing-world"
-var song_speed = 2.4
-var note_skin = "default"
-
-var characters = ["cartoon_bf_Gun","gumball"]
-var stage = "school"
-
-var input = [KEY_A,KEY_S,KEY_K,KEY_L]
+const input = [KEY_A, KEY_S, KEY_K, KEY_L]
 var downscroll = true
+var data
 
 func _ready():
-	chart = get_node("HUD/Chart")
+	var song_name = "Come-Along-With-Me"
+	
+	data = _load_data(song_name)
+	_load_game(song_name)
+
+func _load_data(song_name):
+	var json_path = "res://assets/songs/" + song_name + "/song.json"
+	return JSON.parse_string(FileAccess.open(json_path, FileAccess.READ).get_as_text())
+
+func _load_game(song_name):
+	var chartNotes = ["HUD/Chart/Notes/P1", "HUD/Chart/Notes/P2"]
+
+	$Background._load(data.characters, data.stage)
+	$HUD._load(song_name, "default")
+	load_script(song_name)
+
 	discord_sdk.details = "Playing: " + song_name
 	discord_sdk.refresh()
-	if downscroll:
-		$HUD/Chart/Notes/P1.position.y = -$HUD/Chart/Notes/P1.position.y
-		$HUD/Chart/Notes/P2.position.y = -$HUD/Chart/Notes/P2.position.y
 
-var song_time = -2000
-var chart
+	if downscroll:
+		for note in chartNotes:
+			get_node(note).position.y = -get_node(note).position.y
+
+var has_script = false
+
+func load_script(song_name):
+	var song_path = "res://assets/songs/" + song_name + "/script.gd"
+	if FileAccess.file_exists(song_path):
+		has_script = true
+		Global.get_node_scene("Script").set_script(load(song_path))
+		$Script._ready()
+
+func _process(delta):
+	if has_script:
+		$Script._process(delta)
