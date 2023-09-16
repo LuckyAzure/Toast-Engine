@@ -5,7 +5,7 @@ var downscroll = true
 var data
 
 func _ready():
-	var song_name = "Come-Along-With-Me"
+	var song_name = "bopeebo"
 	
 	data = _load_data(song_name)
 	_load_game(song_name)
@@ -17,7 +17,7 @@ func _load_data(song_name):
 func _load_game(song_name):
 	var chartNotes = ["HUD/Chart/Notes/P1", "HUD/Chart/Notes/P2"]
 
-	$Background._load(data.characters, data.stage)
+	$Background._load(data)
 	$HUD._load(song_name, "default")
 	load_script(song_name)
 

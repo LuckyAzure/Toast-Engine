@@ -1,0 +1,6 @@
+{
+	"characters": ["cartoon_bf_Gun","fake_finn",null],
+	"stage": "treehouse",
+	
+	"preload_characters": ["finn-cn","fake_finn","cartoon_bf_Gun"]
+}

@@ -19,6 +19,9 @@ func _load(song_name,note_skin):
 	load_audio()
 	load_chart()
 	song_data.speed = chart.info.speed * 1.0
+	song_time = -2400 / (chart.info.bpm * 0.01)
+	print(chart.info.bpm)
+	print(song_time)
 	
 
 func start_song():
@@ -29,11 +32,11 @@ func start_song():
 	discord_sdk.end_timestamp = int(Time.get_unix_time_from_system()) + $Instrumental.stream.get_length()
 	discord_sdk.refresh()
 
-var last_update_time = 0.0
-
 var play = true
 
 func _process(delta):
+	
+	
 	$Label.text = "song_time: " + str(song_time) + "\n"
 	
 	if $Instrumental.playing:

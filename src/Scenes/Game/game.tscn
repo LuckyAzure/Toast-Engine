@@ -118,6 +118,8 @@ offset_bottom = -72.0
 [node name="Status" type="Node" parent="HUD"]
 script = ExtResource("9_jmjuk")
 
+[node name="Cooldown" type="Sprite2D" parent="HUD/Status"]
+
 [node name="Score" type="Label" parent="HUD/Status"]
 offset_left = -640.0
 offset_top = 304.0

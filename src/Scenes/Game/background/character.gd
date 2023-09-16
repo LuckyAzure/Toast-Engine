@@ -11,6 +11,15 @@ var frame_max = 0
 var remaining_frames = 0
 var current_animation
 
+func _preload(data):
+	chardata = data[0]
+	$Texture.texture = data[1]
+	
+	scale = Vector2(chardata.scale,chardata.scale)
+	$Texture.texture_filter = chardata.aa
+	
+	set_anim("Idle")
+
 func _load():
 	var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
 	var file = FileAccess.open(json_path, FileAccess.READ)

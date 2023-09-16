@@ -2,12 +2,12 @@ extends CanvasLayer
 
 var stagedata
 
-func _load(characters,stage):
-	$Stage._load(stage)
+func _load(data):
+	$Stage._load(data.stage)
 	stagedata = $Stage.stage_data.Stage
 	Zoom = stagedata.Camera.zoom
 	Offsets.Position = Vector2(stagedata.Camera.offsetx,stagedata.Camera.offsety)
-	$Characters._load(characters,stagedata)
+	$Characters._load(data,stagedata)
 
 var Position = Vector2(640,360)
 var Zoom = 0.75

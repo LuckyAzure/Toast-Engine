@@ -28,7 +28,6 @@ func UpdatePosition():
 func _Animation(delta):
 	var target = texture_data.animations[Anim]
 	var lerp_speed = ANIMATION_SPEED * delta
-	var camerapos = camera.position
 	
 	x = lerp(x, target.x, lerp_speed)
 	y = lerp(y, target.y, lerp_speed)

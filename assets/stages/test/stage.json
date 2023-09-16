@@ -3,11 +3,11 @@
       "Camera": {
          "offsetx": 0,
          "offsety": 0,
-         "zoom": 0.8,
+         "zoom": 0.75,
 	 "speed": 0.05
       },
       "Enemy": {
-         "x": -500,
+         "x": -600,
          "y": 300,
          "cameraoffsetx": 0,
          "cameraoffsety": 0
@@ -19,7 +19,7 @@
          "cameraoffsety": 0
       },
       "Player": {
-         "x": 500,
+         "x": 600,
          "y": 300,
          "cameraoffsetx": 0,
          "cameraoffsety": 0
@@ -28,60 +28,13 @@
          {
             "filename": "2.png",
             "name": "Background",
-            "index": 1,
+            "index": -10,
             "becentered": true,
             "x": 0,
-            "y": 100,
-            "width": 3,
-            "height": 3
-         },
-         {
-            "filename": "1.png",
-            "name": "Head",
-            "index": 0,
-            "becentered": true,
-            "x": 400,
-            "y": -130,
-            "width": 3,
-            "height": 3,
-            "animations": [
-                {
-                  "x": 400,
-                  "y": -130,
-                  "width": 3,
-                  "height": 3
-                },
-                {
-                  "x": 400,
-                  "y": -100,
-                  "width": 3,
-                  "height": 3
-                }
-             ]
-         },
-         {
-            "filename": "1.png",
-            "name": "Head2",
-            "index": 0,
-            "becentered": true,
-            "x": 550,
-            "y": -180,
-            "width": 3,
-            "height": 3,
-            "animations": [
-                {
-                  "x": 550,
-                  "y": -150,
-                  "width": 3,
-                  "height": 3
-                },
-                {
-                  "x": 550,
-                  "y": -180,
-                  "width": 3,
-                  "height": 3
-                }
-             ]
+            "y": 0,
+            "width": 3.5,
+            "height": 3.5,
+            "sensitivity": {"x":0,"y":0}
          }
       ]
    }
