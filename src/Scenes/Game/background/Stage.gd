@@ -11,8 +11,9 @@ var textureobjload = preload("res://src/Scenes/Game/background/StageTexture.tscn
 
 #Loads Stage Textures
 func _load(stname):
-	stage_name = stname
-	var data_file = FileAccess.open("res://assets/Stages/" + stage_name + "/stage.json", FileAccess.READ)
+	stage_name = stname.name
+	
+	var data_file = FileAccess.open(Global.get_mod_path(stname) + "Stages/" + stage_name + "/stage.json", FileAccess.READ)
 	var data_json = JSON.parse_string(data_file.get_as_text())
 	data_file.close()
 	stage_data = data_json
@@ -22,7 +23,7 @@ func _load(stname):
 		var local_texture_data = stage_data.Stage.StageTexture[i]  # Rename the variable
 		
 		var image = Image.new()
-		image.load("res://assets/stages/" + stage_name + "/" + local_texture_data.filename)
+		image.load(Global.get_mod_path(stname) + "stages/" + stage_name + "/" + local_texture_data.filename)
 		var image_texture = ImageTexture.create_from_image(image)
 		texture.texture = image_texture
 		

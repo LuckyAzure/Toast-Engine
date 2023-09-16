@@ -56,7 +56,7 @@ script = ExtResource("4_bvybj")
 
 [node name="P1" type="Marker2D" parent="HUD/Chart/Notes"]
 position = Vector2(370, -256)
-scale = Vector2(0.65, 0.65)
+scale = Vector2(0.6, 0.6)
 script = ExtResource("5_q3v8y")
 
 [node name="ColorRect" type="ColorRect" parent="HUD/Chart/Notes/P1"]
@@ -85,7 +85,7 @@ texture = ExtResource("7_t1brj")
 
 [node name="P2" type="Marker2D" parent="HUD/Chart/Notes"]
 position = Vector2(-370, -256)
-scale = Vector2(0.65, 0.65)
+scale = Vector2(0.6, 0.6)
 script = ExtResource("12_fyd0v")
 
 [node name="Left" type="Sprite2D" parent="HUD/Chart/Notes/P2"]

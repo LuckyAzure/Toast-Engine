@@ -13,15 +13,13 @@ var chart = {
 	"psych_events": []
 }
 
-func _load(song_name,note_skin):
-	song_data.name = song_name
+func _load(song,note_skin):
+	song_data.name = song.name
 	$Notes.load_notes_texture(note_skin)
-	load_audio()
-	load_chart()
+	load_audio(song)
+	load_chart(song)
 	song_data.speed = chart.info.speed * 1.0
 	song_time = -2400 / (chart.info.bpm * 0.01)
-	print(chart.info.bpm)
-	print(song_time)
 	
 
 func start_song():
@@ -105,14 +103,14 @@ func process_notes():
 			instance.get_node("Sustain/End").texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note_Long_End"]["texture"][0]
 			count += 1
 
-func load_audio():
-	var inst_path = "res://assets/songs/" + song_data.name + "/Inst.ogg"
-	var voices_path = "res://assets/songs/" + song_data.name + "/Voices.ogg"
+func load_audio(song):
+	var inst_path = Global.get_mod_path(song) + "songs/" + song_data.name + "/Inst.ogg"
+	var voices_path = Global.get_mod_path(song) + "songs/" + song_data.name + "/Voices.ogg"
 	$Instrumental.stream = AudioStreamOggVorbis.load_from_file(inst_path)
 	$Voices.stream = AudioStreamOggVorbis.load_from_file(voices_path)
 
-func load_chart():
-	var song_path = "res://assets/songs/" + song_data.name + "/" + song_data.name + ".json"
+func load_chart(song):
+	var song_path = Global.get_mod_path(song) + "songs/" + song_data.name + "/" + song_data.name + ".json"
 
 	# Load the JSON data
 	var file = FileAccess.open(song_path, FileAccess.READ)

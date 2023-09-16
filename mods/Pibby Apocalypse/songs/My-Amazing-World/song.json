@@ -1,4 +1,20 @@
 {
-	"characters": ["cartoon_bf_Gun","gumball",null],
-	"stage": "school"
+   "characters":[
+      {
+         "name":"cartoon_bf_Gun",
+         "vanilla":false,
+         "mod":null
+      },
+      {
+         "name":"gumball",
+         "vanilla":false,
+         "mod":null
+      },
+      null
+   ],
+   "stage":{
+      "name":"school",
+      "vanilla":false,
+      "mod":null
+   }
 }

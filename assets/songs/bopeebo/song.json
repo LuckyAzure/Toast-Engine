@@ -1,4 +1,32 @@
 {
-	"characters": ["boyfriend","boyfriend",null],
-	"stage": "test",
+   "characters":[
+      {
+         "name":"boyfriend",
+         "vanilla":true,
+         "mod":null
+      },
+      {
+         "name":"boyfriend",
+         "vanilla":true,
+         "mod":null
+      },
+      null
+   ],
+   "stage":{
+      "name":"test",
+      "vanilla":true,
+      "mod":null
+   },
+   "preload_characters":[
+      {
+         "name":"boyfriend",
+         "vanilla":true,
+         "mod":null
+      },
+      {
+         "name":"boyfriend",
+         "vanilla":true,
+         "mod":null
+      }
+   ]
 }

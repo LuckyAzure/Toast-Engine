@@ -26,7 +26,7 @@ func create_char(character,pos):
 	if character != null:
 		var instance = char_node.instantiate()
 		add_child(instance)
-		instance.charname = character
+		instance.char = character
 		instance.position = pos
 		instance._load()
 		character_nodes.append(instance)
@@ -35,15 +35,15 @@ func create_char(character,pos):
 
 func preload_chars(data):
 	for i in data.size():
-		var charname = data[i]
+		var char = data[i]
 		i = [null,null]
-		var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
+		var json_path = Global.get_mod_path(char) + "characters/" + char.name + "/" + char.name + ".json"
 		var file = FileAccess.open(json_path, FileAccess.READ)
 		i[0] = JSON.parse_string(file.get_as_text())
 		file.close()
 		
 		# Load the image file from the specified path
-		var image_path = "res://assets/characters/" + charname + "/" + charname + ".png"
+		var image_path = Global.get_mod_path(char) + "characters/" + char.name + "/" + char.name + ".png"
 		var image = Image.new()
 		var image_loaded = image.load(image_path)
 		if image_loaded == OK:

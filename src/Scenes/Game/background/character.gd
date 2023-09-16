@@ -1,6 +1,6 @@
 extends Marker2D
 
-var charname = "finn-cn"
+var char = null
 var chardata = {}
 
 var fps = 24
@@ -21,13 +21,13 @@ func _preload(data):
 	set_anim("Idle")
 
 func _load():
-	var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
+	var json_path = Global.get_mod_path(char) + "characters/" + char.name + "/" + char.name + ".json"
 	var file = FileAccess.open(json_path, FileAccess.READ)
 	chardata = JSON.parse_string(file.get_as_text())
 	file.close()
 	
 	# Load the image file from the specified path
-	var image_path = "res://assets/characters/" + charname + "/" + charname + ".png"
+	var image_path = Global.get_mod_path(char) + "characters/" + char.name + "/" + char.name + ".png"
 	var image = Image.new()
 	var image_loaded = image.load(image_path)
 

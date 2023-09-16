@@ -1,6 +1,27 @@
 {
-	"characters": ["cartoon_bf_Gun","fake_finn",null],
-	"stage": "treehouse",
-	
-	"preload_characters": ["finn-cn","fake_finn","cartoon_bf_Gun"]
+   "characters":[
+      {
+         "name":"cartoon_bf_Gun",
+         "vanilla":false,
+         "mod":null
+      },
+      {
+         "name":"fake_finn",
+         "vanilla":false,
+         "mod":null
+      },
+      null
+   ],
+   "stage":{
+      "name":"treehouse",
+      "vanilla":false,
+      "mod":null
+   },
+   "preload_characters":[
+      {
+         "name":"finn-cn",
+         "vanilla":false,
+         "mod":null
+      }
+   ]
 }

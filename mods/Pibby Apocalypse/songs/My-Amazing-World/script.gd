@@ -7,7 +7,14 @@ var time = 0
 var Back = get_parent().get_node("Background")
 
 func _ready():
-	Back.get_node("Characters").create_char("cartoon_bf_Gun",Vector2(1000,350))
+	Back.get_node("Characters").create_char(
+		{
+			 "name":"cartoon_bf_Gun",
+			 "vanilla":false,
+			 "mod":"Pibby Apocalypse"
+		},
+		Vector2(1000,350)
+	)
 	Back.get_node("Characters").character_nodes[3].z_index -= 1
 
 func _process(delta):

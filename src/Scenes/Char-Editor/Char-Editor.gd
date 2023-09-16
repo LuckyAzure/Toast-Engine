@@ -3,17 +3,17 @@ extends Node2D
 const def_animations = [
 	"Idle",
 	"Left",
-	"Left_Alt",
 	"Down",
-	"Down_Alt",
 	"Up",
-	"Up_Alt",
 	"Right",
-	"Right_Alt",
 	"Left_Miss",
 	"Down_Miss",
 	"Up_Miss",
-	"Right_Miss"
+	"Right_Miss",
+	"Left_Alt",
+	"Down_Alt",
+	"Up_Alt",
+	"Right_Alt"
 ]
 
 const def_char = {
@@ -31,17 +31,36 @@ var xml_data
 var animations = []
 var current_animation = ""
 
+var vanilla = true
+var current_mod = "Vanilla"
+var current_path = ""
+
 func _ready():
+	initalize_mods()
 	discord_sdk.details = "Character Editor"
 	discord_sdk.refresh()
 	for i in def_animations.size():
 		$HUD/Animations.add_item(def_animations[i])
 	load_char()
 
+func initalize_mods():
+	$HUD/Mods.add_icon_item(load("res://src/Scenes/Char-Editor/images/vanilla.png"),"Vanilla")
+	for mod in Global.mods.mods:
+		var image_path = "res://mods/" + mod + "/icon32.png"
+		var image = Image.new()
+		var image_loaded = image.load(image_path)
+		$HUD/Mods.add_icon_item(ImageTexture.create_from_image(image),mod)
+
 func load_char():
 	chardata = {}
+	
+	if vanilla:
+		current_path = "res://assets/"
+	else:
+		current_path = "res://mods/" + current_mod + "/"
+	
 	# Check if the JSON file exists
-	var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
+	var json_path = current_path + "characters/" + charname + "/" + charname + ".json"
 	if not FileAccess.file_exists(json_path):
 		create_default_json_file(json_path)
 	else:
@@ -58,7 +77,7 @@ func load_char():
 	load_animation("Idle")
 
 	# Load the image file from the specified path
-	var image_path = "res://assets/characters/" + charname + "/" + charname + ".png"
+	var image_path = current_path + "characters/" + charname + "/" + charname + ".png"
 	var image = Image.new()
 	var image_loaded = image.load(image_path)
 
@@ -82,7 +101,7 @@ func save_char():
 	chardata.cameraoffset.x = $HUD/CameraX.value
 	chardata.cameraoffset.y = $HUD/CameraY.value
 	
-	var json_path = "res://assets/characters/" + charname + "/" + charname + ".json"
+	var json_path = current_path + "characters/" + charname + "/" + charname + ".json"
 	var file = FileAccess.open(json_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(chardata))
 	file.close()
@@ -131,7 +150,7 @@ func status():
 
 func convert_xml_to_json_data():
 	var xml_parser = XMLParser.new()
-	var f = FileAccess.open("res://assets/characters/" + charname + "/" + charname + ".xml", FileAccess.READ)
+	var f = FileAccess.open(current_path + "characters/" + charname + "/" + charname + ".xml", FileAccess.READ)
 	xml_parser.open_buffer(f.get_buffer(f.get_length()))
 	f.close()
 
@@ -232,3 +251,11 @@ func load_animation(anim):
 		frame_start_position = animation.start_position
 		frame_max = animation.max
 		remaining_frames = animation.max
+
+
+func _on_mods_item_selected(index):
+	if index == 0:
+		vanilla = true
+	else:
+		vanilla = false
+		current_mod = $HUD/Mods.get_item_text(index)

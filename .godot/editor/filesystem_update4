@@ -3,3 +3,10 @@ res://src/Scenes/Game/game.tscn
 res://src/Scenes/Game/Chart.gd
 res://src/Scenes/Game/chart/note.gdshader
 res://src/Scenes/Game/game.gdshader
+res://src/Global.gd
+res://src/Scenes/Char-Editor/Char-Editor.tscn
+res://src/Scenes/Char-Editor/Char-Editor.gd
+res://src/Scenes/Game/game.gd
+res://src/Scenes/Game/background/Stage.gd
+res://src/Scenes/Game/background/character.gd
+res://src/Scenes/Game/background/Characters.gd

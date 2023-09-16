@@ -1,27 +1,34 @@
 extends Node2D
 
+var current_song
+
 const input = [KEY_A, KEY_S, KEY_K, KEY_L]
 var downscroll = true
 var data
 
 func _ready():
-	var song_name = "bopeebo"
+	var song = {
+		"name":"mindless",
+		"vanilla":false,
+		"mod":"Pibby Apocalypse"
+	}
 	
-	data = _load_data(song_name)
-	_load_game(song_name)
+	data = _load_data(song)
+	_load_game(song)
 
-func _load_data(song_name):
-	var json_path = "res://assets/songs/" + song_name + "/song.json"
+func _load_data(song):
+	var json_path = Global.get_mod_path(song) + "songs/" + song.name + "/song.json"
 	return JSON.parse_string(FileAccess.open(json_path, FileAccess.READ).get_as_text())
 
-func _load_game(song_name):
+func _load_game(song):
+	current_song = song
 	var chartNotes = ["HUD/Chart/Notes/P1", "HUD/Chart/Notes/P2"]
 
 	$Background._load(data)
-	$HUD._load(song_name, "default")
-	load_script(song_name)
+	$HUD._load(song, "default")
+	load_script(song)
 
-	discord_sdk.details = "Playing: " + song_name
+	discord_sdk.details = "Playing: " + song.name
 	discord_sdk.refresh()
 
 	if downscroll:
@@ -30,8 +37,8 @@ func _load_game(song_name):
 
 var has_script = false
 
-func load_script(song_name):
-	var song_path = "res://assets/songs/" + song_name + "/script.gd"
+func load_script(song):
+	var song_path = Global.get_mod_path(song) + "songs/" + song.name + "/script.gd"
 	if FileAccess.file_exists(song_path):
 		has_script = true
 		Global.get_node_scene("Script").set_script(load(song_path))

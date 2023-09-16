@@ -23,64 +23,70 @@ script = ExtResource("2_vhxn2")
 offset_left = 854.0
 offset_top = 8.0
 offset_right = 1272.0
-offset_bottom = 158.0
+offset_bottom = 195.0
 color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="CharName" type="TextEdit" parent="HUD"]
 offset_left = 1034.0
+offset_top = 55.0
+offset_right = 1267.0
+offset_bottom = 91.0
+text = "boyfriend"
+
+[node name="Mods" type="OptionButton" parent="HUD"]
+offset_left = 857.0
 offset_top = 11.0
 offset_right = 1267.0
-offset_bottom = 47.0
-text = "boyfriend"
+offset_bottom = 52.0
 
 [node name="Load" type="Button" parent="HUD"]
 offset_left = 857.0
-offset_top = 12.0
+offset_top = 56.0
 offset_right = 944.0
-offset_bottom = 46.0
+offset_bottom = 90.0
 text = "Load"
 
 [node name="Save" type="Button" parent="HUD"]
 offset_left = 947.0
-offset_top = 12.0
+offset_top = 56.0
 offset_right = 1031.0
-offset_bottom = 46.0
+offset_bottom = 90.0
 text = "Save"
 
 [node name="Loop" type="CheckBox" parent="HUD"]
 offset_left = 1139.0
-offset_top = 83.0
+offset_top = 127.0
 offset_right = 1206.0
-offset_bottom = 114.0
+offset_bottom = 158.0
 text = "Loop"
 
 [node name="AA" type="CheckBox" parent="HUD"]
 offset_left = 1208.0
-offset_top = 83.0
+offset_top = 127.0
 offset_right = 1268.0
-offset_bottom = 114.0
+offset_bottom = 158.0
 text = "AA"
 
 [node name="FPS" type="SpinBox" parent="HUD"]
 offset_left = 900.0
-offset_top = 82.0
+offset_top = 126.0
 offset_right = 983.063
-offset_bottom = 113.0
+offset_bottom = 157.0
 min_value = 1.0
 value = 24.0
 
 [node name="Label" type="Label" parent="HUD"]
 offset_left = 861.0
-offset_top = 86.0
+offset_top = 130.0
 offset_right = 893.0
-offset_bottom = 112.0
+offset_bottom = 156.0
 text = "FPS:"
 
 [node name="Scale" type="SpinBox" parent="HUD"]
 offset_left = 1045.0
-offset_top = 82.0
+offset_top = 126.0
 offset_right = 1128.06
-offset_bottom = 113.0
+offset_bottom = 157.0
 min_value = 0.1
 max_value = 10.0
 step = 0.1
@@ -88,53 +94,53 @@ value = 1.0
 
 [node name="Label2" type="Label" parent="HUD"]
 offset_left = 991.0
-offset_top = 86.0
+offset_top = 130.0
 offset_right = 1036.0
-offset_bottom = 112.0
+offset_bottom = 156.0
 text = "Scale:"
 
 [node name="CameraX" type="SpinBox" parent="HUD"]
 offset_left = 1001.0
-offset_top = 119.0
+offset_top = 160.0
 offset_right = 1084.06
-offset_bottom = 150.0
+offset_bottom = 191.0
 min_value = -1000.0
 max_value = 1000.0
 
 [node name="CameraY" type="SpinBox" parent="HUD"]
 offset_left = 1089.0
-offset_top = 119.0
+offset_top = 160.0
 offset_right = 1172.06
-offset_bottom = 150.0
+offset_bottom = 191.0
 min_value = -1000.0
 max_value = 1000.0
 
 [node name="Label3" type="Label" parent="HUD"]
 offset_left = 861.0
-offset_top = 122.0
+offset_top = 164.0
 offset_right = 993.0
-offset_bottom = 148.0
+offset_bottom = 190.0
 text = "Camera Position:"
 
 [node name="Animations" type="OptionButton" parent="HUD"]
 offset_left = 857.0
-offset_top = 50.0
+offset_top = 94.0
 offset_right = 1031.0
-offset_bottom = 79.0
+offset_bottom = 123.0
 icon_alignment = 1
 
 [node name="CharAnimations" type="OptionButton" parent="HUD"]
 offset_left = 1034.0
-offset_top = 50.0
+offset_top = 94.0
 offset_right = 1268.0
-offset_bottom = 79.0
+offset_bottom = 123.0
 icon_alignment = 1
 
 [node name="Status" type="Label" parent="HUD"]
 offset_left = 854.0
-offset_top = 167.0
+offset_top = 195.0
 offset_right = 1272.0
-offset_bottom = 191.0
+offset_bottom = 219.0
 theme_override_fonts/font = ExtResource("2_e3vst")
 theme_override_font_sizes/font_size = 8
 text = "x"
@@ -178,6 +184,7 @@ points = PackedVector2Array(0, -2000, 0, 2000)
 width = 4.0
 default_color = Color(0, 1, 0, 1)
 
+[connection signal="item_selected" from="HUD/Mods" to="." method="_on_mods_item_selected"]
 [connection signal="pressed" from="HUD/Load" to="HUD" method="_on_Load_pressed"]
 [connection signal="pressed" from="HUD/Save" to="HUD" method="_on_save_pressed"]
 [connection signal="item_selected" from="HUD/Animations" to="HUD" method="_on_animations_item_selected"]
