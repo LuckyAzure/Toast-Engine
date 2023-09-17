@@ -18,9 +18,9 @@ func _load(song,note_skin):
 	$Notes.load_notes_texture(note_skin)
 	load_audio(song)
 	load_chart(song)
+	$Timeline.bpm = chart.info.bpm 
 	song_data.speed = chart.info.speed * 1.0
 	song_time = -2400 / (chart.info.bpm * 0.01)
-	
 
 func start_song():
 	$Timeline.initialize()
@@ -35,7 +35,11 @@ var play = true
 func _process(delta):
 	
 	
-	$Label.text = "song_time: " + str(song_time) + "\n"
+	$Label.text = "section: " + str($Timeline.current_section) + "\n"
+	$Label.text += "bpm: " + str($Timeline.bpm) + "\n"
+	$Label.text += "section_length: " + str(2400 / ($Timeline.bpm * 0.01)) + "\n"
+	if $Timeline.current_section != -1:
+		$Label.text += "section_end: " + str($Timeline.sections[$Timeline.current_section]) 
 	
 	if $Instrumental.playing:
 		var playback_adjusted_time = ($Instrumental.get_playback_position() + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()) * 1000.0
@@ -51,8 +55,6 @@ func _process(delta):
 			var delay = int(playback_adjusted_time) - int(song_time)
 			if delay > 40:
 				song_time = playback_adjusted_time
-
-			$Label.text += "delay: " + str(delay)
 	elif song_time < 0:
 		song_time += delta * 1000.0 * $Instrumental.pitch_scale
 		process_notes()
@@ -133,11 +135,9 @@ func load_chart(song):
 			var time = note_data[0]
 			var note_type = note_data[1]
 			var sustain = note_data[2]
-			var misc = 0
+			var misc = null
 			if note_data.size() > 3:
 				misc = note_data[3]
-				if note_data[3] == "Sword":
-					continue
 
 			if !must_hit_section:
 				note_type = int(note_type + 4) % 8

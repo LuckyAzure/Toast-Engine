@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/Scenes/Game/chart/note.gd" id="2_0uvtw"]
 
 [node name="Note" type="Sprite2D"]
+visible = false
 z_index = 1
 script = ExtResource("2_0uvtw")
 

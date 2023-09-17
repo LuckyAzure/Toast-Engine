@@ -45,7 +45,7 @@ func _process(delta):
 	if note_data.bot:
 		if (time - (note_position + data[2])) > 0:
 			queue_free()
-			backchars._set_anim(data[1] - 4,data[0],1)
+			backchars._set_anim(data,1,null)
 			get_parent().get_parent().animation[int(data[1]) % 4] = "HUD_Glow"
 		if (time - note_position) <= 0:
 			position.y = (note_position - time) * song_speed
@@ -57,7 +57,7 @@ func _process(delta):
 			position.y = 0
 			self_modulate.a = 0
 			if sustain_anim_cooldown <= 0:
-				backchars._set_anim(data[1] - 4,data[0],1)
+				backchars._set_anim(data,1,null)
 				get_parent().get_parent().frames[int(data[1]) % 4] = 0
 				sustain_anim_cooldown = 1
 			else:
@@ -89,7 +89,7 @@ func _process(delta):
 				if note_hittable and Input.is_key_pressed(note_data.input) and note_holdable:
 					get_parent().get_parent().animation[data[1]] = "HUD_Glow"
 					if sustain_anim_cooldown <= 0:
-						backchars._set_anim(data[1],(time - data[0]),0)
+						backchars._set_anim(data,0,null)
 						get_parent().get_parent().frames[data[1]] = 0
 						sustain_anim_cooldown = 1
 					else:
@@ -109,7 +109,7 @@ func _process(delta):
 
 				if note_position < time - 150 and miss_cooldown <= 0:
 					chart.notemiss(data[1],data[3])
-					backchars._set_anim(data[1] + 4,(time - data[0]),0)
+					backchars._set_anim(data,0,"Miss")
 					miss_cooldown = 3
 				elif miss_cooldown > 0:
 					miss_cooldown -= delta * 20
@@ -119,7 +119,7 @@ func _process(delta):
 			elif note_position < time - 150:
 				remove = true
 				chart.notemiss(data[1],data[3])
-				backchars._set_anim(data[1] + 4,(time - data[0]),0)
+				backchars._set_anim(data,0,"Miss")
 		if remove:
 			queue_free()
 			note_order.pop_front()
@@ -150,11 +150,11 @@ func _input(event):
 			remove = true
 			get_parent().get_parent().animation[data[1]] = "HUD_Glow"
 			chart.notehit(data[1],(time - data[0]),data[3])
-			backchars._set_anim(data[1],(time - data[0]),0)
+			backchars._set_anim(data,0,null)
 	else:
 		if just_pressed and !note_data.bot and note_hittable and event.keycode == note_data.input and !note_holdable:
 			get_parent().get_parent().animation[data[1]] = "HUD_Glow"
 			chart.notehit(data[1],(time - data[0]),data[3])
-			backchars._set_anim(data[1],(time - data[0]),0)
+			backchars._set_anim(data,0,null)
 			self_modulate.a = 0
 			note_holdable = true

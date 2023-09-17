@@ -18,7 +18,7 @@ func _preload(data):
 	scale = Vector2(chardata.scale,chardata.scale)
 	$Texture.texture_filter = chardata.aa
 	
-	set_anim("Idle")
+	set_anim(current_animation)
 
 func _load():
 	var json_path = Global.get_mod_path(char) + "characters/" + char.name + "/" + char.name + ".json"

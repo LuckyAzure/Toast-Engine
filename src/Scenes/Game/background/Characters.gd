@@ -4,11 +4,7 @@ const def_animations = [
 	"Left",
 	"Down",
 	"Up",
-	"Right",
-	"Left_Miss",
-	"Down_Miss",
-	"Up_Miss",
-	"Right_Miss"
+	"Right"
 ]
 
 var char_node = preload("res://src/Scenes/Game/background/character.tscn")
@@ -53,9 +49,15 @@ func preload_chars(data):
 		
 		preload_characters.append(i)
 
-func _set_anim(type,_order,charorder):
+func _set_anim(data,charorder,type):
 	if character_nodes[charorder] != null:
-		character_nodes[charorder].set_anim(def_animations[type])
+		var anim = def_animations[int(data[1]) % 4]
+		if type == "Miss":
+			anim += "_Miss"
+		if data[3] != null and Global.get_node_scene("Script").has_method("custom_anim"):
+			Global.get_node_scene("Script").custom_anim(data,charorder,type)
+			return
+		character_nodes[charorder].set_anim(anim)
 
 func _on_timeline_second_beat():
 	for i in character_nodes.size():

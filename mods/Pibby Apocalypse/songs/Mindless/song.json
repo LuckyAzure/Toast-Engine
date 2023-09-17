@@ -13,8 +13,20 @@
       null
    ],
    "stage":{
-      "name":"school",
+      "name":"lab",
       "vanilla":false,
       "mod":null
-   }
+   },
+   "preload_characters":[
+      {
+         "name":"finn-sword",
+         "vanilla":false,
+         "mod":null
+      },
+      {
+         "name":"finn-slash",
+         "vanilla":false,
+         "mod":null
+      }
+   ]
 }
