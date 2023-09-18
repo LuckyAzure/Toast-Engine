@@ -2,6 +2,7 @@ extends Marker2D
 
 var char = null
 var chardata = {}
+var icon_texture = null
 
 var fps = 24
 var loop = false
@@ -12,6 +13,7 @@ var remaining_frames = 0
 var current_animation
 
 func _preload(data):
+	
 	chardata = data[0]
 	$Texture.texture = data[1]
 	
@@ -19,6 +21,7 @@ func _preload(data):
 	$Texture.texture_filter = chardata.aa
 	
 	set_anim(current_animation)
+	Global.get_node_scene("HUD/Status").reload_icons()
 
 func _load():
 	var json_path = Global.get_mod_path(char) + "characters/" + char.name + "/" + char.name + ".json"
@@ -34,6 +37,16 @@ func _load():
 	if image_loaded == OK:
 		var texture = ImageTexture.create_from_image(image)
 		$Texture.texture = texture
+	else:
+		print("Failed to load image:", image_path)
+	
+	image_path = Global.get_mod_path(char) + "characters/" + char.name + "/icon.png"
+	image = Image.new()
+	image_loaded = image.load(image_path)
+
+	if image_loaded == OK:
+		var texture = ImageTexture.create_from_image(image)
+		icon_texture = texture
 	else:
 		print("Failed to load image:", image_path)
 	

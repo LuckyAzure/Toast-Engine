@@ -23,6 +23,7 @@ const def_char = {
 	"aa": 0,
 	"animations": {},
 	"xml_data": {},
+	"hp_color":"#ffffff"
 }
 
 var charname = "boyfriend"
@@ -67,14 +68,19 @@ func load_char():
 		var file = FileAccess.open(json_path, FileAccess.READ)
 		chardata = JSON.parse_string(file.get_as_text())
 		file.close()
-		$HUD/Scale.value = chardata.scale
-		$HUD/AA.button_pressed = chardata.aa
-		$HUD/CameraX.value = chardata.cameraoffset.x
-		$HUD/CameraY.value = chardata.cameraoffset.y
+	
+	$HUD/Scale.value = chardata.scale
+	$HUD/AA.button_pressed = chardata.aa
+	$HUD/CameraX.value = chardata.cameraoffset.x
+	$HUD/CameraY.value = chardata.cameraoffset.y
+	if !chardata.has("hp_color"):
+		chardata.merge({"hp_color": "#ffffff"},true)
+	$HUD/HPBarColor.color = Color.html(chardata.hp_color)
 	
 	convert_xml_to_json_data()
 	load_animations_from_data()
 	load_animation("Idle")
+	load_icon()
 
 	# Load the image file from the specified path
 	var image_path = current_path + "characters/" + charname + "/" + charname + ".png"
@@ -100,6 +106,7 @@ func save_char():
 	chardata.aa = $HUD/AA.button_pressed
 	chardata.cameraoffset.x = $HUD/CameraX.value
 	chardata.cameraoffset.y = $HUD/CameraY.value
+	chardata.hp_color = $HUD/HPBarColor.color.to_html()
 	
 	var json_path = current_path + "characters/" + charname + "/" + charname + ".json"
 	var file = FileAccess.open(json_path, FileAccess.WRITE)
@@ -252,10 +259,22 @@ func load_animation(anim):
 		frame_max = animation.max
 		remaining_frames = animation.max
 
-
 func _on_mods_item_selected(index):
 	if index == 0:
 		vanilla = true
 	else:
 		vanilla = false
 		current_mod = $HUD/Mods.get_item_text(index)
+
+func load_icon():
+	# Load the image file from the specified path
+	var image_path = current_path + "characters/" + charname + "/icon.png"
+	var image = Image.new()
+	var image_loaded = image.load(image_path)
+
+	if image_loaded == OK:
+		var texture = ImageTexture.create_from_image(image)
+		$HUD/Icon.texture = texture
+		$HUD/Icon.region_rect = Rect2(0,0,texture.get_width() / 2,texture.get_height())
+	else:
+		print("Failed to load image:", image_path)

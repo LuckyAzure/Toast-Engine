@@ -32,7 +32,7 @@ func create_char(character,pos):
 func preload_chars(data):
 	for i in data.size():
 		var char = data[i]
-		i = [null,null]
+		i = [null,null,null]
 		var json_path = Global.get_mod_path(char) + "characters/" + char.name + "/" + char.name + ".json"
 		var file = FileAccess.open(json_path, FileAccess.READ)
 		i[0] = JSON.parse_string(file.get_as_text())
@@ -44,6 +44,15 @@ func preload_chars(data):
 		var image_loaded = image.load(image_path)
 		if image_loaded == OK:
 			i[1] = ImageTexture.create_from_image(image)
+		else:
+			print("Failed to load image:", image_path)
+		
+		# Load the image file from the specified path
+		image_path = Global.get_mod_path(char) + "characters/" + char.name + "/icon.png"
+		image = Image.new()
+		image_loaded = image.load(image_path)
+		if image_loaded == OK:
+			i[2] = ImageTexture.create_from_image(image)
 		else:
 			print("Failed to load image:", image_path)
 		

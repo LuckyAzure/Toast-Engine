@@ -8,7 +8,7 @@ func _ready():
 	#discord_sdk.details = "A demo activity by vaporvee#1231"
 	#discord_sdk.state = "Checkpoint 23/23"
 	
-	discord_sdk.large_image = "sandwich" # Image key from "Art Assets"
+	discord_sdk.large_image = "icon" # Image key from "Art Assets"
 	#discord_sdk.large_image_text = "Try it now!"
 	#discord_sdk.small_image = "boss" # Image key from "Art Assets"
 	#discord_sdk.small_image_text = "Fighting the end boss! D:"

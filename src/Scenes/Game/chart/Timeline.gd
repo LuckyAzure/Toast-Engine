@@ -1,7 +1,9 @@
 extends Node
 
 signal section_changed
+
 signal second_beat
+signal first_beat
 
 # Properties
 var bpm = 120
@@ -26,17 +28,20 @@ func _process(_delta):
 			current_section += 1
 			emit_signal("section_changed",chart.sections[current_section])
 
-		if audio_position > sections[current_section] + (section_duration / 2) and beat_count == 0:
-			emit_signal("second_beat")
-			beat_count = 1
+		if audio_position > sections[current_section] + (section_duration / 4) * beat_count:
+			emit_signal("first_beat")
+			if beat_count == 2:
+				emit_signal("second_beat")
+			beat_count += 1
 
 		if audio_position > sections[current_section] + section_duration:
 			beat_count = 0
 			sections.append(sections[current_section] + section_duration)
 			current_section += 1
-			process_section(chart.sections[current_section])
-			emit_signal("second_beat")
-			emit_signal("section_changed",chart.sections[current_section]) 
+			if current_section < chart.sections.size():
+				process_section(chart.sections[current_section])
+				emit_signal("second_beat")
+				emit_signal("section_changed",chart.sections[current_section]) 
 
 func process_section(section_info):
 	var changeBPM = section_info.has("changeBPM") and section_info["changeBPM"]

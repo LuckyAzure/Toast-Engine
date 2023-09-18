@@ -29,11 +29,16 @@ func _load_game(song):
 	load_script(song)
 
 	discord_sdk.details = "Playing: " + song.name
+	if song.vanilla:
+		discord_sdk.details += " (Vanilla)"
+	else:
+		discord_sdk.details += " (" + song.mod + ")"
 	discord_sdk.refresh()
 
 	if downscroll:
 		for note in chartNotes:
 			get_node(note).position.y = -get_node(note).position.y
+		$HUD/Status/HUDText.position.y = -$HUD/Status/HUDText.position.y
 
 var has_script = false
 

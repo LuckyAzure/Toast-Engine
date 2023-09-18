@@ -23,7 +23,7 @@ script = ExtResource("2_vhxn2")
 offset_left = 854.0
 offset_top = 8.0
 offset_right = 1272.0
-offset_bottom = 195.0
+offset_bottom = 389.0
 color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="CharName" type="TextEdit" parent="HUD"]
@@ -138,14 +138,37 @@ icon_alignment = 1
 
 [node name="Status" type="Label" parent="HUD"]
 offset_left = 854.0
-offset_top = 195.0
+offset_top = 389.0
 offset_right = 1272.0
-offset_bottom = 219.0
+offset_bottom = 413.0
 theme_override_fonts/font = ExtResource("2_e3vst")
 theme_override_font_sizes/font_size = 8
 text = "x"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HPBarColor" type="ColorPicker" parent="HUD"]
+offset_left = 857.0
+offset_top = 197.0
+offset_right = 1065.0
+offset_bottom = 377.0
+edit_alpha = false
+picker_shape = 4
+can_add_swatches = false
+color_modes_visible = false
+presets_visible = false
+
+[node name="IconBack" type="ColorRect" parent="HUD"]
+offset_left = 1078.0
+offset_top = 200.0
+offset_right = 1258.0
+offset_bottom = 380.0
+color = Color(0.290196, 0.415686, 0.231373, 1)
+
+[node name="Icon" type="Sprite2D" parent="HUD"]
+position = Vector2(1168, 290)
+region_enabled = true
+region_rect = Rect2(0, 0, 132, 132)
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 5

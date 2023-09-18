@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 func _on_save_pressed():
+	get_tree().get_current_scene().save_animation(get_tree().get_current_scene().current_animation)
 	get_tree().get_current_scene().save_char()
 
 func _on_Load_pressed():

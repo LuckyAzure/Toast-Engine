@@ -153,10 +153,12 @@ func load_chart(song):
 signal char_animation
 
 func notemiss(_order,_type):
+	get_parent().get_node("Status").hp -= 2000
 	get_parent().get_node("Status").misses += 1
 	get_parent().get_node("Status").maxscore += 350
 
 func notehit(_order,_distance,_type):
+	get_parent().get_node("Status").hp += 1000
 	get_parent().get_node("Status").maxscore += 350
 	if _distance < 45:
 		get_parent().get_node("Status").score += 350
