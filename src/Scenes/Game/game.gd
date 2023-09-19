@@ -8,7 +8,7 @@ var data
 
 func _ready():
 	var song = {
-		"name":"mindless",
+		"name":"my-amazing-world",
 		"vanilla":false,
 		"mod":"Pibby Apocalypse"
 	}

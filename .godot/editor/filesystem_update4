@@ -5,9 +5,3 @@ res://src/Scenes/Game/chart/note.gdshader
 res://src/Scenes/Game/game.gdshader
 res://src/Scenes/Char-Editor/Char-Editor.tscn
 res://src/Scenes/Game/game.gd
-res://src/Scenes/Game/chart/Timeline.gd
-res://src/Scenes/Game/Status.gd
-res://src/Scenes/Char-Editor/Char-Editor.gd
-res://src/Scenes/Char-Editor/HUD.gd
-res://src/Scenes/Game/background/Characters.gd
-res://src/Scenes/Game/background/character.gd
