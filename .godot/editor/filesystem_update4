@@ -1,7 +1,8 @@
 res://default_env.tres
-res://src/Scenes/Game/game.tscn
+res://src/Scenes/Menu/Menu.tscn
 res://src/Scenes/Game/Chart.gd
 res://src/Scenes/Game/chart/note.gdshader
 res://src/Scenes/Game/game.gdshader
-res://src/Scenes/Char-Editor/Char-Editor.tscn
-res://src/Scenes/Game/game.gd
+res://src/Scenes/Menu/Menu.gd
+res://src/Scenes/Menu/Option.tscn
+res://src/Scenes/Menu/Option.gd

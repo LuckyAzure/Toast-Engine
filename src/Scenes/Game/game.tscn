@@ -213,7 +213,6 @@ environment = SubResource("Environment_58cce")
 
 [connection signal="char_animation" from="HUD/Chart" to="Background/Characters" method="_on_chart_char_animation"]
 [connection signal="first_beat" from="HUD/Chart/Timeline" to="HUD/Status" method="_on_timeline_first_beat"]
-[connection signal="second_beat" from="HUD/Chart/Timeline" to="HUD/Status" method="_on_timeline_second_beat"]
 [connection signal="second_beat" from="HUD/Chart/Timeline" to="Background/Characters" method="_on_timeline_second_beat"]
 [connection signal="section_changed" from="HUD/Chart/Timeline" to="HUD" method="_on_timeline_section_changed"]
 [connection signal="section_changed" from="HUD/Chart/Timeline" to="Background" method="_on_timeline_section_changed"]

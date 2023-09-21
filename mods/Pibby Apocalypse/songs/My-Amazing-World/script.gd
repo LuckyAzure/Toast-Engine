@@ -16,6 +16,7 @@ func _ready():
 		Vector2(1000,350)
 	)
 	Back.get_node("Characters").character_nodes[3].z_index -= 1
+	Back.get_node("Stage/Background").hide()
 
 func _process(delta):
 	timer2 += delta * 7.5

@@ -1,6 +1,11 @@
+RichTextLabel
+ColorRect
+ParallaxBackground
+ParallaxLayer
+Label
+VideoStreamPlayer
 Marker2D
 Sprite2D
-ColorRect
 ColorPicker
 OptionButton
 ProgressBar
@@ -8,7 +13,3 @@ WorldEnvironment
 Node
 Camera2D
 Line2D
-CanvasLayer
-Timer
-PointLight2D
-CanvasModulate

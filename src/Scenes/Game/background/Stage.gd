@@ -26,6 +26,7 @@ func _load(stname):
 		image.load(Global.get_mod_path(stname) + "stages/" + stage_name + "/" + local_texture_data.filename)
 		var image_texture = ImageTexture.create_from_image(image)
 		texture.texture = image_texture
+		texture.name = local_texture_data.name
 		
 		texture.texture_data = local_texture_data
 		#index
