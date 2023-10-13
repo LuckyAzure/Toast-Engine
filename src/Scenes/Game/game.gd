@@ -5,10 +5,12 @@ var current_song
 const input = [KEY_A, KEY_S, KEY_K, KEY_L]
 var downscroll = true
 var data
+var start_from = 50
+var song
 
 func _ready():
-	var song = {
-		"name":"my-amazing-world",
+	song = {
+		"name":"Corrupted-Hero",
 		"vanilla":false,
 		"mod":"Pibby Apocalypse"
 	}

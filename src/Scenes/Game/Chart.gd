@@ -24,8 +24,8 @@ func _load(song,note_skin):
 
 func start_song():
 	$Timeline.initialize()
-	$Instrumental.play(0)
-	$Voices.play(0)
+	$Instrumental.play(Global.scene().start_from)
+	$Voices.play(Global.scene().start_from)
 	discord_sdk.start_timestamp = int(Time.get_unix_time_from_system())
 	discord_sdk.end_timestamp = int(Time.get_unix_time_from_system()) + $Instrumental.stream.get_length()
 	discord_sdk.refresh()
@@ -89,6 +89,8 @@ var def_notes = [
 func process_notes():
 	var inputs = get_tree().get_current_scene().input
 	if chart.notes.size() > count:
+		while Global.scene().start_from * 1000 > chart.notes[count][0]:
+			count += 1
 		if chart.notes[count][0] < song_time + 2000:
 			var instance = note.instantiate()
 			get_node(def_note_nodes[chart.notes[count][1]]).add_child(instance)

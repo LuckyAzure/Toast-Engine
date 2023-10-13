@@ -1,0 +1,20 @@
+{
+   "characters":[
+      {
+         "name":"boyfriend-moro",
+         "vanilla":true,
+         "mod":null
+      },
+      {
+         "name":"finn",
+         "vanilla":true,
+         "mod":null
+      },
+      null
+   ],
+   "stage":{
+      "name":"test",
+      "vanilla":true,
+      "mod":null
+   }
+}

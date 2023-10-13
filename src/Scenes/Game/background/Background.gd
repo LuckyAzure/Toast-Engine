@@ -25,15 +25,32 @@ var Char_Offsets = {
 	"Rotation_Degrees": 0.0
 }
 
-const scroll_speed = 5
+var bump = 0.0
+var bump_speed = 5
+
+var scroll_speed = 5
+var force_camera = false
+
+var scroll = {
+	"Position": Vector2(0, 0),
+	"Zoom": 0.0,
+	"Rotation_Degrees": 0.0
+}
 
 func _process(delta):
-	$Camera.position = $Camera.position.lerp(Position + Offsets.Position + Char_Offsets.Position, delta * scroll_speed)
-	$Camera.zoom = $Camera.zoom.lerp(Vector2(Zoom,Zoom), delta * scroll_speed)
-	$Camera.rotation_degrees = lerp($Camera.rotation_degrees, Rotation_Degrees + Offsets.Rotation_Degrees + Char_Offsets.Rotation_Degrees, delta * scroll_speed)
+	scroll.Position = lerp(scroll.Position,Position + Offsets.Position + Char_Offsets.Position, delta * scroll_speed)
+	scroll.Zoom = lerp(scroll.Zoom,Zoom + Offsets.Zoom + Char_Offsets.Zoom, delta * scroll_speed)
+	scroll.Rotation_Degrees = lerp(scroll.Rotation_Degrees, Rotation_Degrees + Offsets.Rotation_Degrees + Char_Offsets.Rotation_Degrees, delta * scroll_speed)
+	bump = lerp(bump, 0.0, delta * bump_speed)
+	
+	$Camera.position = scroll.Position
+	$Camera.zoom = Vector2(scroll.Zoom + bump,scroll.Zoom + bump)
+	$Camera.rotation_degrees = scroll.Rotation_Degrees
+	
 
 func _on_timeline_section_changed(info):
-	$Camera.zoom += Vector2(0.05,0.05)
-	var pos = $Characters.character_nodes[int(!info.mustHitSection)].position
-	var campos = $Characters.character_nodes[int(!info.mustHitSection)].chardata.cameraoffset
-	Char_Offsets.Position = pos + Vector2(campos.x,campos.y)
+	bump += 0.05
+	if !force_camera:
+		var pos = $Characters.character_nodes[int(!info.mustHitSection)].position
+		var campos = $Characters.character_nodes[int(!info.mustHitSection)].chardata.cameraoffset
+		Char_Offsets.Position = pos + Vector2(campos.x,campos.y)

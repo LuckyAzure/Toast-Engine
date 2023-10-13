@@ -11,6 +11,7 @@ var frame_start_position = 0
 var frame_max = 0
 var remaining_frames = 0
 var current_animation
+var force = false
 
 func _preload(data):
 	
@@ -20,7 +21,8 @@ func _preload(data):
 	scale = Vector2(chardata.scale,chardata.scale)
 	$Texture.texture_filter = chardata.aa
 	
-	set_anim(current_animation)
+	force = false
+	set_anim(current_animation,false)
 	Global.get_node_scene("HUD/Status").reload_icons()
 
 func _load():
@@ -53,7 +55,8 @@ func _load():
 	scale = Vector2(chardata.scale,chardata.scale)
 	$Texture.texture_filter = chardata.aa
 	
-	set_anim("Idle")
+	force = false
+	set_anim("Idle",false)
 
 func _process(delta):
 	animation(delta)
@@ -69,7 +72,8 @@ func animation(delta):
 		else:
 			current_frame = frame_start_position + frame_max
 		if current_animation != "Idle":
-			set_anim("Idle")
+			force = false
+			set_anim("Idle",false)
 	
 	var frame = chardata["xml_data"].TextureAtlas.frames[int(current_frame)]
 	$Texture.region_rect = Rect2(frame.x, frame.y, frame.width, frame.height)
@@ -80,15 +84,17 @@ func animation(delta):
 			-frame.frameY
 		)
 
-func set_anim(anim):
-	current_animation = anim
-	if chardata.animations.has(anim):
-		var anim_data = chardata.animations[anim]
-		fps = anim_data.fps
-		loop = anim_data.loop
-		$Texture.position.x = anim_data.x
-		$Texture.position.y = anim_data.y
-		current_frame = anim_data.start_position
-		frame_start_position = anim_data.start_position
-		frame_max = anim_data.max
-		remaining_frames = anim_data.max
+func set_anim(anim,force_anim):
+	if force_anim or !force:
+		force = force_anim
+		current_animation = anim
+		if chardata.animations.has(anim):
+			var anim_data = chardata.animations[anim]
+			fps = anim_data.fps
+			loop = anim_data.loop
+			$Texture.position.x = anim_data.x
+			$Texture.position.y = anim_data.y
+			current_frame = anim_data.start_position
+			frame_start_position = anim_data.start_position
+			frame_max = anim_data.max
+			remaining_frames = anim_data.max

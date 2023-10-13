@@ -3,7 +3,7 @@
       "Camera": {
          "offsetx": 0,
          "offsety": 0,
-         "zoom": 0.75,
+         "zoom": 0.6,
 	 "speed": 0.05
       },
       "Enemy": {

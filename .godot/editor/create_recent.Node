@@ -1,5 +1,7 @@
-RichTextLabel
+Node2D
+WorldEnvironment
 ColorRect
+RichTextLabel
 ParallaxBackground
 ParallaxLayer
 Label
@@ -9,7 +11,4 @@ Sprite2D
 ColorPicker
 OptionButton
 ProgressBar
-WorldEnvironment
 Node
-Camera2D
-Line2D

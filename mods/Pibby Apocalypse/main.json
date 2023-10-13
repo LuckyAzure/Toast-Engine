@@ -1,7 +1,20 @@
 {
-	"name": "Pibby Apocalypse DEMO",
-	"songs": [
-		[null, "My-Amazing-World"],
-		[null, "Come-Along-With-Me"]
-	]
+	"name":"Pibby Apocalypse DEMO",
+	"story":{},
+	"freeplay":{
+		"icons":["gumball", "finn-cn", "jake", "bad-finn"],
+		"songs":[
+			[0, "Childs-Play"],
+			[0, "My-Amazing-World"],
+			[0, "Retcon"],
+			[0, "Forgotten-World"],
+			[1, "Mindless"],
+			[1, "blessed-by-swords"],
+			[2, "Brotherly-Love"],
+			[1, "Suffering-Siblings"],
+			[1, "Come-Along-With-Me"],
+			[3, "No-Hero-Remix"],
+			[3, "Corrupted-Hero-Remix"]
+		]
+	}
 }

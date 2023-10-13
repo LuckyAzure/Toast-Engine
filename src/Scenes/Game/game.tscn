@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://w3iacwd70ape"]
+[gd_scene load_steps=23 format=3 uid="uid://w3iacwd70ape"]
 
 [ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
 [ext_resource type="Script" path="res://src/Scenes/Game/HUD.gd" id="2_a0jha"]
@@ -34,8 +34,6 @@ bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avet6"]
 bg_color = Color(0, 1, 0, 1)
-
-[sub_resource type="Environment" id="Environment_58cce"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_e8eki")
@@ -137,6 +135,7 @@ value = 10.0
 show_percentage = false
 
 [node name="HUDText" type="Marker2D" parent="HUD/Status"]
+visible = false
 z_index = 10
 position = Vector2(1, 280)
 
@@ -197,21 +196,20 @@ script = ExtResource("15_alv4b")
 
 [node name="Camera" type="Camera2D" parent="Background"]
 ignore_rotation = false
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+editor_draw_screen = false
 
-[node name="Characters" type="Node" parent="Background"]
+[node name="Characters" type="Node2D" parent="Background"]
 script = ExtResource("15_oinxd")
 
-[node name="Stage" type="Node" parent="Background"]
+[node name="Stage" type="Node2D" parent="Background"]
 script = ExtResource("17_6vn3o")
 
 [node name="Custom" type="Node" parent="Background"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Background"]
-environment = SubResource("Environment_58cce")
-
 [node name="Script" type="Node" parent="."]
 
-[connection signal="char_animation" from="HUD/Chart" to="Background/Characters" method="_on_chart_char_animation"]
 [connection signal="first_beat" from="HUD/Chart/Timeline" to="HUD/Status" method="_on_timeline_first_beat"]
 [connection signal="second_beat" from="HUD/Chart/Timeline" to="Background/Characters" method="_on_timeline_second_beat"]
 [connection signal="section_changed" from="HUD/Chart/Timeline" to="HUD" method="_on_timeline_section_changed"]

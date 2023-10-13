@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const def_animations = [
 	"Left",
@@ -66,10 +66,10 @@ func _set_anim(data,charorder,type):
 		if data[3] != null and Global.get_node_scene("Script").has_method("custom_anim"):
 			Global.get_node_scene("Script").custom_anim(data,charorder,type)
 			return
-		character_nodes[charorder].set_anim(anim)
+		character_nodes[charorder].set_anim(anim,false)
 
 func _on_timeline_second_beat():
 	for i in character_nodes.size():
 		if character_nodes[i] != null:
 			if character_nodes[i].current_animation == "Idle" and !character_nodes[i].loop:
-				character_nodes[i].set_anim("Idle")
+				character_nodes[i].set_anim("Idle",false)

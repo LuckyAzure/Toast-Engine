@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Friday Night Funkin': Toast Engine"
-run/main_scene="res://src/Scenes/Menu/Menu.tscn"
+run/main_scene="res://src/Scenes/Menus/Main/Menu.tscn"
 config/features=PackedStringArray("4.2")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false

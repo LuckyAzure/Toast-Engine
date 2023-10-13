@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ci36rrfqvk8ke"]
+[gd_scene load_steps=4 format=3 uid="uid://ci36rrfqvk8ke"]
 
+[ext_resource type="Shader" path="res://src/Scenes/Game/background/character.gdshader" id="1_7u8mn"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/character.gd" id="1_xedd0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6inwk"]
+shader = ExtResource("1_7u8mn")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/mixture = 0.0
 
 [node name="Character" type="Marker2D"]
 script = ExtResource("1_xedd0")
 
 [node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6inwk")
 centered = false
 region_enabled = true
