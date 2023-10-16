@@ -1,6 +1,10 @@
 extends Node
 
 var mods = null
+var state = {
+	"song":null,
+	"mode":"freeplay"
+}
 
 func _ready():
 	var json_path = "res://mods/mods.json"
@@ -24,3 +28,13 @@ func get_mod_path(data):
 		else:
 			current_path = "res://mods/" + scene().current_song.mod + "/"
 	return current_path
+
+func start_song(song, mode = "freeplay"):
+	state.song = song
+	state.mode = mode
+	Overlay.change_scene_to_file("res://src/Scenes/Game/game.tscn")
+
+func end_song():
+	match state.mode:
+		"freeplay":
+			Overlay.change_scene_to_file("res://src/Scenes/Menus/Freeplay/Freeplay.tscn")

@@ -170,3 +170,6 @@ func notehit(_order,_distance,_type):
 		get_parent().get_node("Status").score += 100
 	else:
 		get_parent().get_node("Status").score += 50
+
+func _on_instrumental_finished():
+	Global.end_song()

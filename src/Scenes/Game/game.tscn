@@ -135,7 +135,6 @@ value = 10.0
 show_percentage = false
 
 [node name="HUDText" type="Marker2D" parent="HUD/Status"]
-visible = false
 z_index = 10
 position = Vector2(1, 280)
 
@@ -196,8 +195,6 @@ script = ExtResource("15_alv4b")
 
 [node name="Camera" type="Camera2D" parent="Background"]
 ignore_rotation = false
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
 editor_draw_screen = false
 
 [node name="Characters" type="Node2D" parent="Background"]
@@ -214,3 +211,4 @@ script = ExtResource("17_6vn3o")
 [connection signal="second_beat" from="HUD/Chart/Timeline" to="Background/Characters" method="_on_timeline_second_beat"]
 [connection signal="section_changed" from="HUD/Chart/Timeline" to="HUD" method="_on_timeline_section_changed"]
 [connection signal="section_changed" from="HUD/Chart/Timeline" to="Background" method="_on_timeline_section_changed"]
+[connection signal="finished" from="HUD/Chart/Instrumental" to="HUD/Chart" method="_on_instrumental_finished"]

@@ -10,6 +10,7 @@ var bpm = 120
 var sections : Array = []
 var current_section = -1
 var beat_count = 0
+var section = {}
 
 func initialize():
 	current_section = -1
@@ -42,6 +43,7 @@ func _process(_delta):
 				process_section(chart.sections[current_section])
 				emit_signal("second_beat")
 				emit_signal("section_changed",chart.sections[current_section]) 
+				section = chart.sections[current_section]
 
 func process_section(section_info):
 	var changeBPM = section_info.has("changeBPM") and section_info["changeBPM"]

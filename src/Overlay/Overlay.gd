@@ -100,7 +100,7 @@ func _Scene_Tick():
 		scene = get_tree().change_scene_to_file(scene)
 		resetfade()
 
-func change_scene_to_file(next_scene,instant,type):
+func change_scene_to_file(next_scene, type = "Fade", instant = false):
 	if instant: # Instantly goes to the next scene
 		scene = get_tree().change_scene_to_file(next_scene)
 	else: # Goes to the next scene with effect

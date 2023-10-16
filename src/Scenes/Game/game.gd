@@ -5,15 +5,11 @@ var current_song
 const input = [KEY_A, KEY_S, KEY_K, KEY_L]
 var downscroll = true
 var data
-var start_from = 50
+var start_from = 0
 var song
 
 func _ready():
-	song = {
-		"name":"Corrupted-Hero",
-		"vanilla":false,
-		"mod":"Pibby Apocalypse"
-	}
+	song = Global.state.song
 	
 	data = _load_data(song)
 	_load_game(song)

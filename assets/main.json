@@ -1,0 +1,11 @@
+{
+	"name":"Vanilla",
+	"story":{},
+	"freeplay":{
+		"icons":["boyfriend"],
+		"songs":[
+			[0, "tutorial"],
+			[0, "bopeebo"]
+		]
+	}
+}
