@@ -9,7 +9,7 @@ var sy = 0
 
 const ANIMATION_SPEED = 10
 
-@onready var camera = get_parent().get_parent().get_node("Camera")
+@onready var camera = Global.get_node_scene("Background/Camera")
 
 func _ready():
 	get_tree().get_current_scene().get_node("HUD/Chart/Timeline").second_beat.connect(section_changed)

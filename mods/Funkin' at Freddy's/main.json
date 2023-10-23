@@ -1,0 +1,11 @@
+{
+	"name":"Funkin' at Freddy's",
+	"icon_file":"icon.png",
+	"story":{},
+	"freeplay":{
+		"icons":["spingtap"],
+		"songs":[
+			[0, "salvage"]
+		]
+	}
+}

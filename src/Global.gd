@@ -2,7 +2,10 @@ extends Node
 
 var mods = null
 var state = {
-	"song":null,
+	"song": {
+		"name": "tutorial",
+		"vanilla": true
+	},
 	"mode":"freeplay"
 }
 

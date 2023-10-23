@@ -52,9 +52,9 @@ func health_bar(delta):
 		Icon.position.x = lerp(Icon.position.x,0.0,10 * delta)
 	
 	if hp < 2000:
-		Icons[1].region_rect.position.x = Icons[0].texture.get_width() / 2
+		Icons[1].region_rect.position.x = Icons[1].texture.get_width() / 2
 	elif hp > 18000:
-		Icons[0].region_rect.position.x = Icons[1].texture.get_width() / 2
+		Icons[0].region_rect.position.x = Icons[0].texture.get_width() / 2
 
 func _on_timeline_first_beat():
 	$"HUDText/Icons".scale = Vector2(1.1,1.1)

@@ -8,6 +8,7 @@ func _load(data):
 	Zoom = stagedata.Camera.zoom
 	Offsets.Position = Vector2(stagedata.Camera.offsetx,stagedata.Camera.offsety)
 	$Characters._load(data,stagedata)
+	instant_scroll()
 
 var Position = Vector2(640,360)
 var Zoom = 0.75
@@ -46,7 +47,6 @@ func _process(delta):
 	$Camera.position = scroll.Position
 	$Camera.zoom = Vector2(scroll.Zoom + bump,scroll.Zoom + bump)
 	$Camera.rotation_degrees = scroll.Rotation_Degrees
-	
 
 func _on_timeline_section_changed(info):
 	bump += 0.05
@@ -54,3 +54,27 @@ func _on_timeline_section_changed(info):
 		var pos = $Characters.character_nodes[int(!info.mustHitSection)].position
 		var campos = $Characters.character_nodes[int(!info.mustHitSection)].chardata.cameraoffset
 		Char_Offsets.Position = pos + Vector2(campos.x,campos.y)
+
+#------------------------------------------------------------
+#Functions
+
+func instant_scroll():
+	scroll.Position = Position
+	scroll.Zoom = Zoom
+	scroll.Rotation_Degrees = Rotation_Degrees
+
+func set_camera_pos(pos = null, zoom = null, rotate = null, instant = false):
+	if pos != null:
+		Position = pos
+		if instant:
+			scroll.Position = pos
+	
+	if zoom != null:
+		Zoom = zoom
+		if instant:
+			scroll.Zoom = zoom
+	
+	if rotate != null:
+		Rotation_Degrees = rotate
+		if instant:
+			scroll.Rotation_Degrees = rotate

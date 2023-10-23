@@ -1,6 +1,6 @@
 extends Node2D
 
-const option_spacing = 64.0
+const option_spacing = 86.0
 
 #------------------------------------------------------------------------
 
@@ -11,20 +11,30 @@ func _ready():
 #------------------------------------------------------------------------
 
 var preloaded_songs = []
+var icons = []
 
 func initalize_options():
 	preloaded_songs = []
 	
-	var main_file = FileAccess.open("res://assets/main.json", FileAccess.READ)
-	preloaded_songs.append(JSON.parse_string(main_file.get_as_text()))
-	main_file.close()
-	
-	for mod in Global.mods.mods:
-		var path = "res://mods/" + mod + "/main.json"
-		if FileAccess.file_exists(path):
-			var file = FileAccess.open(path, FileAccess.READ)
+	for mod in ["Vanilla"] + Global.mods.mods:
+		var path = "res://mods/" + mod + "/"
+		if mod == "Vanilla":
+			path = "res://assets/"
+		if FileAccess.file_exists(path + "main.json"):
+			var file = FileAccess.open(path + "main.json", FileAccess.READ)
 			mod = JSON.parse_string(file.get_as_text())
 			file.close()
+			
+			var image = Image.new()
+			image.load(path + mod["icon_file"])
+			mod["icon_file"] = ImageTexture.create_from_image(image)
+			
+			var icons = []
+			for icon in mod["freeplay"]["icons"]:
+				image.load(path + "Characters/" +  icon + "/icon.png")
+				icon = ImageTexture.create_from_image(image)
+				icons.append(icon)
+			mod["freeplay"]["icons"] = icons
 			preloaded_songs.append(mod)
 
 #------------------------------------------------------------------------
@@ -33,6 +43,7 @@ var option_node = preload("res://src/Scenes/Menus/Freeplay/Option.tscn")
 var nodes = []
 
 func create_options(data):
+	offset = 640.0
 	for node in nodes:
 		node.queue_free()
 	nodes.clear()
@@ -43,21 +54,23 @@ func create_options(data):
 		category = null
 		in_category = false
 		for mod in preloaded_songs:
-			load_options.append(mod.name)
+			load_options.append([mod.icon_file,mod.name])
 	else:
 		category = select
 		in_category = true
 		for song in preloaded_songs[data]["freeplay"]["songs"]:
-			load_options.append(song[1])
+			load_options.append([preloaded_songs[data]["freeplay"]["icons"][song[0]],song[1]])
 	
 	for option in load_options.size():
 		var instance = option_node.instantiate()
 		add_child(instance)
 		instance.data = {
-			"text": load_options[option].to_upper(),
+			"text": load_options[option][1].to_upper(),
 			"offset": option_spacing * option,
 			"order": option
 		}
+		instance.modulate.v = 0.5
+		instance.get_node("Icon").texture = load_options[option][0]
 		nodes.append(instance)
 
 #------------------------------------------------------------------------

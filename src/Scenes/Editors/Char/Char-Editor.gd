@@ -45,9 +45,10 @@ func _ready():
 	load_char()
 
 func initalize_mods():
-	$HUD/Mods.add_icon_item(load("res://src/Scenes/Char-Editor/images/vanilla.png"),"Vanilla")
-	for mod in Global.mods.mods:
+	for mod in ["Vanilla"] + Global.mods.mods:
 		var image_path = "res://mods/" + mod + "/icon32.png"
+		if mod == "Vanilla":
+			image_path = "res://assets/icon32.png"
 		var image = Image.new()
 		var image_loaded = image.load(image_path)
 		$HUD/Mods.add_icon_item(ImageTexture.create_from_image(image),mod)

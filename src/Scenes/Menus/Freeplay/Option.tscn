@@ -20,3 +20,10 @@ theme_override_font_sizes/font_size = 60
 text = "BOPEEBO"
 vertical_alignment = 1
 script = ExtResource("2_ertso")
+metadata/_edit_horizontal_guides_ = [-27.0, 22.0, -3.0]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-50, 37)
+scale = Vector2(0.6, 0.6)
+region_enabled = true
+region_rect = Rect2(0, 0, 150, 150)

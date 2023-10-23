@@ -1,5 +1,6 @@
 {
 	"name":"Vanilla",
+	"icon_file":"icon.png",
 	"story":{},
 	"freeplay":{
 		"icons":["boyfriend"],

@@ -1,5 +1,6 @@
 {
 	"name":"Pibby Apocalypse DEMO",
+	"icon_file":"icon.png",
 	"story":{},
 	"freeplay":{
 		"icons":["gumball", "finn-cn", "jake", "bad-finn"],

@@ -11,6 +11,9 @@ var textureobjload = preload("res://src/Scenes/Game/background/StageTexture.tscn
 
 #Loads Stage Textures
 func _load(stname):
+	var main = Node2D.new()
+	add_child(main)
+	
 	stage_name = stname.name
 	
 	var data_file = FileAccess.open(Global.get_mod_path(stname) + "Stages/" + stage_name + "/stage.json", FileAccess.READ)
@@ -19,7 +22,7 @@ func _load(stname):
 	stage_data = data_json
 	for i in stage_data.Stage.StageTexture.size():
 		var texture = textureobjload.instantiate()
-		add_child(texture)
+		main.add_child(texture)
 		var local_texture_data = stage_data.Stage.StageTexture[i]  # Rename the variable
 		
 		var image = Image.new()
@@ -45,3 +48,9 @@ func _load(stname):
 		#height
 		texture.scale.y = local_texture_data.height
 		texture.sy = local_texture_data.height
+	
+	var script_path = Global.get_mod_path(stname) + "Stages/" + stage_name + "/script.gd"
+	
+	if FileAccess.file_exists(script_path):
+		main.set_script(load(script_path))
+		

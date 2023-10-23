@@ -84,7 +84,7 @@ func animation(delta):
 			-frame.frameY
 		)
 
-func set_anim(anim,force_anim):
+func set_anim(anim,force_anim = false):
 	if force_anim or !force:
 		force = force_anim
 		current_animation = anim
