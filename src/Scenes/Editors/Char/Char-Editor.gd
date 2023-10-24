@@ -38,8 +38,6 @@ var current_path = ""
 
 func _ready():
 	initalize_mods()
-	discord_sdk.details = "Character Editor"
-	discord_sdk.refresh()
 	for i in def_animations.size():
 		$HUD/Animations.add_item(def_animations[i])
 	load_char()

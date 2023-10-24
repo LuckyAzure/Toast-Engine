@@ -3,8 +3,9 @@ extends Node
 var mods = null
 var state = {
 	"song": {
-		"name": "tutorial",
-		"vanilla": true
+		"name": "mindless",
+		"vanilla": false,
+		"mod": "Pibby Apocalypse"
 	},
 	"mode":"freeplay"
 }

@@ -23,7 +23,6 @@ config/icon="res://icon.png"
 [autoload]
 
 Overlay="*res://src/Overlay/Overlay.tscn"
-DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 Global="*res://src/Global.gd"
 
 [display]
@@ -35,7 +34,7 @@ window/vsync/vsync_mode=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg")
+enabled=PackedStringArray()
 
 [filesystem]
 

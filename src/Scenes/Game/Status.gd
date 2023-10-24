@@ -23,8 +23,8 @@ func update_status():
 	if maxscore != 0 or score != 0:
 		var accuracy = (float(score) / float(maxscore)) * 100.0
 		$HUDText/Score.text = "Score: " + str(score) + " | Misses: " + str(misses) + " | Accuracy: " + str(snapped(accuracy, 0.01)) + "%"
-	discord_sdk.state = $HUDText/Score.text
-	discord_sdk.refresh()
+	#discord_sdk.state = $HUDText/Score.text
+	#discord_sdk.refresh()
 
 func reload_icons():
 	var chars = Global.get_node_scene("Background/Characters").character_nodes

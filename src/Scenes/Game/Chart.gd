@@ -26,9 +26,9 @@ func start_song():
 	$Timeline.initialize()
 	$Instrumental.play(Global.scene().start_from)
 	$Voices.play(Global.scene().start_from)
-	discord_sdk.start_timestamp = int(Time.get_unix_time_from_system())
-	discord_sdk.end_timestamp = int(Time.get_unix_time_from_system()) + $Instrumental.stream.get_length()
-	discord_sdk.refresh()
+	#discord_sdk.start_timestamp = int(Time.get_unix_time_from_system())
+	#discord_sdk.end_timestamp = int(Time.get_unix_time_from_system()) + $Instrumental.stream.get_length()
+	#discord_sdk.refresh()
 
 var play = true
 
@@ -38,8 +38,8 @@ func _process(delta):
 	$Label.text = "section: " + str($Timeline.current_section) + "\n"
 	$Label.text += "bpm: " + str($Timeline.bpm) + "\n"
 	$Label.text += "section_length: " + str(2400 / ($Timeline.bpm * 0.01)) + "\n"
-	if $Timeline.current_section != -1:
-		$Label.text += "section_end: " + str($Timeline.sections[$Timeline.current_section]) 
+	if $Timeline.current_section != 0:
+		$Label.text += "section_end: " + str($Timeline.sections[$Timeline.current_section][0]) 
 	
 	if $Instrumental.playing:
 		var playback_adjusted_time = ($Instrumental.get_playback_position() + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()) * 1000.0
@@ -121,13 +121,22 @@ func load_chart(song):
 	var json_text = file.get_as_text()
 	file.close()
 	var chart_data = JSON.parse_string(json_text).song
-
+	
+	var temp_bpm = chart_data.bpm
+	var current_time = 0
+	
 	# Process and organize notes
 	for note_item in chart_data.notes:  # Rename the iterator variable
 		var section_notes = note_item.sectionNotes
 		var section = note_item
 		section.erase("sectionNotes")
-		chart.sections.append(section)
+		
+		if section.has("changeBPM") and section.changeBPM:
+			temp_bpm = section["bpm"]
+		var section_duration = 2400.0 / (temp_bpm * 0.01)
+		
+		current_time += section_duration
+		chart.sections.append([current_time,section])
 
 		var must_hit_section = note_item.mustHitSection
 		for note_data in section_notes:
