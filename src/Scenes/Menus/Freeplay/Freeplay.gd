@@ -5,8 +5,19 @@ const option_spacing = 86.0
 #------------------------------------------------------------------------
 
 func _ready():
+	RenderingServer.set_default_clear_color(Color(0, 0, 0))
+	initalize_bg()
 	initalize_options()
 	create_options(null)
+
+#------------------------------------------------------------------------
+
+var main_bg = Texture
+
+func initalize_bg():
+	var image = Image.new()
+	image.load("res://assets/images/Freeplay/bg.png")
+	main_bg = ImageTexture.create_from_image(image)
 
 #------------------------------------------------------------------------
 
@@ -28,6 +39,9 @@ func initalize_options():
 			var image = Image.new()
 			image.load(path + mod["icon_file"])
 			mod["icon_file"] = ImageTexture.create_from_image(image)
+			
+			image.load(path + mod["bg_file"])
+			mod["bg_file"] = ImageTexture.create_from_image(image)
 			
 			var icons = []
 			for icon in mod["freeplay"]["icons"]:
@@ -51,11 +65,13 @@ func create_options(data):
 	var load_options = []
 	
 	if data == null:
+		$Background.texture = main_bg
 		category = null
 		in_category = false
 		for mod in preloaded_songs:
 			load_options.append([mod.icon_file,mod.name])
 	else:
+		$Background.texture = preloaded_songs[data]["bg_file"]
 		category = select
 		in_category = true
 		for song in preloaded_songs[data]["freeplay"]["songs"]:
@@ -85,6 +101,15 @@ var offset = 283.0
 
 func scroll_options(delta):
 	offset = lerp(offset, 283 - (select * option_spacing), 10.0 * delta)
+	
+	var target_color
+	
+	if in_category:
+		target_color = Color.html(preloaded_songs[category]["freeplay"]["songs"][select][2])
+	else:
+		target_color = Color.html(preloaded_songs[select]["bg_color"])
+	
+	$Background.modulate = $Background.modulate.lerp(target_color,10.0 * delta)
 
 #------------------------------------------------------------------------
 
