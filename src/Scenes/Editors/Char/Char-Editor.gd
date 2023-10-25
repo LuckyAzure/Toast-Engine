@@ -23,8 +23,8 @@ const def_char = {
 	"aa": 0,
 	"animations": {},
 	"xml_data": {},
-	"hp_color":"#ffffff",
-	"has_winning_icon":false
+	"hp_color": "#ffffff",
+	"has_winning_icon": false
 }
 
 var charname = "boyfriend"

@@ -1,0 +1,63 @@
+{
+   "Stage": {
+      "Camera": {
+         "offsetx": 0,
+         "offsety": 0,
+         "zoom": 1,
+	 "speed": 0.05
+      },
+      "Enemy": {
+         "x": -400,
+         "y": 300,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "GF": {
+         "x": 0,
+         "y": 80,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "Player": {
+         "x": 300,
+         "y": 300,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "StageTexture": [
+         {
+            "filename": "stageback.png",
+            "name": "Background",
+            "index": -20,
+            "becentered": true,
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1,
+            "sensitivity": {"x":0.1,"y":0.1}
+         },
+         {
+            "filename": "stagefront.png",
+            "name": "Stage",
+            "index": -10,
+            "becentered": true,
+            "x": 0,
+            "y": 400,
+            "width": 1.1,
+            "height": 1.1,
+            "sensitivity": {"x":0,"y":0}
+         },
+         {
+            "filename": "stagecurtains.png",
+            "name": "Curtains",
+            "index": 1,
+            "becentered": true,
+            "x": -100,
+            "y": -300,
+            "width": 0.8,
+            "height": 0.8,
+            "sensitivity": {"x":0.1,"y":0.1}
+         }
+      ]
+   }
+}

@@ -6,27 +6,15 @@
          "mod":null
       },
       {
-         "name":"boyfriend",
+         "name":"dad",
          "vanilla":true,
          "mod":null
       },
       null
    ],
    "stage":{
-      "name":"test",
+      "name":"week1",
       "vanilla":true,
       "mod":null
-   },
-   "preload_characters":[
-      {
-         "name":"boyfriend",
-         "vanilla":true,
-         "mod":null
-      },
-      {
-         "name":"boyfriend",
-         "vanilla":true,
-         "mod":null
-      }
-   ]
+   }
 }

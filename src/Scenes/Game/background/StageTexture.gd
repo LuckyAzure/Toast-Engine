@@ -36,7 +36,7 @@ func _Animation(delta):
 	
 	UpdatePosition()
 
-func section_changed(beat):
+func section_changed(_beat):
 	if texture_data.has("animations") and (texture_data.animations.size() - 1) > Anim:
 		Anim += 1
 	else:

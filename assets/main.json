@@ -8,7 +8,8 @@
 		"icons":["boyfriend"],
 		"songs":[
 			[0, "tutorial", "FFD800"],
-			[0, "bopeebo", "FFD800"]
+			[0, "bopeebo", "FFD800"],
+			[0, "dadbattle", "FFD800"]
 		]
 	}
 }

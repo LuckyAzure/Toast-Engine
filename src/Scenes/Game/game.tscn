@@ -112,6 +112,7 @@ texture = ExtResource("7_t1brj")
 [node name="Voices" type="AudioStreamPlayer" parent="HUD/Chart"]
 
 [node name="Label" type="Label" parent="HUD/Chart"]
+visible = false
 offset_left = -93.0
 offset_top = -99.0
 offset_right = 102.0

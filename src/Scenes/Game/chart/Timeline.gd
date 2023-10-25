@@ -36,6 +36,6 @@ func _process(_delta):
 		while audio_position > sections[current_section][0]:
 			beat = 0
 			current_section += 1
-			if current_section < sections.size():
+			if current_section < sections.size() and current_section < sections.size():
 				emit_signal("section_changed",sections[current_section][1]) 
 				section = chart.sections[current_section]

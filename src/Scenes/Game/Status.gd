@@ -67,7 +67,7 @@ func health_bar(delta):
 		if has_winning_icons[1]:
 			Icons[1].region_rect.position.x -= Icons[1].region_rect.size.x
 
-func _on_timeline_beat_changed(beat):
+func _on_timeline_beat_changed(_beat):
 	$"HUDText/Icons".scale = Vector2(1.1,1.1)
 	Icons[0].position.x = -5
 	Icons[1].position.x = 5
