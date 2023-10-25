@@ -1,7 +1,7 @@
 res://default_env.tres
 res://src/Scenes/Menus/Freeplay/Freeplay.tscn
-res://src/Scenes/Game/background/character.gdshader
 res://src/Scenes/Game/Chart.gd
+res://src/Scenes/Game/background/character.gdshader
 res://src/Scenes/Game/chart/note.gdshader
 res://src/Scenes/Game/game.gdshader
 res://src/Scenes/Game/game.tscn
@@ -9,7 +9,5 @@ res://src/Scenes/Menus/Main/Menu.tscn
 res://src/Overlay/Overlay.tscn
 res://src/Sound/sound.tscn
 res://src/Scenes/Editors/Char/Char-Editor.tscn
-res://src/Scenes/Game/Status.gd
-res://src/Scenes/Game/background/StageTexture.gd
+res://src/Global.gd
 res://src/Scenes/Game/chart/Timeline.gd
-res://src/Scenes/Game/game.gd
