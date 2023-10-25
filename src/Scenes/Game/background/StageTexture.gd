@@ -12,7 +12,7 @@ const ANIMATION_SPEED = 10
 @onready var camera = Global.get_node_scene("Background/Camera")
 
 func _ready():
-	get_tree().get_current_scene().get_node("HUD/Chart/Timeline").second_beat.connect(section_changed)
+	get_tree().get_current_scene().get_node("HUD/Chart/Timeline").beat_changed.connect(section_changed)
 
 func _process(delta):
 	if texture_data.has("animations"):
@@ -36,7 +36,7 @@ func _Animation(delta):
 	
 	UpdatePosition()
 
-func section_changed():
+func section_changed(beat):
 	if texture_data.has("animations") and (texture_data.animations.size() - 1) > Anim:
 		Anim += 1
 	else:

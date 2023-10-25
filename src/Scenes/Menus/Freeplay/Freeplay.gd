@@ -120,14 +120,17 @@ var in_category = false
 
 func process_input():
 	if Input.is_action_just_pressed("ui_up"):
+		Sound.play("scroll")
 		select -= 1
 		if select < 0:
 			select = nodes.size() - 1
 	if Input.is_action_just_pressed("ui_down"):
+		Sound.play("scroll")
 		select += 1
 		if select > nodes.size() - 1:
 			select = 0
 	if Input.is_action_just_pressed("ui_accept"):
+		Sound.play("confirm")
 		if in_category:
 			Global.state = {
 				"song":{
@@ -143,6 +146,7 @@ func process_input():
 			create_options(select)
 			select = 0
 	if Input.is_action_just_pressed("ui_cancel"):
+		Sound.play("cancel")
 		if in_category:
 			select = category
 			create_options(null)

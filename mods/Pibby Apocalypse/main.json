@@ -11,13 +11,13 @@
 			[0, "My-Amazing-World", "FFD800"],
 			[0, "Retcon", "FFD800"],
 			[0, "Forgotten-World", "FFD800"],
-			[1, "Mindless", "FFD800"],
-			[1, "blessed-by-swords", "FFD800"],
-			[2, "Brotherly-Love", "FFD800"],
-			[1, "Suffering-Siblings", "FFD800"],
-			[1, "Come-Along-With-Me", "FFD800"],
-			[3, "No-Hero-Remix", "FFD800"],
-			[3, "Corrupted-Hero-Remix", "FFD800"]
+			[1, "Mindless", "A8A0B3"],
+			[1, "blessed-by-swords", "A8A0B3"],
+			[2, "Brotherly-Love", "A8A0B3"],
+			[1, "Suffering-Siblings", "A8A0B3"],
+			[1, "Come-Along-With-Me", "A8A0B3"],
+			[3, "No-Hero-Remix", "A8A0B3"],
+			[3, "Corrupted-Hero-Remix", "A8A0B3"]
 		]
 	}
 }

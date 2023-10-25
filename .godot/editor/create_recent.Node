@@ -1,14 +1,14 @@
+Node
+Label
 Sprite2D
+ColorRect
 Node2D
 WorldEnvironment
-ColorRect
 RichTextLabel
 ParallaxBackground
 ParallaxLayer
-Label
 VideoStreamPlayer
 Marker2D
 ColorPicker
 OptionButton
 ProgressBar
-Node

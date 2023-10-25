@@ -68,8 +68,9 @@ func _set_anim(data,charorder,type):
 			return
 		character_nodes[charorder].set_anim(anim,false)
 
-func _on_timeline_second_beat():
-	for i in character_nodes.size():
-		if character_nodes[i] != null:
-			if character_nodes[i].current_animation == "Idle" and !character_nodes[i].loop:
-				character_nodes[i].set_anim("Idle",false)
+func _on_timeline_beat_changed(beat):
+	if beat % 2 == 0:
+		for i in character_nodes.size():
+			if character_nodes[i] != null:
+				if character_nodes[i].current_animation == "Idle" and !character_nodes[i].loop:
+					character_nodes[i].set_anim("Idle",false)

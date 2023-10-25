@@ -18,7 +18,7 @@ func _load(song,note_skin):
 	$Notes.load_notes_texture(note_skin)
 	load_audio(song)
 	load_chart(song)
-	$Timeline.bpm = chart.info.bpm 
+	$Timeline.bpm = chart.info.bpm
 	song_data.speed = chart.info.speed * 1.0
 	song_time = -2400 / (chart.info.bpm * 0.01)
 
@@ -33,8 +33,6 @@ func start_song():
 var play = true
 
 func _process(delta):
-	
-	
 	$Label.text = "section: " + str($Timeline.current_section) + "\n"
 	$Label.text += "bpm: " + str($Timeline.bpm) + "\n"
 	$Label.text += "section_length: " + str(2400 / ($Timeline.bpm * 0.01)) + "\n"
@@ -136,7 +134,7 @@ func load_chart(song):
 		var section_duration = 2400.0 / (temp_bpm * 0.01)
 		
 		current_time += section_duration
-		chart.sections.append([current_time,section])
+		chart.sections.append([current_time,section,section_duration])
 
 		var must_hit_section = note_item.mustHitSection
 		for note_data in section_notes:

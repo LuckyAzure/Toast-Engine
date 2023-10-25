@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://lgneqnxsw4di"]
+[gd_scene load_steps=6 format=3 uid="uid://lgneqnxsw4di"]
 
 [ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="1"]
 [ext_resource type="Script" path="res://src/Overlay/Overlay.gd" id="2"]
+[ext_resource type="FontFile" uid="uid://cjkarubs0u7dw" path="res://src/Fonts/SynchronizerNbpRegular-Zgpz.ttf" id="3_q26ca"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("1")])
@@ -11,6 +12,10 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_fqtis"]
+base_font = ExtResource("3_q26ca")
+spacing_glyph = -1
 
 [node name="Overlay" type="CanvasLayer"]
 layer = 128
@@ -36,3 +41,18 @@ Memory: 500 MB
 Memory Peak: 500 MB"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="Version" type="Label" parent="."]
+texture_filter = 1
+texture_repeat = 1
+offset_left = 2.0
+offset_top = 699.0
+offset_right = 1279.0
+offset_bottom = 717.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_fqtis")
+theme_override_font_sizes/font_size = 8
+text = "Toast Engine"
+horizontal_alignment = 2
+vertical_alignment = 2

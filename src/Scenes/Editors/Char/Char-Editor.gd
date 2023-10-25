@@ -23,7 +23,8 @@ const def_char = {
 	"aa": 0,
 	"animations": {},
 	"xml_data": {},
-	"hp_color":"#ffffff"
+	"hp_color":"#ffffff",
+	"has_winning_icon":false
 }
 
 var charname = "boyfriend"
@@ -75,6 +76,9 @@ func load_char():
 	if !chardata.has("hp_color"):
 		chardata.merge({"hp_color": "#ffffff"},true)
 	$HUD/HPBarColor.color = Color.html(chardata.hp_color)
+	if !chardata.has("has_winning_icon"):
+		chardata.merge({"has_winning_icon": false},true)
+	$HUD/winning_icon.button_pressed = chardata.has_winning_icon
 	
 	convert_xml_to_json_data()
 	load_animations_from_data()
@@ -106,6 +110,7 @@ func save_char():
 	chardata.cameraoffset.x = $HUD/CameraX.value
 	chardata.cameraoffset.y = $HUD/CameraY.value
 	chardata.hp_color = $HUD/HPBarColor.color.to_html()
+	chardata.has_winning_icon = $HUD/winning_icon.button_pressed
 	
 	var json_path = current_path + "characters/" + charname + "/" + charname + ".json"
 	var file = FileAccess.open(json_path, FileAccess.WRITE)
@@ -274,6 +279,10 @@ func load_icon():
 	if image_loaded == OK:
 		var texture = ImageTexture.create_from_image(image)
 		$HUD/Icon.texture = texture
-		$HUD/Icon.region_rect = Rect2(0,0,texture.get_width() / 2,texture.get_height())
+		$HUD/Icon.region_rect = Rect2(0,0,texture.get_width() / (3 if chardata.has_winning_icon else 2),texture.get_height())
 	else:
 		print("Failed to load image:", image_path)
+
+
+func _on_winning_icon_pressed():
+	$HUD/Icon.region_rect = Rect2(0,0,$HUD/Icon.texture.get_width() / (3 if $HUD/winning_icon.button_pressed else 2),$HUD/Icon.texture.get_height())

@@ -24,6 +24,7 @@ config/icon="res://icon.png"
 
 Overlay="*res://src/Overlay/Overlay.tscn"
 Global="*res://src/Global.gd"
+Sound="*res://src/Sound/sound.tscn"
 
 [display]
 

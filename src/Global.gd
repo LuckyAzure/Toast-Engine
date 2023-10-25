@@ -1,9 +1,11 @@
 extends Node
 
+var version = "Toast Engine Open Alpha Test v0.001"
+
 var mods = null
 var state = {
 	"song": {
-		"name": "mindless",
+		"name": "corrupted-hero",
 		"vanilla": false,
 		"mod": "Pibby Apocalypse"
 	},

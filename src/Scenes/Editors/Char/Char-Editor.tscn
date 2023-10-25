@@ -23,7 +23,7 @@ script = ExtResource("2_vhxn2")
 offset_left = 854.0
 offset_top = 8.0
 offset_right = 1272.0
-offset_bottom = 389.0
+offset_bottom = 424.0
 color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="CharName" type="TextEdit" parent="HUD"]
@@ -54,18 +54,25 @@ offset_bottom = 90.0
 text = "Save"
 
 [node name="Loop" type="CheckBox" parent="HUD"]
-offset_left = 1139.0
+offset_left = 1127.0
 offset_top = 127.0
-offset_right = 1206.0
+offset_right = 1194.0
 offset_bottom = 158.0
 text = "Loop"
 
+[node name="winning_icon" type="CheckBox" parent="HUD"]
+offset_left = 861.0
+offset_top = 200.0
+offset_right = 928.0
+offset_bottom = 231.0
+text = "Has Winning Icon (3 icons)"
+
 [node name="AA" type="CheckBox" parent="HUD"]
-offset_left = 1208.0
-offset_top = 127.0
-offset_right = 1268.0
-offset_bottom = 158.0
-text = "AA"
+offset_left = 1114.0
+offset_top = 161.0
+offset_right = 1214.0
+offset_bottom = 192.0
+text = "Pixelated"
 
 [node name="FPS" type="SpinBox" parent="HUD"]
 offset_left = 900.0
@@ -100,17 +107,17 @@ offset_bottom = 156.0
 text = "Scale:"
 
 [node name="CameraX" type="SpinBox" parent="HUD"]
-offset_left = 1001.0
+offset_left = 937.0
 offset_top = 160.0
-offset_right = 1084.06
+offset_right = 1020.06
 offset_bottom = 191.0
 min_value = -1000.0
 max_value = 1000.0
 
 [node name="CameraY" type="SpinBox" parent="HUD"]
-offset_left = 1089.0
+offset_left = 1025.0
 offset_top = 160.0
-offset_right = 1172.06
+offset_right = 1108.06
 offset_bottom = 191.0
 min_value = -1000.0
 max_value = 1000.0
@@ -118,9 +125,9 @@ max_value = 1000.0
 [node name="Label3" type="Label" parent="HUD"]
 offset_left = 861.0
 offset_top = 164.0
-offset_right = 993.0
+offset_right = 937.0
 offset_bottom = 190.0
-text = "Camera Position:"
+text = "Cam Pos:"
 
 [node name="Animations" type="OptionButton" parent="HUD"]
 offset_left = 857.0
@@ -138,9 +145,9 @@ icon_alignment = 1
 
 [node name="Status" type="Label" parent="HUD"]
 offset_left = 854.0
-offset_top = 389.0
+offset_top = 424.0
 offset_right = 1272.0
-offset_bottom = 413.0
+offset_bottom = 448.0
 theme_override_fonts/font = ExtResource("2_e3vst")
 theme_override_font_sizes/font_size = 8
 text = "x"
@@ -149,9 +156,9 @@ vertical_alignment = 1
 
 [node name="HPBarColor" type="ColorPicker" parent="HUD"]
 offset_left = 857.0
-offset_top = 197.0
+offset_top = 235.0
 offset_right = 1065.0
-offset_bottom = 377.0
+offset_bottom = 415.0
 edit_alpha = false
 picker_shape = 4
 can_add_swatches = false
@@ -160,13 +167,13 @@ presets_visible = false
 
 [node name="IconBack" type="ColorRect" parent="HUD"]
 offset_left = 1078.0
-offset_top = 200.0
+offset_top = 238.0
 offset_right = 1258.0
-offset_bottom = 380.0
+offset_bottom = 418.0
 color = Color(0.290196, 0.415686, 0.231373, 1)
 
 [node name="Icon" type="Sprite2D" parent="HUD"]
-position = Vector2(1168, 290)
+position = Vector2(1168, 326)
 region_enabled = true
 region_rect = Rect2(0, 0, 132, 132)
 
@@ -210,5 +217,6 @@ default_color = Color(0, 1, 0, 1)
 [connection signal="item_selected" from="HUD/Mods" to="." method="_on_mods_item_selected"]
 [connection signal="pressed" from="HUD/Load" to="HUD" method="_on_Load_pressed"]
 [connection signal="pressed" from="HUD/Save" to="HUD" method="_on_save_pressed"]
+[connection signal="pressed" from="HUD/winning_icon" to="." method="_on_winning_icon_pressed"]
 [connection signal="item_selected" from="HUD/Animations" to="HUD" method="_on_animations_item_selected"]
 [connection signal="item_selected" from="HUD/CharAnimations" to="." method="_on_CharAnimations_item_selected"]
