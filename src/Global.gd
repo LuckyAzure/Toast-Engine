@@ -1,6 +1,6 @@
 extends Node
 
-var version = "Toast Engine Open Alpha Test v0.001" + str(ProjectSettings.get("application/config/version"))
+var version = "Toast Engine Open Alpha Test v0.042"
 
 var mods = null
 var state = {

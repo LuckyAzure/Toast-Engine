@@ -9,5 +9,10 @@ res://src/Scenes/Menus/Main/Menu.tscn
 res://src/Overlay/Overlay.tscn
 res://src/Sound/sound.tscn
 res://src/Scenes/Editors/Char/Char-Editor.tscn
-res://src/Global.gd
-res://src/Scenes/Game/chart/Timeline.gd
+res://src/Scenes/Menus/Options/options.tscn
+res://src/Scenes/Menus/Options/Option.tscn
+res://src/Scenes/Menus/Options/options.gd
+res://src/SaveData.gd
+res://src/Scenes/Menus/Options/Group.gd
+res://src/Scenes/Menus/Options/Group.tscn
+res://src/Scenes/Menus/Options/Option.gd

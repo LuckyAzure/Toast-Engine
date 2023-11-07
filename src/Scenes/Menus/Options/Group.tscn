@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtwbs01wwvsek"]
+
+[ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="1_l57pa"]
+[ext_resource type="Script" path="res://src/Scenes/Menus/Options/Group.gd" id="2_7jlc5"]
+
+[sub_resource type="FontVariation" id="FontVariation_dh3er"]
+base_font = ExtResource("1_l57pa")
+
+[node name="Group" type="Label"]
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+offset_bottom = 40.0
+pivot_offset = Vector2(0, 40)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_dh3er")
+theme_override_font_sizes/font_size = 24
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_7jlc5")
