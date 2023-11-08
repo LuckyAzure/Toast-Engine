@@ -5,14 +5,19 @@ const option_spacing = 72.0
 var select = 0
 var options = [
 	["online",null],
-	["freeplay",null],
+	["freeplay","res://src/Scenes/Menus/Freeplay/Freeplay.tscn"],
 	["credits",null],
-	["options",null]
+	["options","res://src/Scenes/Menus/Options/options.tscn"]
 ]
 
 #------------------------------------------------------------------------
 
 func _ready():
+	for i in options.size():
+		if Overlay.state == options[i][0]:
+			select = i
+			print("van?")
+	
 	create_options()
 	initalize_bg()
 
@@ -49,10 +54,10 @@ func _process(delta):
 
 #------------------------------------------------------------------------
 
-var offset = 286.0
+var offset = 640.0
 
 func scroll_options(delta):
-	offset = lerp(offset, 283 - (select * option_spacing),10.0 * delta)
+	offset = lerp(offset, 283.0 - (select * option_spacing),10.0 * delta)
 
 #------------------------------------------------------------------------
 
@@ -67,6 +72,10 @@ func process_input():
 		select += 1
 		if select > options.size() - 1:
 			select = 0
+	if Input.is_action_just_pressed("ui_accept"):
+		Sound.play("confirm")
+		if options[select][1] != null:
+			Overlay.change_scene_to_file(options[select][1],"Fade")
 
 #------------------------------------------------------------------------
 

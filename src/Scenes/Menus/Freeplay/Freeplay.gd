@@ -151,6 +151,8 @@ func process_input():
 			select = category
 			create_options(null)
 		else:
-			pass
+			Sound.play("cancel")
+			Overlay.state = "freeplay"
+			Overlay.change_scene_to_file("res://src/Scenes/Menus/Main/Menu.tscn","Fade")
 
 #------------------------------------------------------------------------

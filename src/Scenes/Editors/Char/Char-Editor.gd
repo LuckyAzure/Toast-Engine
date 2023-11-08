@@ -97,7 +97,7 @@ func load_char():
 		print("Failed to load image:", image_path)
 
 func create_default_json_file(json_path):
-	chardata.merge(def_char,true)
+	chardata = def_char
 	chardata.name = charname
 	print(chardata)
 	var file = FileAccess.open(json_path, FileAccess.WRITE)

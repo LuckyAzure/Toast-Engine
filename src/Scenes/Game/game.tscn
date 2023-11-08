@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://w3iacwd70ape"]
+[gd_scene load_steps=24 format=3 uid="uid://w3iacwd70ape"]
 
 [ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
 [ext_resource type="Script" path="res://src/Scenes/Game/HUD.gd" id="2_a0jha"]
 [ext_resource type="Script" path="res://src/Scenes/Game/Chart.gd" id="2_g4b56"]
+[ext_resource type="Script" path="res://src/Scenes/Game/Pause.gd" id="2_tql3x"]
 [ext_resource type="Texture2D" uid="uid://c5ywvg6r4xb72" path="res://src/Scenes/Game/images/img4.jpg" id="3_xpyfo"]
 [ext_resource type="Script" path="res://src/Scenes/Game/chart/Notes.gd" id="4_bvybj"]
 [ext_resource type="Texture2D" uid="uid://cco7p4rk761gb" path="res://src/Scenes/Game/images/Left.png" id="4_xxp5s"]
@@ -37,6 +38,17 @@ bg_color = Color(0, 1, 0, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_e8eki")
+
+[node name="Pause" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 122
+script = ExtResource("2_tql3x")
+
+[node name="Back" type="ColorRect" parent="Pause"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.490196)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 120
@@ -118,7 +130,7 @@ offset_top = -99.0
 offset_right = 102.0
 offset_bottom = -72.0
 
-[node name="Status" type="Node" parent="HUD"]
+[node name="Status" type="Node2D" parent="HUD"]
 script = ExtResource("9_jmjuk")
 
 [node name="Cooldown" type="Sprite2D" parent="HUD/Status"]

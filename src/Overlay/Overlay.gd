@@ -29,8 +29,9 @@ func _Fullscreen():
 
 var Stats = {
 	"FPS": {"boolean" : true, "value" : 0},
-	"Memory": {"boolean" : false, "value" : 0},
-	"Memory_Peak": {"boolean" : false, "value" : 0}
+	"Memory": {"boolean" : true, "value" : 0},
+	"Memory_Peak": {"boolean" : true, "value" : 0},
+	"Video": {"boolean" : true, "value" : 0}
 }
 
 func _Debug_Tick():
@@ -38,15 +39,19 @@ func _Debug_Tick():
 	Stats.FPS.value = Engine.get_frames_per_second()
 	Stats.Memory.value = snapped(Performance.get_monitor(Performance.MEMORY_STATIC) / 1048576.0,0.01)
 	Stats.Memory_Peak.value = snapped(Performance.get_monitor(Performance.MEMORY_STATIC_MAX) / 1048576.0,0.01)
+	Stats.Video.value = snapped(Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED) / 1048576.0,0.01)
 	
 	$Debug.text = "" # Clears text
 	
-	if Stats.FPS.boolean:
+	if Save.data.options.graphics.show_fps:
 		$Debug.text += "FPS: " + str(Stats.FPS.value) # Frames per Second
-	if Stats.Memory.boolean:
+	if Save.data.options.graphics.show_vram:
+		$Debug.text += "\nVRAM: " + str(Stats.Video.value) + " MB" # Memory Usage
+	if Save.data.options.graphics.show_memory:
 		$Debug.text += "\nMemory: " + str(Stats.Memory.value) + " MB" # Memory Usage
-	if Stats.Memory_Peak.boolean:
+	if Save.data.options.graphics.show_memory_leak:
 		$Debug.text += "\nMemory Peak: " + str(Stats.Memory_Peak.value) + " MB" # Max Memory Used
+	
 	
 # ------------------------------------------------------------------------
 
@@ -79,16 +84,20 @@ func flash():
 
 var scene
 var scenechange = {"boolean" : false, "type" : "Fade"}
+var prev_scene = null
 
 func _Scene_Tick():
 	if scenechange.boolean and $Fade.modulate.a == 1:
 		scenechange.boolean = false
 		reversefade = false
+		get_tree().paused = false
 		scene = get_tree().change_scene_to_file(scene)
 		resetfade()
 
 func change_scene_to_file(next_scene, type = "Fade", instant = false):
+	prev_scene = scene
 	if instant: # Instantly goes to the next scene
+		get_tree().paused = false
 		scene = get_tree().change_scene_to_file(next_scene)
 	else: # Goes to the next scene with effect
 		scenechange.type = type

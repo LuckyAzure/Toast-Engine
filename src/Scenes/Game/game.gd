@@ -3,12 +3,13 @@ extends Node2D
 var current_song
 
 const input = [KEY_A, KEY_S, KEY_K, KEY_L]
-var downscroll = true
+var downscroll
 var data
 var start_from = 0
 var song
 
 func _ready():
+	downscroll = Save.data.options.gameplay.scroll
 	song = Global.state.song
 	
 	data = _load_data(song)

@@ -18,6 +18,7 @@ base_font = ExtResource("3_q26ca")
 spacing_glyph = -1
 
 [node name="Overlay" type="CanvasLayer"]
+process_mode = 3
 layer = 128
 script = ExtResource("2")
 

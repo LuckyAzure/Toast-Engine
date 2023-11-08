@@ -1,5 +1,6 @@
 ColorRect
 Node2D
+CanvasLayer
 Node
 Label
 Sprite2D
@@ -11,4 +12,3 @@ VideoStreamPlayer
 Marker2D
 ColorPicker
 OptionButton
-ProgressBar

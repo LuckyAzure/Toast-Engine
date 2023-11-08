@@ -1,6 +1,6 @@
 extends Node
 
-var version = "Toast Engine Open Alpha Test v0.042"
+var version = "Toast Engine Open Alpha Test v0.131"
 
 var mods = null
 var state = {
@@ -13,10 +13,14 @@ var state = {
 }
 
 func _ready():
+	Save.load_data()
 	var json_path = "res://mods/mods.json"
 	var file = FileAccess.open(json_path, FileAccess.READ)
 	mods = JSON.parse_string(file.get_as_text())
 	file.close()
+
+func _process(delta):
+	Engine.max_fps = Save.data.options.graphics.fps
 
 func scene():
 	return get_tree().get_current_scene()

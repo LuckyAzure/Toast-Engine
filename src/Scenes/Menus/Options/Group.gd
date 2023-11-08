@@ -8,11 +8,11 @@ var data = {
 	"order": 0
 }
 
-func _process(delta):
+func _process(_delta):
 	text = data.text
 	position = Vector2(
-		main.group_offset + data.offset + 38,
+		main.group_offset + data.offset - 200,
 		24
 	)
 	
-	modulate.a = sin(position.x / 320)
+	modulate.a = sin((position.x + 48) / 320.0)
