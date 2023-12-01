@@ -28,6 +28,9 @@ var default = {
 		"visuals": {
 			"hide_hud": false,
 			"timer_bar": true
+		},
+		"account": {
+			"username": "player0000"
 		}
 	}
 }

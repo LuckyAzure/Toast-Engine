@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dore4405xbxkr"]
+
+[ext_resource type="Script" path="res://src/Scenes/Online/lan_lobby.gd" id="1_4k1qi"]
+[ext_resource type="FontFile" uid="uid://bri8baubbs85p" path="res://src/Fonts/Muffninja-Regular-edited.ttf" id="2_5nc3b"]
+[ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="2_gfgoc"]
+
+[sub_resource type="FontVariation" id="FontVariation_h0oph"]
+base_font = ExtResource("2_gfgoc")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gv3tv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_pxw4f"]
+base_font = ExtResource("2_5nc3b")
+spacing_glyph = -4
+
+[node name="Lobbies" type="Node2D"]
+script = ExtResource("1_4k1qi")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.286275, 0.368627, 0.317647, 1)
+position = Vector2(640, 360)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="IP" type="LineEdit" parent="CanvasLayer"]
+offset_left = 531.0
+offset_top = 320.0
+offset_right = 1167.0
+offset_bottom = 391.0
+theme_override_fonts/font = SubResource("FontVariation_h0oph")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_gv3tv")
+placeholder_text = "IP Host"
+clear_button_enabled = true
+
+[node name="Join" type="Button" parent="CanvasLayer"]
+offset_left = 216.0
+offset_top = 320.0
+offset_right = 504.0
+offset_bottom = 387.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = SubResource("FontVariation_pxw4f")
+theme_override_font_sizes/font_size = 64
+text = "CONNECT"
+
+[node name="Host" type="Button" parent="CanvasLayer"]
+offset_left = 216.0
+offset_top = 400.0
+offset_right = 504.0
+offset_bottom = 467.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = SubResource("FontVariation_pxw4f")
+theme_override_font_sizes/font_size = 64
+text = "HOST"
+
+[node name="Status" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 183.0
+offset_right = 1281.0
+offset_bottom = 299.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = SubResource("FontVariation_pxw4f")
+theme_override_font_sizes/font_size = 64
+text = "PLACEHOLDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]

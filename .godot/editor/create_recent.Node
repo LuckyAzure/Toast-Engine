@@ -1,8 +1,11 @@
+ProgressBar
+Button
+LineEdit
+CanvasLayer
+Label
 ColorRect
 Node2D
-CanvasLayer
 Node
-Label
 Sprite2D
 WorldEnvironment
 RichTextLabel
@@ -10,5 +13,3 @@ ParallaxBackground
 ParallaxLayer
 VideoStreamPlayer
 Marker2D
-ColorPicker
-OptionButton

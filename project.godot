@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Friday Night Funkin': Toast Engine"
-run/main_scene="res://src/Scenes/Menus/Freeplay/Freeplay.tscn"
+run/main_scene="res://src/Scenes/Menus/Main/Menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="ToastEngine"
 config/features=PackedStringArray("4.2")

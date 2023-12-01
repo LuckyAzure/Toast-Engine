@@ -26,6 +26,9 @@ var options = {
 	["Visuals", "visuals"]: {
 		"Hide HUD": ["hide_hud", BOOLEAN],
 		"Timer Bar": ["timer_bar", BOOLEAN]
+	},
+	["Account", "account"]: {
+		"Username": ["username", TYPE]
 	}
 }
 
@@ -166,5 +169,6 @@ enum {
 	PERCENTAGE,
 	RANGE,
 	VALUE,
-	BIND
+	BIND,
+	TYPE
 }

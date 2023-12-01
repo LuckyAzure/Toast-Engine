@@ -1,0 +1,20 @@
+{
+   "characters":[
+      {
+         "name":"boyfriend",
+         "vanilla":true,
+         "mod":null
+      },
+      {
+         "name":"zardy",
+         "vanilla":false,
+         "mod":null
+      },
+      null
+   ],
+   "stage":{
+      "name":"stage",
+      "vanilla":false,
+      "mod":null
+   }
+}

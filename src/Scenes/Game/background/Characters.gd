@@ -73,4 +73,4 @@ func _on_timeline_beat_changed(beat):
 		for i in character_nodes.size():
 			if character_nodes[i] != null:
 				if character_nodes[i].current_animation == "Idle" and !character_nodes[i].loop:
-					character_nodes[i].set_anim("Idle",false)
+					character_nodes[i].set_anim("Idle")

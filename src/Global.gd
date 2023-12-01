@@ -33,7 +33,7 @@ func get_mod_path(data):
 	if data.vanilla:
 		current_path = "res://assets/"
 	else:
-		if data.mod != null:
+		if data.has("mod") and data.mod != null:
 			current_path = "res://mods/" + data.mod + "/"
 		else:
 			current_path = "res://mods/" + scene().current_song.mod + "/"

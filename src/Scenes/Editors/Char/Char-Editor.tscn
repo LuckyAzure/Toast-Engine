@@ -23,7 +23,7 @@ script = ExtResource("2_vhxn2")
 offset_left = 854.0
 offset_top = 8.0
 offset_right = 1272.0
-offset_bottom = 424.0
+offset_bottom = 453.0
 color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="CharName" type="TextEdit" parent="HUD"]
@@ -54,79 +54,113 @@ offset_bottom = 90.0
 text = "Save"
 
 [node name="Loop" type="CheckBox" parent="HUD"]
-offset_left = 1127.0
-offset_top = 127.0
-offset_right = 1194.0
-offset_bottom = 158.0
+offset_left = 1196.0
+offset_top = 233.0
+offset_right = 1263.0
+offset_bottom = 264.0
 text = "Loop"
 
 [node name="winning_icon" type="CheckBox" parent="HUD"]
 offset_left = 861.0
-offset_top = 200.0
-offset_right = 928.0
-offset_bottom = 231.0
+offset_top = 232.0
+offset_right = 1091.0
+offset_bottom = 263.0
 text = "Has Winning Icon (3 icons)"
 
 [node name="AA" type="CheckBox" parent="HUD"]
-offset_left = 1114.0
-offset_top = 161.0
-offset_right = 1214.0
-offset_bottom = 192.0
+offset_left = 1093.0
+offset_top = 233.0
+offset_right = 1193.0
+offset_bottom = 264.0
 text = "Pixelated"
 
 [node name="FPS" type="SpinBox" parent="HUD"]
 offset_left = 900.0
-offset_top = 126.0
+offset_top = 128.0
 offset_right = 983.063
-offset_bottom = 157.0
+offset_bottom = 159.0
 min_value = 1.0
+max_value = 1000.0
+value = 24.0
+
+[node name="Length" type="SpinBox" parent="HUD"]
+offset_left = 1056.0
+offset_top = 128.0
+offset_right = 1139.06
+offset_bottom = 159.0
+min_value = 1.0
+max_value = 200.0
 value = 24.0
 
 [node name="Label" type="Label" parent="HUD"]
 offset_left = 861.0
-offset_top = 130.0
+offset_top = 132.0
 offset_right = 893.0
-offset_bottom = 156.0
+offset_bottom = 158.0
 text = "FPS:"
 
 [node name="Scale" type="SpinBox" parent="HUD"]
-offset_left = 1045.0
-offset_top = 126.0
-offset_right = 1128.06
-offset_bottom = 157.0
+offset_left = 1164.0
+offset_top = 196.0
+offset_right = 1247.06
+offset_bottom = 227.0
 min_value = 0.1
 max_value = 10.0
 step = 0.1
 value = 1.0
 
+[node name="Label4" type="Label" parent="HUD"]
+offset_left = 989.0
+offset_top = 132.0
+offset_right = 1047.0
+offset_bottom = 158.0
+text = "Length:"
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+offset_left = 861.0
+offset_top = 164.0
+offset_right = 1262.0
+offset_bottom = 191.0
+value = 50.0
+show_percentage = false
+
+[node name="length_counter" type="Label" parent="HUD"]
+offset_left = 861.0
+offset_top = 165.0
+offset_right = 1262.0
+offset_bottom = 191.0
+text = "Length:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label2" type="Label" parent="HUD"]
-offset_left = 991.0
-offset_top = 130.0
-offset_right = 1036.0
-offset_bottom = 156.0
+offset_left = 1112.0
+offset_top = 200.0
+offset_right = 1157.0
+offset_bottom = 226.0
 text = "Scale:"
 
 [node name="CameraX" type="SpinBox" parent="HUD"]
 offset_left = 937.0
-offset_top = 160.0
+offset_top = 197.0
 offset_right = 1020.06
-offset_bottom = 191.0
+offset_bottom = 228.0
 min_value = -1000.0
 max_value = 1000.0
 
 [node name="CameraY" type="SpinBox" parent="HUD"]
 offset_left = 1025.0
-offset_top = 160.0
+offset_top = 197.0
 offset_right = 1108.06
-offset_bottom = 191.0
+offset_bottom = 228.0
 min_value = -1000.0
 max_value = 1000.0
 
 [node name="Label3" type="Label" parent="HUD"]
 offset_left = 861.0
-offset_top = 164.0
+offset_top = 201.0
 offset_right = 937.0
-offset_bottom = 190.0
+offset_bottom = 227.0
 text = "Cam Pos:"
 
 [node name="Animations" type="OptionButton" parent="HUD"]
@@ -145,9 +179,9 @@ icon_alignment = 1
 
 [node name="Status" type="Label" parent="HUD"]
 offset_left = 854.0
-offset_top = 424.0
+offset_top = 453.0
 offset_right = 1272.0
-offset_bottom = 448.0
+offset_bottom = 477.0
 theme_override_fonts/font = ExtResource("2_e3vst")
 theme_override_font_sizes/font_size = 8
 text = "x"
@@ -156,9 +190,9 @@ vertical_alignment = 1
 
 [node name="HPBarColor" type="ColorPicker" parent="HUD"]
 offset_left = 857.0
-offset_top = 235.0
+offset_top = 263.0
 offset_right = 1065.0
-offset_bottom = 415.0
+offset_bottom = 443.0
 edit_alpha = false
 picker_shape = 4
 can_add_swatches = false
@@ -167,13 +201,13 @@ presets_visible = false
 
 [node name="IconBack" type="ColorRect" parent="HUD"]
 offset_left = 1078.0
-offset_top = 238.0
+offset_top = 266.0
 offset_right = 1258.0
-offset_bottom = 418.0
+offset_bottom = 446.0
 color = Color(0.290196, 0.415686, 0.231373, 1)
 
 [node name="Icon" type="Sprite2D" parent="HUD"]
-position = Vector2(1168, 326)
+position = Vector2(1168, 354)
 region_enabled = true
 region_rect = Rect2(0, 0, 132, 132)
 

@@ -4,7 +4,7 @@ const option_spacing = 72.0
 
 var select = 0
 var options = [
-	["online",null],
+	["online","res://src/Scenes/Online/lan_lobby.tscn"],
 	["freeplay","res://src/Scenes/Menus/Freeplay/Freeplay.tscn"],
 	["credits",null],
 	["options","res://src/Scenes/Menus/Options/options.tscn"]
@@ -16,7 +16,6 @@ func _ready():
 	for i in options.size():
 		if Overlay.state == options[i][0]:
 			select = i
-			print("van?")
 	
 	create_options()
 	initalize_bg()

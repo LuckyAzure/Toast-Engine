@@ -48,7 +48,6 @@ func _process(delta):
 		cooldown -= delta
 		return
 	
-	
 	if pause:
 		scroll_options(delta)
 		$Back.show()

@@ -1,0 +1,96 @@
+{
+   "Stage": {
+      "Camera": {
+         "offsetx": 0,
+         "offsety": -00,
+         "zoom": 0.7,
+	 "speed": 0.05
+      },
+      "Enemy": {
+         "x": -500,
+         "y": 350,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "GF": {
+         "x": 0,
+         "y": 80,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "Player": {
+         "x": 500,
+         "y": 350,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "StageTexture": [
+         {
+            "filename": "grass.png",
+            "name": "Grass",
+            "index": -1,
+            "becentered": true,
+            "x": 0,
+            "y": 300,
+            "width": 1,
+            "height": 1,
+            "sensitivity": {"x":0,"y":0}
+         },
+         {
+            "filename": "fence.png",
+            "name": "Fence",
+            "index": -2,
+            "becentered": true,
+            "x": 0,
+            "y": 50,
+            "width": 1,
+            "height": 1,
+            "sensitivity": {"x":0.1,"y":0}
+         },
+         {
+            "filename": "corn.png",
+            "name": "Corn",
+            "index": -3,
+            "becentered": true,
+            "x": 0,
+            "y": -50,
+            "width": 1,
+            "height": 1,
+            "sensitivity": {"x":0.2,"y":0}
+         },
+         {
+            "filename": "cornback.png",
+            "name": "Cornback",
+            "index": -4,
+            "becentered": true,
+            "x": 0,
+            "y": -50,
+            "width": 1,
+            "height": 1,
+            "sensitivity": {"x":0.3,"y":0}
+         },
+         {
+            "filename": "clouds.png",
+            "name": "Clouds",
+            "index": -5,
+            "becentered": true,
+            "x": 0,
+            "y": -500,
+            "width": 1,
+            "height": 1,
+            "sensitivity": {"x":0.2,"y":0.2}
+         },
+         {
+            "filename": "sky.png",
+            "name": "Background",
+            "index": -10,
+            "becentered": true,
+            "x": -600,
+            "y": -300,
+            "width": 1,
+            "height": 1,
+            "sensitivity": {"x":0.9,"y":0.9}
+         }
+      ]
+   }
+}

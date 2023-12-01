@@ -10,11 +10,11 @@ var current_frame = 0
 var frame_start_position = 0
 var frame_max = 0
 var remaining_frames = 0
+var length = 0
 var current_animation
 var force = false
 
 func _preload(data):
-	
 	chardata = data[0]
 	$Texture.texture = data[1]
 	
@@ -64,12 +64,15 @@ func _process(delta):
 
 func animation(delta):
 	if remaining_frames > 0.0:
-		current_frame += delta * fps
+		if current_frame < frame_start_position + frame_max:
+			current_frame += delta * fps
+		else:
+			current_frame = frame_start_position + frame_max
 		remaining_frames -= delta * fps
 	if remaining_frames <= 0.0:
 		if loop:
-			current_frame = frame_start_position 
-			remaining_frames = frame_max
+			current_frame = frame_start_position
+			remaining_frames = length
 		else:
 			current_frame = frame_start_position + frame_max
 		if current_animation != "Idle":
@@ -85,7 +88,7 @@ func animation(delta):
 			-frame.frameY
 		)
 
-func set_anim(anim,force_anim = false):
+func set_anim(anim,force_anim = false, is_singing = false):
 	if force_anim or !force:
 		force = force_anim
 		current_animation = anim
@@ -98,4 +101,5 @@ func set_anim(anim,force_anim = false):
 			current_frame = anim_data.start_position
 			frame_start_position = anim_data.start_position
 			frame_max = anim_data.max
-			remaining_frames = anim_data.max
+			remaining_frames = anim_data.length
+			length = anim_data.length

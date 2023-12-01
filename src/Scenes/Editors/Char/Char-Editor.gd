@@ -121,10 +121,20 @@ var current_frame = 0
 var frame_start_position = 0
 var frame_max = 0
 var remaining_frames = 0
+var length = 0
 
 func _process(delta):
 	animation(delta)
+	progress_bar()
 	status()
+
+func progress_bar():
+	print(frame_max)
+	length = $HUD/Length.value
+	$HUD/ProgressBar.value = current_frame
+	$HUD/ProgressBar.min_value = frame_start_position
+	$HUD/ProgressBar.max_value = frame_start_position + frame_max
+	$HUD/length_counter.text = str(int(current_frame - frame_start_position))
 
 func animation(delta):
 	$Char.scale = Vector2($HUD/Scale.value,$HUD/Scale.value)
@@ -133,12 +143,15 @@ func animation(delta):
 	var loop = $HUD/Loop.button_pressed
 
 	if remaining_frames > 0.0:
-		current_frame += delta * fps
+		if current_frame < frame_start_position + frame_max:
+			current_frame += delta * fps
+		else:
+			current_frame = frame_start_position + frame_max
 		remaining_frames -= delta * fps
 	if remaining_frames <= 0.0:
 		if loop:
-			current_frame = frame_start_position 
-			remaining_frames = frame_max
+			current_frame = frame_start_position
+			remaining_frames = length
 		else:
 			current_frame = frame_start_position + frame_max
 	
@@ -225,12 +238,14 @@ func load_animations_from_data():
 	frame_start_position = animationnames[0][1]
 	frame_max = animationnames[0][2]
 	remaining_frames = animationnames[0][2]
+	$HUD/Length.value = animationnames[0][2]
 
 func _on_CharAnimations_item_selected(index):
 	current_frame = animationnames[index][1]
 	frame_start_position = animationnames[index][1]
 	frame_max = animationnames[index][2]
 	remaining_frames = animationnames[index][2]
+	$HUD/Length.value = animationnames[index][2]
 
 func save_animation(anim_name):
 	var animation_name = anim_name
@@ -242,6 +257,7 @@ func save_animation(anim_name):
 		"y": $Char/Image.position.y,
 		"start_position": frame_start_position,
 		"max": frame_max,
+		"length": $HUD/Length.value
 		}
 	}
 	
@@ -258,10 +274,13 @@ func load_animation(anim):
 		$HUD/Loop.button_pressed = animation.loop
 		$Char/Image.position.x = animation.x
 		$Char/Image.position.y = animation.y
+		if !animation.has("length"):
+			animation["length"] = animation.max
+		$HUD/Length.value = animation.length
 		current_frame = animation.start_position
 		frame_start_position = animation.start_position
 		frame_max = animation.max
-		remaining_frames = animation.max
+		remaining_frames = animation.length
 
 func _on_mods_item_selected(index):
 	if index == 0:

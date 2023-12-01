@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwenb4ce0j2se"]
+
+[ext_resource type="Script" path="res://src/Scenes/Online/lobbies.gd" id="1_ldqb1"]
+[ext_resource type="FontFile" uid="uid://bri8baubbs85p" path="res://src/Fonts/Muffninja-Regular-edited.ttf" id="2_8of6s"]
+
+[sub_resource type="FontVariation" id="FontVariation_pxw4f"]
+base_font = ExtResource("2_8of6s")
+spacing_glyph = -4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aanrg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a80fr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Lobbies" type="Node2D"]
+script = ExtResource("1_ldqb1")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.286275, 0.368627, 0.317647, 1)
+position = Vector2(640, 360)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer"]
+offset_left = 498.0
+offset_top = 22.0
+offset_right = 1258.0
+offset_bottom = 424.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/guide_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = SubResource("FontVariation_pxw4f")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/panel = SubResource("StyleBoxFlat_aanrg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a80fr")
+item_count = 2
+item_0/text = "TEST"
+item_1/text = "TEST2"
+
+[node name="Status" type="Label" parent="."]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = SubResource("FontVariation_pxw4f")
+theme_override_font_sizes/font_size = 64
+text = "PLACEHOLDER"
+horizontal_alignment = 1
+vertical_alignment = 1

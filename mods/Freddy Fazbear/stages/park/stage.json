@@ -1,0 +1,41 @@
+{
+   "Stage": {
+      "Camera": {
+         "offsetx": -50,
+         "offsety": -50,
+         "zoom": 0.75,
+	 "speed": 0.05
+      },
+      "Enemy": {
+         "x": -400,
+         "y": 300,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "GF": {
+         "x": 0,
+         "y": 80,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "Player": {
+         "x": 600,
+         "y": 300,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "StageTexture": [
+         {
+            "filename": "park.png",
+            "name": "Background",
+            "index": -10,
+            "becentered": true,
+            "x": 0,
+            "y": -350,
+            "width": 1.25,
+            "height": 1.25,
+            "sensitivity": {"x":0,"y":0}
+         }
+      ]
+   }
+}

@@ -17,6 +17,7 @@ func initialize():
 	bpm = chart.info.bpm
 	sections = chart.sections
 	emit_signal("section_changed",sections[current_section][1])
+	section = chart.sections[current_section][1]
 
 var beat = 0
 
@@ -38,4 +39,4 @@ func _process(_delta):
 			current_section += 1
 			if current_section < sections.size():
 				emit_signal("section_changed",sections[current_section][1]) 
-				section = chart.sections[current_section]
+				section = chart.sections[current_section][1]

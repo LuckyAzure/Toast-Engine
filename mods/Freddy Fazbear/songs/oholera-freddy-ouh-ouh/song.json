@@ -1,0 +1,20 @@
+{
+   "characters":[
+      {
+         "name":"boyfriend",
+         "vanilla":true,
+         "mod":null
+      },
+      {
+         "name":"freddy fazbear",
+         "vanilla":false,
+         "mod":null
+      },
+      null
+   ],
+   "stage":{
+      "name":"park",
+      "vanilla":false,
+      "mod":null
+   }
+}

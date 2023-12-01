@@ -9,7 +9,7 @@ var Back = get_parent().get_node("Background")
 func _ready():
 	Back.get_node("Characters").create_char(
 		{
-			 "name":"cartoon_bf_Gun",
+			 "name":"darwin",
 			 "vanilla":false,
 			 "mod":"Pibby Apocalypse"
 		},
