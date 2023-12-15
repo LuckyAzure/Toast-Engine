@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://w3iacwd70ape"]
+[gd_scene load_steps=18 format=3 uid="uid://w3iacwd70ape"]
 
 [ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
 [ext_resource type="Script" path="res://src/Scenes/Game/HUD.gd" id="2_a0jha"]
@@ -6,15 +6,9 @@
 [ext_resource type="Script" path="res://src/Scenes/Game/Pause.gd" id="2_tql3x"]
 [ext_resource type="Texture2D" uid="uid://c5ywvg6r4xb72" path="res://src/Scenes/Game/images/img4.jpg" id="3_xpyfo"]
 [ext_resource type="Script" path="res://src/Scenes/Game/chart/Notes.gd" id="4_bvybj"]
-[ext_resource type="Texture2D" uid="uid://cco7p4rk761gb" path="res://src/Scenes/Game/images/Left.png" id="4_xxp5s"]
-[ext_resource type="Texture2D" uid="uid://chf2cpmkx8j3m" path="res://src/Scenes/Game/images/Down.png" id="5_3oe43"]
 [ext_resource type="Script" path="res://src/Scenes/Game/chart/Timeline.gd" id="5_hhoua"]
-[ext_resource type="Script" path="res://src/Scenes/Game/P1.gd" id="5_q3v8y"]
-[ext_resource type="Texture2D" uid="uid://4pd1208i6inf" path="res://src/Scenes/Game/images/Up.png" id="6_pwnwc"]
-[ext_resource type="Texture2D" uid="uid://dj20x2yoqp61w" path="res://src/Scenes/Game/images/Right.png" id="7_t1brj"]
 [ext_resource type="Script" path="res://src/Scenes/Game/Status.gd" id="9_jmjuk"]
 [ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="9_y34d1"]
-[ext_resource type="Script" path="res://src/Scenes/Game/chart/P2.gd" id="12_fyd0v"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/Background.gd" id="15_alv4b"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/Characters.gd" id="15_oinxd"]
 [ext_resource type="Texture2D" uid="uid://boiqckvsowpv7" path="res://src/Scenes/Game/images/icon.png" id="15_vrppu"]
@@ -66,64 +60,15 @@ texture = ExtResource("3_xpyfo")
 [node name="Timeline" type="Node" parent="HUD/Chart"]
 script = ExtResource("5_hhoua")
 
-[node name="Notes" type="Node" parent="HUD/Chart"]
+[node name="Notes" type="Node2D" parent="HUD/Chart"]
 script = ExtResource("4_bvybj")
-
-[node name="P1" type="Marker2D" parent="HUD/Chart/Notes"]
-position = Vector2(370, -256)
-scale = Vector2(0.6, 0.6)
-script = ExtResource("5_q3v8y")
-
-[node name="ColorRect" type="ColorRect" parent="HUD/Chart/Notes/P1"]
-visible = false
-offset_left = -320.0
-offset_top = -2000.0
-offset_right = 320.0
-offset_bottom = 2000.0
-color = Color(0, 0, 0, 0.533333)
-
-[node name="Left" type="Sprite2D" parent="HUD/Chart/Notes/P1"]
-position = Vector2(-240, 0)
-texture = ExtResource("4_xxp5s")
-
-[node name="Down" type="Sprite2D" parent="HUD/Chart/Notes/P1"]
-position = Vector2(-80.0001, 0)
-texture = ExtResource("5_3oe43")
-
-[node name="Up" type="Sprite2D" parent="HUD/Chart/Notes/P1"]
-position = Vector2(80, 0)
-texture = ExtResource("6_pwnwc")
-
-[node name="Right" type="Sprite2D" parent="HUD/Chart/Notes/P1"]
-position = Vector2(240, 0)
-texture = ExtResource("7_t1brj")
-
-[node name="P2" type="Marker2D" parent="HUD/Chart/Notes"]
-position = Vector2(-370, -256)
-scale = Vector2(0.6, 0.6)
-script = ExtResource("12_fyd0v")
-
-[node name="Left" type="Sprite2D" parent="HUD/Chart/Notes/P2"]
-position = Vector2(-240, 0)
-texture = ExtResource("4_xxp5s")
-
-[node name="Down" type="Sprite2D" parent="HUD/Chart/Notes/P2"]
-position = Vector2(-80.0001, 0)
-texture = ExtResource("5_3oe43")
-
-[node name="Up" type="Sprite2D" parent="HUD/Chart/Notes/P2"]
-position = Vector2(80, 0)
-texture = ExtResource("6_pwnwc")
-
-[node name="Right" type="Sprite2D" parent="HUD/Chart/Notes/P2"]
-position = Vector2(240, 0)
-texture = ExtResource("7_t1brj")
 
 [node name="Instrumental" type="AudioStreamPlayer" parent="HUD/Chart"]
 
 [node name="Voices" type="AudioStreamPlayer" parent="HUD/Chart"]
 
 [node name="Label" type="Label" parent="HUD/Chart"]
+visible = false
 offset_left = -93.0
 offset_top = -99.0
 offset_right = 102.0
@@ -194,7 +139,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("9_y34d1")
 theme_override_font_sizes/font_size = 16
-text = "Score: 0 | Misses: 0 | Accuracy: N/A"
+text = "Score: 0 | Misses: 0 | Accuracy: N/A	"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -225,3 +170,4 @@ script = ExtResource("17_6vn3o")
 [connection signal="section_changed" from="HUD/Chart/Timeline" to="HUD" method="_on_timeline_section_changed"]
 [connection signal="section_changed" from="HUD/Chart/Timeline" to="Background" method="_on_timeline_section_changed"]
 [connection signal="finished" from="HUD/Chart/Instrumental" to="HUD/Chart" method="_on_instrumental_finished"]
+[connection signal="script_changed" from="Script" to="." method="_on_script_script_changed"]

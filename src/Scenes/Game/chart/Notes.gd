@@ -5,8 +5,49 @@ var note_skin
 var note_path
 
 func _process(delta):
-	$P1.HUD_TICK(delta)
-	$P2.HUD_TICK(delta)
+	for section in sections:
+		section.HUD_TICK(delta)
+
+var section_node = preload("res://src/Scenes/Game/chart/player_section.tscn")
+var sections = []
+
+func create_sections():
+	var section_positions = [
+		Vector2(370,-256),
+		Vector2(-370,-256),
+	]
+	
+	var multiplayer_is_real = Global.scene().is_multiplayer
+	
+	for i in 2:
+		var instance = section_node.instantiate()
+		add_child(instance)
+		sections.append(instance)
+		instance.position = section_positions[i]
+		instance.offset = i
+		if i == 1:
+			if multiplayer_is_real:
+				instance.input = [
+					Save.data.options.controls.left2,
+					Save.data.options.controls.down2,
+					Save.data.options.controls.up2,
+					Save.data.options.controls.right2
+				]
+			else:
+				instance.botplay = true
+		else:
+			instance.input = [
+				Save.data.options.controls.left,
+				Save.data.options.controls.down,
+				Save.data.options.controls.up,
+				Save.data.options.controls.right
+			]
+
+func spawn_note(data):
+	if data[1] > 3:
+		sections[1].spawn_note(data)
+	else:
+		sections[0].spawn_note(data)
 
 func load_notes_texture(note_skin_load):
 	note_path = "res://assets/notes/" + note_skin_load

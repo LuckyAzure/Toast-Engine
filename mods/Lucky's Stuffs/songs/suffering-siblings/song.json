@@ -1,0 +1,32 @@
+{
+   "characters":[
+      {
+         "name":"cartoon_bf_Gun",
+         "vanilla":false,
+         "mod":"Pibby Apocalypse"
+      },
+      {
+         "name":"finn-cn",
+         "vanilla":false,
+         "mod":"Pibby Apocalypse"
+      },
+      null
+   ],
+   "stage":{
+      "name":"lab",
+      "vanilla":false,
+      "mod":"Pibby Apocalypse"
+   },
+   "preload_characters":[
+      {
+         "name":"finn-sword",
+         "vanilla":false,
+         "mod":"Pibby Apocalypse"
+      },
+      {
+         "name":"finn-slash",
+         "vanilla":false,
+         "mod":"Pibby Apocalypse"
+      }
+   ]
+}

@@ -16,7 +16,11 @@ var default = {
 			"left": KEY_A,
 			"down": KEY_S,
 			"up": KEY_K,
-			"right": KEY_L
+			"right": KEY_L,
+			"left2": KEY_Y,
+			"down2": KEY_X,
+			"up2": KEY_N,
+			"right2": KEY_M
 		},
 		"graphics": {
 			"fps": 60,

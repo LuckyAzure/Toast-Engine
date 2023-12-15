@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dphgvl5a168c5"]
+
+[ext_resource type="Script" path="res://src/Scenes/Game/P1.gd" id="1_nau75"]
+[ext_resource type="Texture2D" uid="uid://cco7p4rk761gb" path="res://src/Scenes/Game/images/Left.png" id="2_vg6wt"]
+[ext_resource type="Texture2D" uid="uid://chf2cpmkx8j3m" path="res://src/Scenes/Game/images/Down.png" id="3_1kijy"]
+[ext_resource type="Texture2D" uid="uid://4pd1208i6inf" path="res://src/Scenes/Game/images/Up.png" id="4_ips7f"]
+[ext_resource type="Texture2D" uid="uid://dj20x2yoqp61w" path="res://src/Scenes/Game/images/Right.png" id="5_ud2aj"]
+
+[node name="Player_Section" type="Marker2D"]
+position = Vector2(370, -256)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_nau75")
+
+[node name="Left" type="Sprite2D" parent="."]
+position = Vector2(-240, 0)
+texture = ExtResource("2_vg6wt")
+
+[node name="Down" type="Sprite2D" parent="."]
+position = Vector2(-80.0001, 0)
+texture = ExtResource("3_1kijy")
+
+[node name="Up" type="Sprite2D" parent="."]
+position = Vector2(80, 0)
+texture = ExtResource("4_ips7f")
+
+[node name="Right" type="Sprite2D" parent="."]
+position = Vector2(240, 0)
+texture = ExtResource("5_ud2aj")

@@ -8,8 +8,34 @@
 		"icons":["boyfriend"],
 		"songs":[
 			[0, "tutorial", "FFD800"],
+			
 			[0, "bopeebo", "FFD800"],
-			[0, "dadbattle", "FFD800"]
+			[0, "fresh", "FFD800"],
+			[0, "dad-battle", "FFD800"],
+			
+			[0, "spookeez", "FFD800"],
+			[0, "south", "FFD800"],
+			[0, "monster", "FFD800"],
+			
+			[0, "pico", "FFD800"],
+			[0, "philly-nice", "FFD800"],
+			[0, "blammed", "FFD800"],
+			
+			[0, "satin-panties", "FFD800"],
+			[0, "high", "FFD800"],
+			[0, "milf", "FFD800"],
+			
+			[0, "cocoa", "FFD800"],
+			[0, "eggnog", "FFD800"],
+			[0, "winter-horrorland", "FFD800"],
+			
+			[0, "senpai", "FFD800"],
+			[0, "roses", "FFD800"],
+			[0, "thorns", "FFD800"],
+			
+			[0, "ugh", "FFD800"],
+			[0, "guns", "FFD800"],
+			[0, "stress", "FFD800"]
 		]
 	}
 }

@@ -24,9 +24,11 @@ func update_timer():
 		$Time.value = time_node.get_playback_position()
 
 func update_status():
-	if maxscore != 0 or score != 0:
-		var accuracy = (float(score) / float(maxscore)) * 100.0
-		$HUDText/Score.text = "Score: " + str(score) + " | Misses: " + str(misses) + " | Accuracy: " + str(snapped(accuracy, 0.01)) + "%"
+	var sections = Global.get_node_scene("HUD/Chart/Notes").sections
+	var status = sections[0].status
+	
+	if status.accuracy != 0 or status.score != 0:
+		$HUDText/Score.text = "Score: " + str(status.score) + " | Misses: " + str(status.misses) + " | Accuracy: " + str(snapped(status.accuracy * 100.0, 0.01)) + "%"
 	#discord_sdk.state = $HUDText/Score.text
 	#discord_sdk.refresh()
 

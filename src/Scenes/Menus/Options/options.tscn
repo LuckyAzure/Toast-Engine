@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://byhe0ihgma1a0"]
+[gd_scene load_steps=4 format=3 uid="uid://byhe0ihgma1a0"]
 
 [ext_resource type="Script" path="res://src/Scenes/Menus/Options/options.gd" id="1_l2a77"]
+[ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="2_vkb2q"]
+
+[sub_resource type="FontVariation" id="FontVariation_rv7qy"]
+base_font = ExtResource("2_vkb2q")
 
 [node name="Options" type="Node2D"]
 script = ExtResource("1_l2a77")
@@ -22,3 +26,14 @@ offset_top = 36.0
 offset_right = 1216.0
 offset_bottom = 97.0
 color = Color(0, 0, 0, 0.392157)
+
+[node name="Bind" type="Label" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_rv7qy")
+theme_override_font_sizes/font_size = 24
+text = "press enter "
+horizontal_alignment = 1
+vertical_alignment = 1

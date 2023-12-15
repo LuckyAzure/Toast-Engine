@@ -26,7 +26,6 @@ func _preload(data):
 	Global.get_node_scene("HUD/Status").reload_icons()
 
 func _load():
-	get_node("Texture").material.set_shader_parameter("mixture", 0)
 	var json_path = Global.get_mod_path(char) + "characters/" + char.name + "/" + char.name + ".json"
 	var file = FileAccess.open(json_path, FileAccess.READ)
 	chardata = JSON.parse_string(file.get_as_text())

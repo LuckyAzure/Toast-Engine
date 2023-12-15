@@ -1,10 +1,10 @@
+Label
+Node2D
 ProgressBar
 Button
 LineEdit
 CanvasLayer
-Label
 ColorRect
-Node2D
 Node
 Sprite2D
 WorldEnvironment
@@ -12,4 +12,3 @@ RichTextLabel
 ParallaxBackground
 ParallaxLayer
 VideoStreamPlayer
-Marker2D

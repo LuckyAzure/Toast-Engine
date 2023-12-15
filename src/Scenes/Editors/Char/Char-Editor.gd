@@ -9,11 +9,7 @@ const def_animations = [
 	"Left_Miss",
 	"Down_Miss",
 	"Up_Miss",
-	"Right_Miss",
-	"Left_Alt",
-	"Down_Alt",
-	"Up_Alt",
-	"Right_Alt"
+	"Right_Miss"
 ]
 
 const def_char = {

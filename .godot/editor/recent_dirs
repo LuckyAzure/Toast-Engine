@@ -1,4 +1,5 @@
 D:/Documents/Github/Toast-Engine
+res://src/Scenes/Game/chart
 res://src/Scenes/Online
 res://src/Scenes/Menus/Main
 res://src/Scenes/Game/pause
@@ -8,5 +9,4 @@ D:/Documents/Github/Toast-Engine/build
 res://src/Scenes/Menus/Freeplay
 res://src/Sound
 res://src/Scenes/Game/background
-res://src/Scenes/Game/chart
 res://src/Scenes/Game

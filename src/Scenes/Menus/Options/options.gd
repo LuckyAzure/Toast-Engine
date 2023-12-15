@@ -14,7 +14,11 @@ var options = {
 		"Left": ["left", BIND],
 		"Down": ["down", BIND],
 		"Up": ["up", BIND],
-		"Right": ["right", BIND]
+		"Right": ["right", BIND],
+		"Left (Player 2)": ["left2", BIND],
+		"Down (Player 2)": ["down2", BIND],
+		"Up (Player 2)": ["up2", BIND],
+		"Right (Player 2)": ["right2", BIND]
 	},
 	["Graphics", "graphics"]: {
 		"FPS": ["fps", VALUE, [1, [30.0,360.0]]],
@@ -54,6 +58,7 @@ func process_input():
 		
 		if nodes[select].data.variable[1] == BIND:
 			if Input.is_action_just_pressed("ui_accept"):
+				bind_boolean = true
 				Sound.play("confirm")
 		else:
 			if Input.is_action_just_pressed("ui_left"):
@@ -94,6 +99,17 @@ func process_input():
 			Overlay.state = "options"
 			Overlay.change_scene_to_file("res://src/Scenes/Menus/Main/Menu.tscn","Fade")
 
+#------------------------------------------------------------------------
+
+var bind_boolean = false
+
+func _input(event):
+	if event is InputEventKey and bind_boolean:
+		if event.is_pressed():
+			var data = nodes[select].data
+			Save.data.options[data.group[1]][data.variable[0]] = event.keycode
+			bind_boolean = false
+			
 
 #------------------------------------------------------------------------
 
@@ -105,7 +121,11 @@ func _ready():
 
 func _process(delta):
 	scroll_options_group(delta)
-	process_input()
+	if bind_boolean:
+		$Bind.show()
+	else:
+		$Bind.hide()
+		process_input()
 
 #------------------------------------------------------------------------
 

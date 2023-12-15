@@ -18,7 +18,6 @@ var sustain_anim_cooldown = 0
 var miss_cooldown = 0
 var downscroll = false
 
-
 var remove = false
 
 func _ready():
@@ -32,6 +31,7 @@ func _ready():
 func _process(delta):
 	sustain_end_texture_height = $Sustain/End.texture.get_height()
 	var time = Global.get_node_scene("HUD/Chart").song_time
+	var section = get_parent().get_parent()
 	var is_sustain = false
 	note_hittable = false
 	
@@ -45,8 +45,8 @@ func _process(delta):
 	if note_data.bot:
 		if (time - (note_position + data[2])) > 0:
 			queue_free()
-			backchars._set_anim(data,1,null)
-			get_parent().get_parent().animation[int(data[1]) % 4] = "HUD_Glow"
+			backchars._set_anim(data,section.offset,null)
+			section.animation[int(data[1]) % 4] = "HUD_Glow"
 		if (time - note_position) <= 0:
 			position.y = (note_position - time) * song_speed
 			if downscroll:
@@ -57,12 +57,12 @@ func _process(delta):
 			position.y = 0
 			self_modulate.a = 0
 			if sustain_anim_cooldown <= 0:
-				backchars._set_anim(data,1,null)
-				get_parent().get_parent().frames[int(data[1]) % 4] = 0
+				backchars._set_anim(data,section.offset,null)
+				section.frames[data[1]] = 0
 				sustain_anim_cooldown = 1
 			else:
 				sustain_anim_cooldown -= delta * 10
-			get_parent().get_parent().animation[int(data[1]) % 4] = "HUD_Glow"
+			section.animation[data[1]] = "HUD_Glow"
 			var sustain_size = ((note_position + data[2] - time) * song_speed) - sustain_end_texture_height
 			$Sustain.region_rect.size.y = sustain_size
 			$Sustain/End.position.y = sustain_size
@@ -74,7 +74,7 @@ func _process(delta):
 			)
 	else:
 		var chart = Global.get_node_scene("HUD/Chart")
-		var note_order = chart.NoteOrder[data[1]]
+		var note_order = section.noteorder[data[1]]
 		var note_order_size = note_order.size()
 
 		if note_order_size > 0:
@@ -87,10 +87,10 @@ func _process(delta):
 					note_hittable = true
 					
 				if note_hittable and Input.is_key_pressed(note_data.input) and note_holdable:
-					get_parent().get_parent().animation[data[1]] = "HUD_Glow"
+					section.animation[data[1]] = "HUD_Glow"
 					if sustain_anim_cooldown <= 0:
-						backchars._set_anim(data,0,null)
-						get_parent().get_parent().frames[data[1]] = 0
+						backchars._set_anim(data,section.offset,null)
+						section.frames[data[1]] = 0
 						sustain_anim_cooldown = 1
 					else:
 						sustain_anim_cooldown -= delta * 10
@@ -108,8 +108,8 @@ func _process(delta):
 					remove = true
 
 				if note_position < time - 150 and miss_cooldown <= 0:
-					chart.notemiss(data[1],data[3])
-					backchars._set_anim(data,0,"Miss")
+					section.notemiss(data[1],data[3])
+					backchars._set_anim(data,section.offset,"Miss")
 					miss_cooldown = 3
 				elif miss_cooldown > 0:
 					miss_cooldown -= delta * 20
@@ -118,8 +118,8 @@ func _process(delta):
 				note_hittable = true
 			elif note_position < time - 150:
 				remove = true
-				chart.notemiss(data[1],data[3])
-				backchars._set_anim(data,0,"Miss")
+				section.notemiss(data[1],data[3])
+				backchars._set_anim(data,section.offset,"Miss")
 		if remove:
 			queue_free()
 			note_order.pop_front()
@@ -142,19 +142,20 @@ func _input(event):
 		return
 	
 	var chart = Global.get_node_scene("HUD/Chart")
+	var section = get_parent().get_parent()
 	var time = chart.song_time
 	
 	var just_pressed = event.is_pressed() and not event.is_echo()
 	if data[2] == 0:
 		if just_pressed and !note_data.bot and note_hittable and event.keycode == note_data.input:
 			remove = true
-			get_parent().get_parent().animation[data[1]] = "HUD_Glow"
-			chart.notehit(data[1],(time - data[0]),data[3])
-			backchars._set_anim(data,0,null)
+			section.animation[data[1]] = "HUD_Glow"
+			section.notehit(data[1],(time - data[0]),data[3])
+			backchars._set_anim(data,section.offset,null)
 	else:
 		if just_pressed and !note_data.bot and note_hittable and event.keycode == note_data.input and !note_holdable:
-			get_parent().get_parent().animation[data[1]] = "HUD_Glow"
-			chart.notehit(data[1],(time - data[0]),data[3])
-			backchars._set_anim(data,0,null)
+			section.animation[data[1]] = "HUD_Glow"
+			section.notehit(data[1],(time - data[0]),data[3])
+			backchars._set_anim(data,section.offset,null)
 			self_modulate.a = 0
 			note_holdable = true

@@ -2,10 +2,13 @@ extends Node2D
 
 var current_song
 
-const input = [KEY_A, KEY_S, KEY_K, KEY_L]
 var downscroll
+var is_multiplayer = false
+
 var data
 var start_from = 0
+#380
+
 var song
 
 func _ready():
@@ -21,15 +24,14 @@ func _load_data(song):
 
 func _load_game(song):
 	current_song = song
-	var chartNotes = ["HUD/Chart/Notes/P1", "HUD/Chart/Notes/P2"]
 
 	$Background._load(data)
 	$HUD._load(song, "default")
 	load_script(song)
 
 	if downscroll:
-		for note in chartNotes:
-			get_node(note).position.y = -get_node(note).position.y
+		for section in $HUD/Chart/Notes.sections:
+			section.position.y = -section.position.y
 		$HUD/Status/HUDText.position.y = -$HUD/Status/HUDText.position.y
 
 var has_script = false
@@ -38,9 +40,17 @@ func load_script(song):
 	var song_path = Global.get_mod_path(song) + "songs/" + song.name + "/script.gd"
 	if FileAccess.file_exists(song_path):
 		has_script = true
-		Global.get_node_scene("Script").set_script(load(song_path))
+		
+		var local = load(song_path)
+		var script = FileAccess.open(song_path, FileAccess.READ).get_as_text()
+		
+		Global.get_node_scene("Script").set_script(local)
 		$Script._ready()
 
 func _process(delta):
 	if has_script:
 		$Script._process(delta)
+
+
+func _on_script_script_changed():
+	Global.get_node_scene("Script").script.reload(true)

@@ -5,9 +5,9 @@ var version = "Toast Engine Open Alpha Test v0.131"
 var mods = null
 var state = {
 	"song": {
-		"name": "corrupted-hero",
+		"name": "Absorbent",
 		"vanilla": false,
-		"mod": "Pibby Apocalypse"
+		"mod": "Cartoon Clash"
 	},
 	"mode":"freeplay"
 }

@@ -16,6 +16,7 @@ var chart = {
 func _load(song,note_skin):
 	song_data.name = song.name
 	$Notes.load_notes_texture(note_skin)
+	$Notes.create_sections()
 	load_audio(song)
 	load_chart(song)
 	$Timeline.bpm = chart.info.bpm
@@ -61,48 +62,13 @@ func _process(delta):
 		start_song()
 
 var count = 0
-var note = preload("res://src/Scenes/Game/chart/note.tscn")
-
-var NoteOrder = [[],[],[],[],[],[],[],[]]
-
-var def_note_nodes = [
-	"Notes/P1/Left",
-	"Notes/P1/Down",
-	"Notes/P1/Up",
-	"Notes/P1/Right",
-	
-	"Notes/P2/Left",
-	"Notes/P2/Down",
-	"Notes/P2/Up",
-	"Notes/P2/Right"
-]
-
-var def_notes = [
-	"Left",
-	"Down",
-	"Up",
-	"Right",
-]
 
 func process_notes():
-	var inputs = get_tree().get_current_scene().input
 	if chart.notes.size() > count:
 		while Global.scene().start_from * 1000 > chart.notes[count][0]:
 			count += 1
 		if chart.notes[count][0] < song_time + 2000:
-			var instance = note.instantiate()
-			get_node(def_note_nodes[chart.notes[count][1]]).add_child(instance)
-			instance.data = chart.notes[count]
-			instance.note_position = chart.notes[count][0]
-			if chart.notes[count][1] > 3:
-				instance.note_data.bot = true
-			else:
-				NoteOrder[chart.notes[count][1]].append(chart.notes[count][0])
-				instance.note_data.bot = false
-				instance.note_data.input = inputs[chart.notes[count][1]]
-			instance.texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note"]["texture"][0]
-			instance.get_node("Sustain").texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note_Long"]["texture"][0]
-			instance.get_node("Sustain/End").texture = $Notes.data[def_notes[int(chart.notes[count][1]) % 4]]["Note_Long_End"]["texture"][0]
+			$Notes.spawn_note(chart.notes[count])
 			count += 1
 
 func load_audio(song):
@@ -160,23 +126,6 @@ func load_chart(song):
 	chart.notes.sort_custom(func(a, b): return a[0] < b[0])
 
 signal char_animation
-
-func notemiss(_order,_type):
-	get_parent().get_node("Status").hp -= 1000
-	get_parent().get_node("Status").misses += 1
-	get_parent().get_node("Status").maxscore += 350
-
-func notehit(_order,_distance,_type):
-	get_parent().get_node("Status").hp += 750
-	get_parent().get_node("Status").maxscore += 350
-	if _distance < 45:
-		get_parent().get_node("Status").score += 350
-	elif _distance < 90:
-		get_parent().get_node("Status").score += 200
-	elif _distance < 135:
-		get_parent().get_node("Status").score += 100
-	else:
-		get_parent().get_node("Status").score += 50
 
 func _on_instrumental_finished():
 	Global.end_song()

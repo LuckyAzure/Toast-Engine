@@ -1,0 +1,20 @@
+{
+   "characters":[
+      {
+         "name":"boyfriend",
+         "vanilla":true
+      },
+      {
+         "name":"SpongeBobSquarePants",
+         "vanilla":false
+      },
+      {
+         "name":"PatrickStar",
+         "vanilla":false
+      }
+   ],
+   "stage":{
+      "name":"night",
+      "vanilla":false
+   }
+}
