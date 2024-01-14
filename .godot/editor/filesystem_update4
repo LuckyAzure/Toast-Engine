@@ -18,3 +18,4 @@ res://src/Global.gd
 res://src/Scenes/Game/background/Characters.gd
 res://src/Scenes/Game/background/StageTexture.gd
 res://src/Scenes/Menus/Freeplay/Freeplay.gd
+res://src/Scenes/Menus/Main/Menu.gd

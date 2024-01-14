@@ -7,6 +7,7 @@ var options = [
 	["story mode",null],
 	["freeplay","res://src/Scenes/Menus/Freeplay/Freeplay.tscn"],
 	["online (lan)","res://src/Scenes/Online/lan_lobby.tscn"],
+	["editors",null],
 	["credits",null],
 	["options","res://src/Scenes/Menus/Options/options.tscn"]
 ]

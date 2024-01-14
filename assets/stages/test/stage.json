@@ -7,21 +7,17 @@
     "sprites": [
         {
             "name": "arena",
-			
-			"pos": [0, 0],
-			"scale": [1.5, 1.5],
-			"index": -10,
-			
-			"flags": [
-				["centered", true]
-			],
-			
+            "pos": [0, 0],
+            "scale": [1.5, 1.5],
+            "index": -10,
+            "flags": [
+                ["centered", true]
+            ],
             "texture": {
-				"file": "2.png",
-				"type": "Image",
-				
-				"offset": [0, 0]
-			}
+                "file": "2.png",
+                "type": "Image",
+                "offset": [0, 0]
+            }
         }
     ]
 }
