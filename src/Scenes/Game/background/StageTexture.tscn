@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://imi52cqiy68m"]
-
-[ext_resource type="Script" path="res://src/Scenes/Game/background/StageTexture.gd" id="1_4b0g6"]
-
-[node name="StageTexture" type="Sprite2D"]
-script = ExtResource("1_4b0g6")

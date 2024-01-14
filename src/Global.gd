@@ -1,13 +1,11 @@
 extends Node
 
-var version = "Toast Engine Open Alpha Test v0.852 (Old Stage System)"
+var version = "Toast Engine Open Alpha Test v1.112"
 
 var mods = null
 var state = {
 	"song": {
-		"name": "Absorbent",
-		"vanilla": false,
-		"mod": "Cartoon Clash"
+		"name": "tutorial"
 	},
 	"mode":"freeplay"
 }
@@ -30,13 +28,16 @@ func get_node_scene(node_path):
 
 func get_mod_path(data):
 	var current_path
-	if data.vanilla:
-		current_path = "res://assets/"
-	else:
-		if data.has("mod") and data.mod != null:
+	print(data)
+	if data.has("mod"):
+		if data.mod != null:
 			current_path = "res://mods/" + data.mod + "/"
 		else:
-			current_path = "res://mods/" + scene().current_song.mod + "/"
+			current_path = "res://assets/"
+	elif state.has("mod"):
+		current_path = "res://mods/" + state.mod + "/"
+	else:
+		current_path = "res://assets/"
 	return current_path
 
 func start_song(song, mode = "freeplay"):

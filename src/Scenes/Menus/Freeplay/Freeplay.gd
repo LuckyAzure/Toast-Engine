@@ -135,12 +135,13 @@ func process_input():
 			Global.state = {
 				"song":{
 					"name": preloaded_songs[category]["freeplay"]["songs"][select][1],
-					"vanilla": false if category != 0 else true,
 					"mod": Global.mods.mods[category - 1]
 				},
 				"mode":"freeplay",
 				"select":select
 			}
+			if category == 0:
+				Global.state.song.erase("mod")
 			Overlay.change_scene_to_file("res://src/Scenes/Game/game.tscn","Fade")
 		else:
 			create_options(select)

@@ -5,52 +5,44 @@ var stage_name = null
 
 #Stage Datas
 var stage_data = null
-var texture_data = null
-
-var textureobjload = preload("res://src/Scenes/Game/background/StageTexture.tscn")
 
 #Loads Stage Textures
-func _load(stname):
+func _load(stage):
 	var main = Node2D.new()
 	add_child(main)
 	
-	stage_name = stname.name
+	stage_name = stage.name
 	
-	var data_file = FileAccess.open(Global.get_mod_path(stname) + "Stages/" + stage_name + "/stage.json", FileAccess.READ)
+	var data_file = FileAccess.open(Global.get_mod_path(stage) + "Stages/" + stage_name + "/stage.json", FileAccess.READ)
 	var data_json = JSON.parse_string(data_file.get_as_text())
 	data_file.close()
 	stage_data = data_json
-	for i in stage_data.Stage.StageTexture.size():
-		var texture = textureobjload.instantiate()
-		main.add_child(texture)
-		var local_texture_data = stage_data.Stage.StageTexture[i]  # Rename the variable
+	for i in stage_data.sprites.size():
+		var texture = Sprite2D.new()
+		var data = stage_data.sprites[i]  # Rename the variable
+		
+		#default settings
+		texture.centered = false
+		
+		texture.name = data.name
+		
+		texture.position = Vector2(data.pos[0], data.pos[1])
+		texture.scale = Vector2(data.scale[0], data.scale[1])
+		texture.z_index = data.index
 		
 		var image = Image.new()
-		image.load(Global.get_mod_path(stname) + "stages/" + stage_name + "/" + local_texture_data.filename)
-		var image_texture = ImageTexture.create_from_image(image)
-		texture.texture = image_texture
-		texture.name = local_texture_data.name
+		image.load(Global.get_mod_path(stage) + "stages/" + stage_name + "/" + data.texture.file)
+		texture.texture = ImageTexture.create_from_image(image)
 		
-		texture.texture_data = local_texture_data
-		#index
-		texture.z_index = local_texture_data.index
-		#becentered
-		texture.centered = local_texture_data.becentered
-		#x
-		texture.position.x = local_texture_data.x
-		texture.x = local_texture_data.x
-		#y
-		texture.position.y = local_texture_data.y
-		texture.y = local_texture_data.y
-		#width
-		texture.scale.x = local_texture_data.width
-		texture.sx = local_texture_data.width
-		#height
-		texture.scale.y = local_texture_data.height
-		texture.sy = local_texture_data.height
+		texture.offset = Vector2(data.texture.offset[0], data.texture.offset[1])
+		
+		if data.has("flags"):
+			for flag in data.flags:
+				texture[flag[0]] = flag[1]
+		
+		main.add_child(texture)
 	
-	var script_path = Global.get_mod_path(stname) + "Stages/" + stage_name + "/script.gd"
+	var script_path = Global.get_mod_path(stage) + "Stages/" + stage_name + "/script.gd"
 	
 	if FileAccess.file_exists(script_path):
 		main.set_script(load(script_path))
-		

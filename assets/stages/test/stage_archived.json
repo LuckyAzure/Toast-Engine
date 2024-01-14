@@ -1,0 +1,41 @@
+{
+   "Stage": {
+      "Camera": {
+         "offsetx": 0,
+         "offsety": 0,
+         "zoom": 0.6,
+	 "speed": 0.05
+      },
+      "Enemy": {
+         "x": -600,
+         "y": 300,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "GF": {
+         "x": 0,
+         "y": 80,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "Player": {
+         "x": 600,
+         "y": 300,
+         "cameraoffsetx": 0,
+         "cameraoffsety": 0
+      },
+      "StageTexture": [
+         {
+            "filename": "2.png",
+            "name": "Background",
+            "index": -10,
+            "becentered": true,
+            "x": 0,
+            "y": 0,
+            "width": 3.5,
+            "height": 3.5,
+            "sensitivity": {"x":0,"y":0}
+         }
+      ]
+   }
+}

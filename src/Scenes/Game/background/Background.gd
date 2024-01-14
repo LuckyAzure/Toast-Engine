@@ -4,9 +4,9 @@ var stagedata
 
 func _load(data):
 	$Stage._load(data.stage)
-	stagedata = $Stage.stage_data.Stage
-	Zoom = stagedata.Camera.zoom
-	Offsets.Position = Vector2(stagedata.Camera.offsetx,stagedata.Camera.offsety)
+	stagedata = $Stage.stage_data
+	Offsets.Position = Vector2(stagedata.camera.pos[0],stagedata.camera.pos[1])
+	Zoom = stagedata.camera.zoom
 	$Characters._load(data,stagedata)
 	instant_scroll()
 

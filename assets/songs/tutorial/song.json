@@ -1,17 +1,17 @@
 {
    "characters":[
       {
-         "name":"boyfriend",
-         "vanilla":true
+         "name": "boyfriend",
+		 "pos": [500, 300],
+		 "index": 1
       },
       {
-         "name":"gf",
-         "vanilla":true
-      },
-      null
+         "name": "gf",
+		 "pos": [0, 300],
+		 "index": 0
+      }
    ],
-   "stage":{
-      "name":"test",
-      "vanilla":true
+   "stage": {
+	   "name": "test"
    }
 }

@@ -12,20 +12,19 @@ var character_nodes = []
 var preload_characters = []
 
 func _load(data,stagedata):
-	create_char(data.characters[0],Vector2(stagedata.Player.x,stagedata.Player.y),1)
-	create_char(data.characters[1],Vector2(stagedata.Enemy.x,stagedata.Enemy.y),1)
-	create_char(data.characters[2],Vector2(stagedata.GF.x,stagedata.GF.y),0)
+	for char in data.characters:
+		create_char(char)
 	if data.has("preload_characters"):
 		preload_chars(data.preload_characters)
 
-func create_char(character,pos,index):
+func create_char(character):
 	if character != null:
 		var instance = char_node.instantiate()
-		add_child(instance)
 		instance.char = character
-		instance.position = pos
-		instance.z_index = index
+		instance.position = Vector2(character.pos[0], character.pos[1])
+		instance.z_index = character.index
 		instance._load()
+		add_child(instance)
 		character_nodes.append(instance)
 	else:
 		character_nodes.append(null)
