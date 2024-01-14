@@ -1,9 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8mtgqoy7bxnr"]
+[gd_scene load_steps=4 format=3 uid="uid://b8mtgqoy7bxnr"]
 
 [ext_resource type="Script" path="res://src/Scenes/Menus/Freeplay/Freeplay.gd" id="1_t3lgm"]
+[ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="2_rvtd8"]
+
+[sub_resource type="FontVariation" id="FontVariation_wwf3m"]
+base_font = ExtResource("2_rvtd8")
 
 [node name="Freeplay" type="Node2D"]
 script = ExtResource("1_t3lgm")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
+
+[node name="Options" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Options"]
+offset_top = 672.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Text" type="RichTextLabel" parent="Options"]
+offset_top = 687.0
+offset_right = 1280.0
+offset_bottom = 707.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = SubResource("FontVariation_wwf3m")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy."

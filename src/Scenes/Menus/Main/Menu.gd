@@ -6,7 +6,7 @@ var select = 0
 var options = [
 	["story mode",null],
 	["freeplay","res://src/Scenes/Menus/Freeplay/Freeplay.tscn"],
-	["multiplayer","res://src/Scenes/Online/lan_lobby.tscn"],
+	["online (lan)","res://src/Scenes/Online/lan_lobby.tscn"],
 	["credits",null],
 	["options","res://src/Scenes/Menus/Options/options.tscn"]
 ]

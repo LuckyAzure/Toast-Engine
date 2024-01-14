@@ -1,6 +1,6 @@
 extends Node
 
-var version = "Toast Engine Open Alpha Test v0.131"
+var version = "Toast Engine Open Alpha Test v0.852 (Old Stage System)"
 
 var mods = null
 var state = {

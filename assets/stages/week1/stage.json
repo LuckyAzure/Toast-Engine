@@ -24,40 +24,63 @@
          "cameraoffsetx": 0,
          "cameraoffsety": 0
       },
-      "StageTexture": [
-         {
-            "filename": "stageback.png",
-            "name": "Background",
-            "index": -20,
-            "becentered": true,
-            "x": 0,
-            "y": 0,
-            "width": 1,
-            "height": 1,
-            "sensitivity": {"x":0.1,"y":0.1}
-         },
-         {
-            "filename": "stagefront.png",
-            "name": "Stage",
-            "index": -10,
-            "becentered": true,
-            "x": 0,
-            "y": 400,
-            "width": 1.1,
-            "height": 1.1,
-            "sensitivity": {"x":0,"y":0}
-         },
-         {
-            "filename": "stagecurtains.png",
-            "name": "Curtains",
-            "index": 1,
-            "becentered": true,
-            "x": -100,
-            "y": -300,
-            "width": 0.8,
-            "height": 0.8,
-            "sensitivity": {"x":0.1,"y":0.1}
-         }
+	   "StageTexture": [
+		  {
+			 "filename": "stageback.png",
+			 "name": "Background",
+			 "index": -20,
+			 "becentered": false,
+			 "x": -600,
+			 "y": -200,
+			 "width": 0.9,
+			 "height": 0.9,
+			 "sensitivity": {"x": 0.1, "y": 0.1}
+		  },
+		  {
+			 "filename": "stagefront.png",
+			 "name": "Stage",
+			 "index": -10,
+			 "becentered": false,
+			 "x": -650,
+			 "y": 600,
+			 "width": 1.1,
+			 "height": 1.1,
+			 "sensitivity": {"x": 0, "y": 0}
+		  },
+		  {
+			 "filename": "stage_light.png",
+			 "name": "Stage Light",
+			 "index": 0,
+			 "becentered": false,
+			 "x": -125,
+			 "y": -100,
+			 "width": 0.9,
+			 "height": 0.9,
+			 "sensitivity": {"x": 0.1, "y": 0.1}
+		  },
+		  {
+			 "filename": "stage_light.png",
+			 "name": "Stage Light",
+			 "index": 0,
+			 "becentered": false,
+			 "x": 1225,
+			 "y": -100,
+			 "width": 0.9,
+			 "height": 0.9,
+			 "sensitivity": {"x": 0.1, "y": 0.1},
+			 "flipX": true
+		  },
+		  {
+			 "filename": "stagecurtains.png",
+			 "name": "Curtains",
+			 "index": 1,
+			 "becentered": false,
+			 "x": -500,
+			 "y": -300,
+			 "width": 1.3,
+			 "height": 1.3,
+			 "sensitivity": {"x": 0.1, "y": 0.1}
+		  }
       ]
    }
 }

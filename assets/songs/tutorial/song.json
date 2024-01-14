@@ -2,19 +2,16 @@
    "characters":[
       {
          "name":"boyfriend",
-         "vanilla":true,
-         "mod":null
+         "vanilla":true
       },
       {
-         "name":"boyfriend",
-         "vanilla":true,
-         "mod":null
+         "name":"gf",
+         "vanilla":true
       },
       null
    ],
    "stage":{
       "name":"test",
-      "vanilla":true,
-      "mod":null
+      "vanilla":true
    }
 }

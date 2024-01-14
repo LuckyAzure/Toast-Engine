@@ -8,7 +8,7 @@ var note = preload("res://src/Scenes/Game/chart/note.tscn")
 var noteorder = [[],[],[],[]]
 var def_notes := ["Left", "Down", "Up", "Right"]
 var input = [null,null,null,null]
-var botplay = true
+var botplay = false
 
 var offset = null
 
