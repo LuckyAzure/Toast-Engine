@@ -1,86 +1,51 @@
 {
-   "Stage": {
-      "Camera": {
-         "offsetx": 0,
-         "offsety": 0,
-         "zoom": 0.75,
-	 "speed": 0.05
+   "camera": {
+      "pos": [0, 0],
+      "zoom": 0.9,
+      "speed": 1
+   },
+   "sprites": [
+      {
+         "name": "Background",
+         "pos": [0, 0],
+         "scale": [0.9, 0.9],
+         "index": -20,
+         "flags": [
+            ["centered", true]
+         ],
+         "texture": {
+            "file": "stageback.png",
+            "type": "Image",
+            "offset": [0, 0]
+         }
       },
-      "Enemy": {
-         "x": -400,
-         "y": 300,
-         "cameraoffsetx": 0,
-         "cameraoffsety": 0
+      {
+         "name": "Stage",
+         "pos": [20, 450],
+         "scale": [1.1, 1.1],
+         "index": -10,
+         "flags": [
+            ["centered", true]
+         ],
+         "texture": {
+            "file": "stagefront.png",
+            "type": "Image",
+            "offset": [0, 0]
+         }
       },
-      "GF": {
-         "x": 0,
-         "y": 80,
-         "cameraoffsetx": 0,
-         "cameraoffsety": 0
-      },
-      "Player": {
-         "x": 300,
-         "y": 300,
-         "cameraoffsetx": 0,
-         "cameraoffsety": 0
-      },
-	   "StageTexture": [
-		  {
-			 "filename": "stageback.png",
-			 "name": "Background",
-			 "index": -20,
-			 "becentered": false,
-			 "x": -600,
-			 "y": -200,
-			 "width": 0.9,
-			 "height": 0.9,
-			 "sensitivity": {"x": 0.1, "y": 0.1}
-		  },
-		  {
-			 "filename": "stagefront.png",
-			 "name": "Stage",
-			 "index": -10,
-			 "becentered": false,
-			 "x": -650,
-			 "y": 600,
-			 "width": 1.1,
-			 "height": 1.1,
-			 "sensitivity": {"x": 0, "y": 0}
-		  },
-		  {
-			 "filename": "stage_light.png",
-			 "name": "Stage Light",
-			 "index": 0,
-			 "becentered": false,
-			 "x": -125,
-			 "y": -100,
-			 "width": 0.9,
-			 "height": 0.9,
-			 "sensitivity": {"x": 0.1, "y": 0.1}
-		  },
-		  {
-			 "filename": "stage_light.png",
-			 "name": "Stage Light",
-			 "index": 0,
-			 "becentered": false,
-			 "x": 1225,
-			 "y": -100,
-			 "width": 0.9,
-			 "height": 0.9,
-			 "sensitivity": {"x": 0.1, "y": 0.1},
-			 "flipX": true
-		  },
-		  {
-			 "filename": "stagecurtains.png",
-			 "name": "Curtains",
-			 "index": 1,
-			 "becentered": false,
-			 "x": -500,
-			 "y": -300,
-			 "width": 1.3,
-			 "height": 1.3,
-			 "sensitivity": {"x": 0.1, "y": 0.1}
-		  }
-      ]
-   }
+      {
+         "name": "Curtains",
+         "pos": [0, 0],
+         "scale": [1.3, 1.3],
+         "index": 1,
+         "flags": [
+            ["centered", true]
+         ],
+         "texture": {
+            "file": "stagecurtains.png",
+            "type": "Image",
+            "offset": [0, 0]
+         }
+      }
+   ]
 }

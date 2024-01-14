@@ -1,20 +1,22 @@
 {
    "characters":[
       {
-         "name":"boyfriend",
-         "vanilla":true,
-         "mod":null
+         "name": "boyfriend",
+		 "pos": [400, 300],
+		 "index": 1
       },
       {
-         "name":"dad",
-         "vanilla":true,
-         "mod":null
+         "name": "dad",
+		 "pos": [-400, 300],
+		 "index": 1
       },
-      null
+      {
+         "name": "gf",
+		 "pos": [0, 300],
+		 "index": 0
+      }
    ],
-   "stage":{
-      "name":"week1",
-      "vanilla":true,
-      "mod":null
+   "stage": {
+	   "name": "week1"
    }
 }
