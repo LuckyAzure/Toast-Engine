@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://w3iacwd70ape"]
+[gd_scene load_steps=19 format=3 uid="uid://w3iacwd70ape"]
 
 [ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
 [ext_resource type="Script" path="res://src/Scenes/Game/HUD.gd" id="2_a0jha"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/Scenes/Game/chart/Timeline.gd" id="5_hhoua"]
 [ext_resource type="Script" path="res://src/Scenes/Game/Status.gd" id="9_jmjuk"]
 [ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="9_y34d1"]
+[ext_resource type="Texture2D" uid="uid://d1s4n8jrvpjtt" path="res://icon.png" id="14_wgv62"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/Background.gd" id="15_alv4b"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/Characters.gd" id="15_oinxd"]
 [ext_resource type="Texture2D" uid="uid://boiqckvsowpv7" path="res://src/Scenes/Game/images/icon.png" id="15_vrppu"]
@@ -160,6 +161,17 @@ script = ExtResource("15_oinxd")
 
 [node name="Stage" type="Node2D" parent="Background"]
 script = ExtResource("17_6vn3o")
+
+[node name="Parallax" type="ParallaxBackground" parent="Background/Stage"]
+layer = 0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Stage/Parallax"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Stage/Parallax/ParallaxLayer"]
+z_index = 6
+position = Vector2(639, 285)
+texture = ExtResource("14_wgv62")
 
 [node name="Custom" type="Node" parent="Background"]
 

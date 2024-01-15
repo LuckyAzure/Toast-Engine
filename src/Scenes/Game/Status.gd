@@ -29,6 +29,9 @@ func update_status():
 	
 	if status.accuracy != 0 or status.score != 0:
 		$HUDText/Score.text = "Score: " + str(status.score) + " | Misses: " + str(status.misses) + " | Accuracy: " + str(snapped(status.accuracy * 100.0, 0.01)) + "%"
+	
+	hp = float(status.hp)
+	
 	#discord_sdk.state = $HUDText/Score.text
 	#discord_sdk.refresh()
 

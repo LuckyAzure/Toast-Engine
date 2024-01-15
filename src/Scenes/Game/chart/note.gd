@@ -104,7 +104,7 @@ func _process(delta):
 				elif note_position_difference < -150:
 					remove = true
 
-				if data[2] < 75 and note_holdable and note_hittable and !Input.is_key_pressed(note_data.input):
+				if data[2] < 150 and note_holdable and note_hittable and !Input.is_key_pressed(note_data.input):
 					remove = true
 
 				if note_position < time - 150 and miss_cooldown <= 0:

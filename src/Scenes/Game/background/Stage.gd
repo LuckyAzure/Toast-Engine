@@ -11,6 +11,8 @@ func _load(stage):
 	var main = Node2D.new()
 	add_child(main)
 	
+	var parallaxes = []
+	
 	stage_name = stage.name
 	
 	var data_file = FileAccess.open(Global.get_mod_path(stage) + "Stages/" + stage_name + "/stage.json", FileAccess.READ)
@@ -40,7 +42,28 @@ func _load(stage):
 			for flag in data.flags:
 				texture[flag[0]] = flag[1]
 		
-		main.add_child(texture)
+		if data.has("parallax"):
+			var parallax_already_exist = false
+			for p in parallaxes:
+				if p[0] == data.parallax.layer:
+					parallax_already_exist = true
+					var parallax = ParallaxLayer.new()
+					parallax.motion_scale = Vector2(data.parallax[0], data.parallax[1])
+					p[1].add_child(parallax)
+					parallax.add_child(texture)
+			
+			if !parallax_already_exist:
+				var new_parallaxback = ParallaxBackground.new()
+				new_parallaxback.layer = data.parallax.layer
+				main.add_child(new_parallaxback)
+				parallaxes.append([data.parallax.layer, new_parallaxback])
+				
+				var parallax = ParallaxLayer.new()
+				parallax.motion_scale = Vector2(data.parallax.scale[0], data.parallax.scale[1])
+				new_parallaxback.add_child(parallax)
+				parallax.add_child(texture)
+		else:
+			main.add_child(texture)
 	
 	var script_path = Global.get_mod_path(stage) + "Stages/" + stage_name + "/script.gd"
 	

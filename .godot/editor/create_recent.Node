@@ -1,3 +1,6 @@
+ParallaxBackground
+Sprite2D
+ParallaxLayer
 CanvasLayer
 Label
 Node2D
@@ -6,9 +9,6 @@ Button
 LineEdit
 ColorRect
 Node
-Sprite2D
 WorldEnvironment
 RichTextLabel
-ParallaxBackground
-ParallaxLayer
 VideoStreamPlayer
