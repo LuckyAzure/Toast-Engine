@@ -5,13 +5,21 @@
 	"bg_color":"31B0D1",
 	"story":{},
 	"freeplay":{
-		"icons":["gf", "dad"],
+		"icons":["gf", "dad", "spooky", "monster", "pico"],
 		"songs":[
 			[0, "tutorial", "A5004D"],
 			
 			[1, "bopeebo", "AF66CE"],
 			[1, "fresh", "AF66CE"],
-			[1, "dad-battle", "AF66CE"]
+			[1, "dad-battle", "AF66CE"],
+			
+			[2, "spookeez", "D57E00"],
+			[2, "south", "D57E00"],
+			[3, "monster", "F3FF6E"],
+			
+			[4, "pico", "b7d855"],
+			[4, "philly-nice", "b7d855"],
+			[4, "blammed", "b7d855"]
 		]
 	}
 }

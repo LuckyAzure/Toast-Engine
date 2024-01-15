@@ -1,0 +1,22 @@
+{
+   "characters":[
+      {
+         "name": "boyfriend",
+		 "pos": [400, 300],
+		 "index": 1
+      },
+      {
+         "name": "pico",
+		 "pos": [-400, 300],
+		 "index": 1
+      },
+      {
+         "name": "gf",
+		 "pos": [0, 300],
+		 "index": 0
+      }
+   ],
+   "stage": {
+	   "name": "week3"
+   }
+}

@@ -10,3 +10,5 @@ res://src/Scenes/Game/background/Stage.gd
 res://src/Scenes/Game/chart/note.tscn
 res://src/Scenes/Game/chart/note.gd
 res://src/Scenes/Game/Status.gd
+res://src/Scenes/Editors/Char/Char-Editor.gd
+res://src/Scenes/Game/background/character.gd

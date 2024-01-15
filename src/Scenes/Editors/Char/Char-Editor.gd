@@ -14,9 +14,11 @@ const def_animations = [
 
 const def_char = {
 	"name": null,
+	"playable":false,
 	"cameraoffset": {"x":0,"y":0},
 	"scale": 1.0,
-	"aa": 0,
+	"aa": true,
+	"flip_x": false,
 	"animations": {},
 	"xml_data": {},
 	"hp_color": "#ffffff",
@@ -74,7 +76,13 @@ func load_char():
 	$HUD/HPBarColor.color = Color.html(chardata.hp_color)
 	if !chardata.has("has_winning_icon"):
 		chardata.merge({"has_winning_icon": false},true)
+	if !chardata.has("playable"):
+		chardata.merge({"playable": false},true)
+	if !chardata.has("flip_x"):
+		chardata.merge({"flip_x": false},true)
 	$HUD/winning_icon.button_pressed = chardata.has_winning_icon
+	$"HUD/Flip X".button_pressed = chardata.flip_x 
+	$"HUD/Playable".button_pressed = chardata.playable 
 	
 	convert_xml_to_json_data()
 	load_animations_from_data()
@@ -103,6 +111,8 @@ func create_default_json_file(json_path):
 func save_char():
 	chardata.scale = $HUD/Scale.value
 	chardata.aa = $HUD/AA.button_pressed
+	chardata.flip_x = $"HUD/Flip X".button_pressed
+	chardata.playable = $"HUD/Playable".button_pressed
 	chardata.cameraoffset.x = $HUD/CameraX.value
 	chardata.cameraoffset.y = $HUD/CameraY.value
 	chardata.hp_color = $HUD/HPBarColor.color.to_html()
@@ -130,11 +140,12 @@ func progress_bar():
 	$HUD/ProgressBar.value = current_frame
 	$HUD/ProgressBar.min_value = frame_start_position
 	$HUD/ProgressBar.max_value = frame_start_position + frame_max
-	$HUD/length_counter.text = str(int(current_frame - frame_start_position))
+	$HUD/length_counter.text = "frames: " + str(int(current_frame - frame_start_position)) + "/" + str(int(frame_max))
 
 func animation(delta):
 	$Char.scale = Vector2($HUD/Scale.value,$HUD/Scale.value)
-	$Char/Image.texture_filter = $HUD/AA.button_pressed
+	$Char/Image.texture_filter = 0 if $HUD/AA.button_pressed else 1
+	$Char/Image.scale.x = -1 if $"HUD/Flip X".button_pressed else 1
 	var fps = $HUD/FPS.value
 	var loop = $HUD/Loop.button_pressed
 

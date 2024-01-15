@@ -1,0 +1,23 @@
+{
+   "camera": {
+      "pos": [0, 0],
+      "zoom": 0.9,
+      "speed": 1
+   },
+   "sprites": [
+      {
+         "name": "Background",
+         "pos": [0, 0],
+         "scale": [1.0, 1.0],
+         "index": -20,
+         "flags": [
+            ["centered", true]
+         ],
+         "texture": {
+            "file": "street.png",
+            "type": "Image",
+            "offset": [0, 0]
+         }
+      }
+   ]
+}

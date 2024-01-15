@@ -1,3 +1,4 @@
+Node
 ParallaxBackground
 Sprite2D
 ParallaxLayer
@@ -8,7 +9,6 @@ ProgressBar
 Button
 LineEdit
 ColorRect
-Node
 WorldEnvironment
 RichTextLabel
 VideoStreamPlayer

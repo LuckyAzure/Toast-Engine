@@ -1,10 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmqfxmkrh82mi"]
+[gd_scene load_steps=16 format=3 uid="uid://bmqfxmkrh82mi"]
 
 [ext_resource type="Script" path="res://src/Scenes/Editors/Char/Char-Editor.gd" id="1"]
 [ext_resource type="Script" path="res://src/Scenes/Editors/Char/Camera.gd" id="2_6i50t"]
 [ext_resource type="FontFile" uid="uid://bl1fltam42vw3" path="res://src/Fonts/pixel.otf" id="2_e3vst"]
 [ext_resource type="Script" path="res://src/Scenes/Editors/Char/Char.gd" id="2_ordas"]
 [ext_resource type="Script" path="res://src/Scenes/Editors/Char/HUD.gd" id="2_vhxn2"]
+
+[sub_resource type="FontVariation" id="FontVariation_t6pf1"]
+base_font = ExtResource("2_e3vst")
+
+[sub_resource type="Theme" id="Theme_gbd22"]
+default_font = SubResource("FontVariation_t6pf1")
+default_font_size = 8
+
+[sub_resource type="Theme" id="Theme_hkd81"]
+default_font = SubResource("FontVariation_t6pf1")
+default_font_size = 8
+
+[sub_resource type="Theme" id="Theme_essn6"]
+default_font = SubResource("FontVariation_t6pf1")
+default_font_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17tdl"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1304y"]
+bg_color = Color(0.815686, 0.815686, 0.815686, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_tgeky"]
+default_font = SubResource("FontVariation_t6pf1")
+default_font_size = 8
+
+[sub_resource type="Theme" id="Theme_a2a3r"]
+default_font = SubResource("FontVariation_t6pf1")
+default_font_size = 8
+
+[sub_resource type="Theme" id="Theme_n04la"]
+default_font = SubResource("FontVariation_t6pf1")
+default_font_size = 8
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_45lev"]
 
 [node name="Char-Editor" type="Node2D"]
 script = ExtResource("1")
@@ -19,169 +59,312 @@ script = ExtResource("2_6i50t")
 layer = 128
 script = ExtResource("2_vhxn2")
 
-[node name="ColorRect" type="ColorRect" parent="HUD"]
-offset_left = 854.0
-offset_top = 8.0
-offset_right = 1272.0
-offset_bottom = 453.0
-color = Color(0.247059, 0.247059, 0.247059, 1)
+[node name="B" type="Node" parent="HUD"]
+
+[node name="ColorRect" type="ColorRect" parent="HUD/B"]
+offset_left = 1056.0
+offset_top = 4.0
+offset_right = 1276.0
+offset_bottom = 266.0
+color = Color(0.156863, 0.156863, 0.156863, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="HUD/B"]
+offset_top = 643.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.156863, 0.156863, 0.156863, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="HUD/B"]
+offset_top = 641.0
+offset_right = 1280.0
+offset_bottom = 643.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="HUD/B"]
+offset_left = 977.0
+offset_top = 659.0
+offset_right = 1276.0
+offset_bottom = 716.0
+color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+metadata/_edit_lock_ = true
 
 [node name="CharName" type="TextEdit" parent="HUD"]
-offset_left = 1034.0
-offset_top = 55.0
-offset_right = 1267.0
-offset_bottom = 91.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1140.0
+offset_top = 51.0
+offset_right = 1271.0
+offset_bottom = 74.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 text = "boyfriend"
 
 [node name="Mods" type="OptionButton" parent="HUD"]
-offset_left = 857.0
-offset_top = 11.0
-offset_right = 1267.0
-offset_bottom = 52.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1060.0
+offset_top = 7.0
+offset_right = 1271.0
+offset_bottom = 48.0
+theme = SubResource("Theme_gbd22")
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 
 [node name="Load" type="Button" parent="HUD"]
-offset_left = 857.0
-offset_top = 56.0
-offset_right = 944.0
-offset_bottom = 90.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1059.0
+offset_top = 51.0
+offset_right = 1095.0
+offset_bottom = 74.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 text = "Load"
 
 [node name="Save" type="Button" parent="HUD"]
-offset_left = 947.0
-offset_top = 56.0
-offset_right = 1031.0
-offset_bottom = 90.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1099.0
+offset_top = 51.0
+offset_right = 1136.0
+offset_bottom = 74.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 text = "Save"
 
 [node name="Loop" type="CheckBox" parent="HUD"]
-offset_left = 1196.0
-offset_top = 233.0
-offset_right = 1263.0
-offset_bottom = 264.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 267.0
+offset_top = 689.0
+offset_right = 323.0
+offset_bottom = 713.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 text = "Loop"
 
 [node name="winning_icon" type="CheckBox" parent="HUD"]
-offset_left = 861.0
-offset_top = 232.0
-offset_right = 1091.0
-offset_bottom = 263.0
-text = "Has Winning Icon (3 icons)"
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1059.0
+offset_top = 143.0
+offset_right = 1169.0
+offset_bottom = 167.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
+text = "Has Winning"
 
 [node name="AA" type="CheckBox" parent="HUD"]
-offset_left = 1093.0
-offset_top = 233.0
-offset_right = 1193.0
-offset_bottom = 264.0
-text = "Pixelated"
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1125.0
+offset_top = 238.0
+offset_right = 1227.0
+offset_bottom = 262.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
+text = "Anti-Aliasing"
+
+[node name="Playable" type="CheckBox" parent="HUD"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1059.0
+offset_top = 76.0
+offset_right = 1135.0
+offset_bottom = 100.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
+text = "Playable"
+
+[node name="Flip X" type="CheckBox" parent="HUD"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1061.0
+offset_top = 238.0
+offset_right = 1121.0
+offset_bottom = 262.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
+text = "Flip X"
 
 [node name="FPS" type="SpinBox" parent="HUD"]
-offset_left = 900.0
-offset_top = 128.0
-offset_right = 983.063
-offset_bottom = 159.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 389.0
+offset_top = 673.0
+offset_right = 449.0
+offset_bottom = 692.0
+theme = SubResource("Theme_hkd81")
 min_value = 1.0
 max_value = 1000.0
 value = 24.0
 
 [node name="Length" type="SpinBox" parent="HUD"]
-offset_left = 1056.0
-offset_top = 128.0
-offset_right = 1139.06
-offset_bottom = 159.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 204.0
+offset_top = 692.0
+offset_right = 264.0
+offset_bottom = 711.0
+theme = SubResource("Theme_gbd22")
 min_value = 1.0
 max_value = 200.0
 value = 24.0
 
 [node name="Label" type="Label" parent="HUD"]
-offset_left = 861.0
-offset_top = 132.0
-offset_right = 893.0
-offset_bottom = 158.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 206.0
+offset_top = 679.0
+offset_right = 231.0
+offset_bottom = 690.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 text = "FPS:"
 
+[node name="Label5" type="Label" parent="HUD"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = 6.0
+offset_top = 656.0
+offset_right = 72.0
+offset_bottom = 667.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
+text = "Animations:"
+
+[node name="Label6" type="Label" parent="HUD"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = 725.0
+offset_top = 659.0
+offset_right = 819.0
+offset_bottom = 670.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
+text = "XML Animations:"
+
 [node name="Scale" type="SpinBox" parent="HUD"]
-offset_left = 1164.0
-offset_top = 196.0
-offset_right = 1247.06
-offset_bottom = 227.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1059.0
+offset_top = 114.0
+offset_right = 1119.0
+offset_bottom = 133.0
+theme = SubResource("Theme_essn6")
 min_value = 0.1
 max_value = 10.0
 step = 0.1
 value = 1.0
 
 [node name="Label4" type="Label" parent="HUD"]
-offset_left = 989.0
-offset_top = 132.0
-offset_right = 1047.0
-offset_bottom = 158.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 391.0
+offset_top = 660.0
+offset_right = 434.0
+offset_bottom = 671.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 text = "Length:"
 
 [node name="ProgressBar" type="ProgressBar" parent="HUD"]
-offset_left = 861.0
-offset_top = 164.0
-offset_right = 1262.0
-offset_bottom = 191.0
-value = 50.0
+offset_left = 4.0
+offset_top = 647.0
+offset_right = 1276.0
+offset_bottom = 654.0
+theme_override_styles/background = SubResource("StyleBoxFlat_17tdl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1304y")
+value = 100.0
 show_percentage = false
 
 [node name="length_counter" type="Label" parent="HUD"]
-offset_left = 861.0
-offset_top = 165.0
-offset_right = 1262.0
-offset_bottom = 191.0
+texture_filter = 1
+offset_left = 981.0
+offset_top = 663.0
+offset_right = 1272.0
+offset_bottom = 712.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 text = "Length:"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="HUD"]
-offset_left = 1112.0
-offset_top = 200.0
-offset_right = 1157.0
-offset_bottom = 226.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1061.0
+offset_top = 101.0
+offset_right = 1096.0
+offset_bottom = 112.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 text = "Scale:"
 
 [node name="CameraX" type="SpinBox" parent="HUD"]
-offset_left = 937.0
-offset_top = 197.0
-offset_right = 1020.06
-offset_bottom = 228.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1147.0
+offset_top = 114.0
+offset_right = 1207.0
+offset_bottom = 133.0
+theme = SubResource("Theme_tgeky")
 min_value = -1000.0
 max_value = 1000.0
 
 [node name="CameraY" type="SpinBox" parent="HUD"]
-offset_left = 1025.0
-offset_top = 197.0
-offset_right = 1108.06
-offset_bottom = 228.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1208.0
+offset_top = 114.0
+offset_right = 1268.0
+offset_bottom = 133.0
+theme = SubResource("Theme_a2a3r")
 min_value = -1000.0
 max_value = 1000.0
 
 [node name="Label3" type="Label" parent="HUD"]
-offset_left = 861.0
-offset_top = 201.0
-offset_right = 937.0
-offset_bottom = 227.0
-text = "Cam Pos:"
+texture_filter = 1
+texture_repeat = 1
+offset_left = 1149.0
+offset_top = 101.0
+offset_right = 1221.0
+offset_bottom = 112.0
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
+text = "Camera X/Y:"
 
 [node name="Animations" type="OptionButton" parent="HUD"]
-offset_left = 857.0
-offset_top = 94.0
-offset_right = 1031.0
-offset_bottom = 123.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 4.0
+offset_top = 669.0
+offset_right = 172.0
+offset_bottom = 689.0
+theme = SubResource("Theme_gbd22")
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 icon_alignment = 1
 
 [node name="CharAnimations" type="OptionButton" parent="HUD"]
-offset_left = 1034.0
-offset_top = 94.0
-offset_right = 1268.0
-offset_bottom = 123.0
+texture_filter = 1
+texture_repeat = 1
+offset_left = 723.0
+offset_top = 672.0
+offset_right = 879.0
+offset_bottom = 692.0
+theme = SubResource("Theme_gbd22")
+theme_override_fonts/font = SubResource("FontVariation_t6pf1")
+theme_override_font_sizes/font_size = 8
 icon_alignment = 1
 
 [node name="Status" type="Label" parent="HUD"]
-offset_left = 854.0
-offset_top = 453.0
-offset_right = 1272.0
-offset_bottom = 477.0
+texture_filter = 1
+offset_left = 979.0
+offset_top = 703.0
+offset_right = 1274.0
+offset_bottom = 714.0
 theme_override_fonts/font = ExtResource("2_e3vst")
 theme_override_font_sizes/font_size = 8
 text = "x"
@@ -189,25 +372,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HPBarColor" type="ColorPicker" parent="HUD"]
-offset_left = 857.0
-offset_top = 263.0
-offset_right = 1065.0
-offset_bottom = 443.0
+texture_filter = 1
+offset_left = 1059.0
+offset_top = 167.0
+offset_right = 1169.0
+offset_bottom = 230.0
+theme = SubResource("Theme_n04la")
 edit_alpha = false
 picker_shape = 4
 can_add_swatches = false
 color_modes_visible = false
+sliders_visible = false
 presets_visible = false
 
-[node name="IconBack" type="ColorRect" parent="HUD"]
-offset_left = 1078.0
-offset_top = 266.0
-offset_right = 1258.0
-offset_bottom = 446.0
-color = Color(0.290196, 0.415686, 0.231373, 1)
-
 [node name="Icon" type="Sprite2D" parent="HUD"]
-position = Vector2(1168, 354)
+position = Vector2(1173, 137)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("NoiseTexture2D_45lev")
+centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 132, 132)
 
@@ -216,6 +398,7 @@ z_index = 5
 position = Vector2(640, 360)
 points = PackedVector2Array(-20, 0, 20, 0, 0, 0, 0, -20, 0, 20)
 width = 2.0
+metadata/_edit_lock_ = true
 
 [node name="Char" type="Marker2D" parent="."]
 position = Vector2(640, 360)
@@ -229,24 +412,28 @@ region_rect = Rect2(32, 32, 32, 32)
 
 [node name="Lines" type="Node2D" parent="."]
 position = Vector2(640, 360)
+metadata/_edit_lock_ = true
 
 [node name="Z" type="Line2D" parent="Lines"]
 z_index = -1
 points = PackedVector2Array(-2000, -100, 2000, 100)
 width = 4.0
 default_color = Color(0, 0, 1, 1)
+metadata/_edit_lock_ = true
 
 [node name="X" type="Line2D" parent="Lines"]
 z_index = -1
 points = PackedVector2Array(-2000, 0, 2000, 0)
 width = 4.0
 default_color = Color(1, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Y" type="Line2D" parent="Lines"]
 z_index = -1
 points = PackedVector2Array(0, -2000, 0, 2000)
 width = 4.0
 default_color = Color(0, 1, 0, 1)
+metadata/_edit_lock_ = true
 
 [connection signal="item_selected" from="HUD/Mods" to="." method="_on_mods_item_selected"]
 [connection signal="pressed" from="HUD/Load" to="HUD" method="_on_Load_pressed"]

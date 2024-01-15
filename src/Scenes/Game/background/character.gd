@@ -19,7 +19,8 @@ func _preload(data):
 	$Texture.texture = data[1]
 	
 	scale = Vector2(chardata.scale,chardata.scale)
-	$Texture.texture_filter = chardata.aa
+	$Texture.texture_filter = 0 if chardata.aa else 1
+	$Texture.scale.x = -1 if chardata.flip_x else 1
 	
 	force = false
 	set_anim(current_animation,false)
@@ -53,7 +54,8 @@ func _load():
 		print("Failed to load image:", image_path)
 	
 	scale = Vector2(chardata.scale,chardata.scale)
-	$Texture.texture_filter = chardata.aa
+	$Texture.texture_filter = 0 if chardata.aa else 1
+	$Texture.scale.x = -1 if chardata.flip_x else 1
 	
 	force = false
 	set_anim("Idle",false)

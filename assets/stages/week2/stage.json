@@ -1,0 +1,23 @@
+{
+   "camera": {
+      "pos": [0, 0],
+      "zoom": 0.9,
+      "speed": 1
+   },
+   "sprites": [
+      {
+         "name": "Background",
+         "pos": [125, -75],
+         "scale": [1.1, 1.1],
+         "index": -20,
+         "flags": [
+            ["centered", true]
+         ],
+         "texture": {
+            "file": "halloween_bg_low.png",
+            "type": "Image",
+            "offset": [0, 0]
+         }
+      }
+   ]
+}
