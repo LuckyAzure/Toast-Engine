@@ -1,6 +1,6 @@
 extends Node
 
-var version = "Toast Engine Open Alpha Test v1.112"
+var version = "Toast Engine Open Alpha Test v1.683"
 
 var mods = null
 var state = {
@@ -28,7 +28,6 @@ func get_node_scene(node_path):
 
 func get_mod_path(data):
 	var current_path
-	print(data)
 	if data.has("mod"):
 		if data.mod != null:
 			current_path = "res://mods/" + data.mod + "/"

@@ -12,3 +12,5 @@ res://src/Scenes/Game/chart/note.gd
 res://src/Scenes/Game/Status.gd
 res://src/Scenes/Editors/Char/Char-Editor.gd
 res://src/Scenes/Game/background/character.gd
+res://src/Scenes/Menus/Freeplay/Freeplay.gd
+res://src/Global.gd

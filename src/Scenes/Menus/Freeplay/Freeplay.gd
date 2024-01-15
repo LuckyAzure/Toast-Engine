@@ -135,7 +135,7 @@ func process_input():
 			Global.state = {
 				"song":{
 					"name": preloaded_songs[category]["freeplay"]["songs"][select][1],
-					"mod": Global.mods.mods[category - 1]
+					"mod": Global.mods.mods[category - 1] if Global.mods.mods.size() > 0 else "Vanilla"
 				},
 				"mode":"freeplay",
 				"select":select
