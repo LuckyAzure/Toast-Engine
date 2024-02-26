@@ -1,23 +1,11 @@
-# LuckyFunkin
-Another Friday Night Funkin' engine that made in Godot Engine
+# Toast Engine
+An alternative Friday Night Funkin' engine developed using the Godot Engine.
 
-# The reason why I want to make this engine.
+## Motivation
+The creation of Toast Engine stems from a shift in focus. Rather than developing another FNF mod, the aim is to craft a clean and optimized engine, fostering a renewed sense of motivation.
 
-I've lost the motivation to make my own fnf mod, so my goal will be to make an engine that is completely clean and optimized.
+##Credits
+- [Lucky](https://twitter.com/LuckyAzureMain) - Maintainer and Lead Programmer
+- Friday Night Funkin' made by The Funkin' Crew Inc.
 
-# Features
 
- - **Uses less memory than the OG Engine**
-	 - yes
- - **Planning to make multiplayer system**
-	 - FNF Vs. Online sucks cuz its made in ctf 2.5.
-	 - ShadowMario FNF Multiplayer is outdated af.
-
-# Credits
-### Friday Night Funkin'
- - [ninjamuffin99](https://twitter.com/ninja_muffin99) - Programming
- - [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
- - [Kawai Sprite](https://twitter.com/kawaisprite) - Music
-
-### LuckyFunkin
-- [Lucky](https://twitter.com/Luckysy_) - Maintainer and lead programmer
