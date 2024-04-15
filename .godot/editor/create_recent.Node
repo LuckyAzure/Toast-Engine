@@ -1,10 +1,10 @@
 Node
-ParallaxBackground
 Sprite2D
+Node2D
+ParallaxBackground
 ParallaxLayer
 CanvasLayer
 Label
-Node2D
 ProgressBar
 Button
 LineEdit

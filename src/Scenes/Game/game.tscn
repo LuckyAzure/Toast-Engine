@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://w3iacwd70ape"]
+[gd_scene load_steps=19 format=3 uid="uid://w3iacwd70ape"]
 
 [ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
 [ext_resource type="Script" path="res://src/Scenes/Game/HUD.gd" id="2_a0jha"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/Scenes/Game/chart/Timeline.gd" id="5_hhoua"]
 [ext_resource type="Script" path="res://src/Scenes/Game/Status.gd" id="9_jmjuk"]
 [ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="9_y34d1"]
+[ext_resource type="Script" path="res://src/Scenes/Game/Objects.gd" id="11_dkk0p"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/Background.gd" id="15_alv4b"]
 [ext_resource type="Script" path="res://src/Scenes/Game/background/Characters.gd" id="15_oinxd"]
 [ext_resource type="Texture2D" uid="uid://boiqckvsowpv7" path="res://src/Scenes/Game/images/icon.png" id="15_vrppu"]
@@ -142,6 +143,17 @@ theme_override_font_sizes/font_size = 16
 text = "Score: 0 | Misses: 0 | Accuracy: N/A	"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Objects" type="Node2D" parent="HUD"]
+script = ExtResource("11_dkk0p")
+
+[node name="Ready" type="Sprite2D" parent="HUD/Objects"]
+
+[node name="Set" type="Sprite2D" parent="HUD/Objects"]
+
+[node name="Go" type="Sprite2D" parent="HUD/Objects"]
+
+[node name="Sounds" type="Node" parent="HUD"]
 
 [node name="Custom" type="Node" parent="HUD"]
 

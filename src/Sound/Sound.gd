@@ -1,9 +1,13 @@
 extends Node
 
 var defaultSounds = [
-	["cancel", "cancelMenu.ogg"],
-	["confirm", "confirmMenu.ogg"],
-	["scroll", "scrollMenu.ogg"]
+	["cancel", "sounds/cancelMenu.ogg"],
+	["confirm", "sounds/confirmMenu.ogg"],
+	["scroll", "sounds/scrollMenu.ogg"],
+	["intro3", "sounds/intro3.ogg"],
+	["intro2", "sounds/intro2.ogg"],
+	["intro1", "sounds/intro1.ogg"],
+	["introgo", "sounds/introGo.ogg"]
 ]
 
 var mainSounds = {}
@@ -15,7 +19,7 @@ func _ready():
 
 func load_sounds(datas, isMain = false):
 	for i in datas:
-		var sound = AudioStreamOggVorbis.load_from_file("res://assets/sounds/" + i[1])
+		var sound = AudioStreamOggVorbis.load_from_file("res://assets/" + i[1])
 		var audioStreamPlayer = AudioStreamPlayer.new()
 
 		# Set the loaded sound as the stream for the AudioStreamPlayer

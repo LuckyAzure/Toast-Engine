@@ -6,11 +6,9 @@ res://src/Scenes/Game/game.gdshader
 res://src/Scenes/Game/background/character.gdshader
 res://src/Scenes/Editors/Char/Char-Editor.tscn
 res://src/Scenes/Game/game.tscn
-res://src/Scenes/Game/background/Stage.gd
 res://src/Scenes/Game/chart/note.tscn
-res://src/Scenes/Game/chart/note.gd
-res://src/Scenes/Game/Status.gd
-res://src/Scenes/Editors/Char/Char-Editor.gd
-res://src/Scenes/Game/background/character.gd
-res://src/Scenes/Menus/Freeplay/Freeplay.gd
-res://src/Global.gd
+res://src/Scenes/Game/background/character.tscn
+res://src/Scenes/Menus/Freeplay/Freeplay.tscn
+res://src/Sound/sound.tscn
+res://src/Scenes/Game/Objects.gd
+res://src/Scenes/Game/chart/player_section.tscn

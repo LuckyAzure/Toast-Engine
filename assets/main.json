@@ -1,12 +1,12 @@
 {
-	"name":"Vanilla",
-	"icon_file":"icon.png",
-	"bg_file":"images/background.png",
-	"bg_color":"31B0D1",
-	"story":{},
+    "name": "Vanilla",
+    "icon_file": "icon.png",
+    "bg_file": "images/background.png",
+    "bg_color": "31B0D1",
+    "story": {},
 	"freeplay":{
-		"icons":["gf", "dad", "spooky", "monster", "pico"],
-		"songs":[
+		"icons": ["gf", "dad", "spooky", "monster", "pico"],
+		"songs": [
 			[0, "tutorial", "A5004D"],
 			
 			[1, "bopeebo", "AF66CE"],
@@ -21,5 +21,18 @@
 			[4, "philly-nice", "b7d855"],
 			[4, "blammed", "b7d855"]
 		]
-	}
+	},
+    "textures": {
+        "cooldown": {
+            "ready": "images/game/cooldown/ready.png",
+            "set": "images/game/cooldown/set.png",
+            "go": "images/game/cooldown/go.png"
+        }
+    },
+    "audio": {
+        "intro3": "sounds/intro3.ogg",
+        "intro2": "sounds/intro2.ogg",
+        "intro1": "sounds/intro1.ogg",
+        "introgo": "sounds/introGo.ogg"
+    }
 }

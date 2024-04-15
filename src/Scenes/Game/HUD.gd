@@ -8,6 +8,7 @@ const scroll_speed = 7.5
 
 func _load(song_name,note_skin):
 	$Chart._load(song_name,note_skin)
+	$Objects._load(song_name)
 	$Status._load()
 
 func _process(delta):
