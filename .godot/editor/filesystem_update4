@@ -4,11 +4,11 @@ res://src/Scenes/Game/Chart.gd
 res://src/Scenes/Game/chart/note.gdshader
 res://src/Scenes/Game/game.gdshader
 res://src/Scenes/Game/background/character.gdshader
+res://src/Scenes/Game/Script.gd
 res://src/Scenes/Editors/Char/Char-Editor.tscn
 res://src/Scenes/Game/game.tscn
 res://src/Scenes/Game/chart/note.tscn
 res://src/Scenes/Game/background/character.tscn
 res://src/Scenes/Menus/Freeplay/Freeplay.tscn
 res://src/Sound/sound.tscn
-res://src/Scenes/Game/Objects.gd
 res://src/Scenes/Game/chart/player_section.tscn
