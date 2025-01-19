@@ -9,6 +9,7 @@ var stage_data = null
 #Loads Stage Textures
 func _load(stage):
 	var main = Node2D.new()
+	main.name = "Sprites"
 	add_child(main)
 	
 	var parallaxes = []

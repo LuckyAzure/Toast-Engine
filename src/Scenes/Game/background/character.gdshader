@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform vec4 color : source_color;
 uniform float mixture;
 
-void fragment() 
+void fragment()
 {
     vec4 tex = texture(TEXTURE, UV);
     COLOR.a = tex.a;

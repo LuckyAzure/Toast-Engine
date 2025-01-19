@@ -1,0 +1,26 @@
+{
+   "characters":[
+      {
+         "name": "zoli_intro",
+		 "mod": "Stinkicidal Fungality",
+		 "pos": [300, 300],
+		 "index": 1
+      },
+      {
+         "name": "frcska_intro",
+		 "mod": "Stinkicidal Fungality",
+		 "pos": [-300, 300],
+		 "index": 1
+      }
+   ],
+   "stage": {
+	   "name": "back",
+	   "mod": "Stinkicidal Fungality"
+   },
+   "preload_characters":[
+      {
+         "name":"frcska",
+         "mod": "Stinkicidal Fungality"
+      }
+   ]
+}

@@ -1,0 +1,13 @@
+{
+	"name":"Stinkicidal Fungality",
+	"icon_file":"icon.png",
+	"bg_file":"images/background.png",
+	"bg_color":"808080",
+	"story":{},
+	"freeplay":{
+		"icons":["frcska_intro"],
+		"songs":[
+			[0, "well-done", "808080"]
+		]
+	}
+}

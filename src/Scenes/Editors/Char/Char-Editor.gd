@@ -101,8 +101,9 @@ func load_char():
 		print("Failed to load image:", image_path)
 
 func create_default_json_file(json_path):
-	chardata = def_char
-	chardata.name = charname
+	print(json_path)
+	chardata = def_char.duplicate(true)
+	chardata["name"] = charname
 	print(chardata)
 	var file = FileAccess.open(json_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(chardata))

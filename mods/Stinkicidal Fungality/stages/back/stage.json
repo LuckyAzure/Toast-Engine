@@ -1,0 +1,65 @@
+{
+    "camera": {
+        "pos": [0, 0],
+        "zoom": 0.6,
+        "speed": 0.6
+    },
+    "sprites": [
+        {
+            "name": "phase2",
+            "pos": [0, 0],
+            "scale": [1.25, 1.25],
+            "index": -10,
+            "flags": [
+                ["centered", true]
+            ],
+            "texture": {
+                "file": "phase2.png",
+                "type": "Image",
+                "offset": [0, -200]
+            }
+        },
+        {
+            "name": "phase1",
+            "pos": [0, 0],
+            "scale": [2.5, 2.5],
+            "index": -10,
+            "flags": [
+                ["centered", true]
+            ],
+            "texture": {
+                "file": "2.png",
+                "type": "Image",
+                "offset": [0, 0]
+            }
+        },
+        {
+            "name": "phase1_fog",
+            "pos": [0, 0],
+            "scale": [3.5, 3.5],
+            "index": 2,
+            "flags": [
+                ["centered", true]
+            ],
+            "texture": {
+                "file": "3.png",
+                "type": "Image",
+                "offset": [0, 0]
+            }
+        },
+        {
+            "name": "phase1_sator",
+            "pos": [600, 200],
+            "scale": [1, 1],
+            "index": -10,
+            "flags": [
+                ["centered", true]
+            ],
+            "texture": {
+                "file": "sator.png",
+                "type": "Image",
+                "offset": [0, 0]
+            }
+        }
+    ]
+}

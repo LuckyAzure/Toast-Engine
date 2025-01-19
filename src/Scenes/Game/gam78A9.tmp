@@ -1,0 +1,185 @@
+[gd_scene load_steps=19 format=3 uid="uid://w3iacwd70ape"]
+
+[ext_resource type="Script" path="res://src/Scenes/Game/game.gd" id="1_e8eki"]
+[ext_resource type="Script" path="res://src/Scenes/Game/HUD.gd" id="2_a0jha"]
+[ext_resource type="Script" path="res://src/Scenes/Game/Chart.gd" id="2_g4b56"]
+[ext_resource type="Script" path="res://src/Scenes/Game/Pause.gd" id="2_tql3x"]
+[ext_resource type="Texture2D" uid="uid://c5ywvg6r4xb72" path="res://src/Scenes/Game/images/img4.jpg" id="3_xpyfo"]
+[ext_resource type="Script" path="res://src/Scenes/Game/chart/Notes.gd" id="4_bvybj"]
+[ext_resource type="Script" path="res://src/Scenes/Game/chart/Timeline.gd" id="5_hhoua"]
+[ext_resource type="Script" path="res://src/Scenes/Game/Status.gd" id="9_jmjuk"]
+[ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="9_y34d1"]
+[ext_resource type="Script" path="res://src/Scenes/Game/Objects.gd" id="11_dkk0p"]
+[ext_resource type="Script" path="res://src/Scenes/Game/background/Background.gd" id="15_alv4b"]
+[ext_resource type="Script" path="res://src/Scenes/Game/background/Characters.gd" id="15_oinxd"]
+[ext_resource type="Texture2D" uid="uid://boiqckvsowpv7" path="res://src/Scenes/Game/images/icon.png" id="15_vrppu"]
+[ext_resource type="Script" path="res://src/Scenes/Game/background/Stage.gd" id="17_6vn3o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cerk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4kil"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86t6w"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avet6"]
+bg_color = Color(0, 1, 0, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_e8eki")
+
+[node name="Pause" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 122
+script = ExtResource("2_tql3x")
+
+[node name="Back" type="ColorRect" parent="Pause"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 120
+offset = Vector2(640, 360)
+transform = Transform2D(1, 0, 0, 1, 640, 360)
+script = ExtResource("2_a0jha")
+
+[node name="Chart" type="Node" parent="HUD"]
+script = ExtResource("2_g4b56")
+
+[node name="Img4" type="Sprite2D" parent="HUD/Chart"]
+visible = false
+texture = ExtResource("3_xpyfo")
+
+[node name="Timeline" type="Node" parent="HUD/Chart"]
+script = ExtResource("5_hhoua")
+
+[node name="Notes" type="Node2D" parent="HUD/Chart"]
+script = ExtResource("4_bvybj")
+
+[node name="Instrumental" type="AudioStreamPlayer" parent="HUD/Chart"]
+
+[node name="Voices" type="AudioStreamPlayer" parent="HUD/Chart"]
+
+[node name="Label" type="Label" parent="HUD/Chart"]
+visible = false
+offset_left = -93.0
+offset_top = -99.0
+offset_right = 102.0
+offset_bottom = -72.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+
+[node name="Status" type="Node2D" parent="HUD"]
+script = ExtResource("9_jmjuk")
+
+[node name="Cooldown" type="Sprite2D" parent="HUD/Status"]
+
+[node name="Time" type="ProgressBar" parent="HUD/Status"]
+offset_left = -640.0
+offset_top = 351.0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/outline_size = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1cerk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p4kil")
+value = 10.0
+show_percentage = false
+
+[node name="HUDText" type="Marker2D" parent="HUD/Status"]
+z_index = 10
+position = Vector2(1, 280)
+
+[node name="Back" type="ColorRect" parent="HUD/Status/HUDText"]
+offset_left = -300.0
+offset_top = -9.0
+offset_right = 300.0
+offset_bottom = 9.0
+color = Color(0, 0, 0, 1)
+
+[node name="Front" type="ProgressBar" parent="HUD/Status/HUDText"]
+offset_left = -296.0
+offset_top = -5.0
+offset_right = 296.0
+offset_bottom = 5.0
+theme_override_styles/background = SubResource("StyleBoxFlat_86t6w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_avet6")
+max_value = 20000.0
+value = 10000.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Icons" type="Marker2D" parent="HUD/Status/HUDText"]
+
+[node name="Left" type="Sprite2D" parent="HUD/Status/HUDText/Icons"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("15_vrppu")
+offset = Vector2(-60, 0)
+region_enabled = true
+
+[node name="Right" type="Sprite2D" parent="HUD/Status/HUDText/Icons"]
+rotation = 3.14159
+scale = Vector2(0.9, -0.9)
+texture = ExtResource("15_vrppu")
+offset = Vector2(-60, 0)
+region_enabled = true
+
+[node name="Score" type="Label" parent="HUD/Status/HUDText"]
+offset_left = -640.0
+offset_top = 14.0
+offset_right = 640.0
+offset_bottom = 61.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("9_y34d1")
+theme_override_font_sizes/font_size = 16
+text = "Score: 0 | Misses: 0 | Accuracy: N/A	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Objects" type="Node2D" parent="HUD"]
+script = ExtResource("11_dkk0p")
+
+[node name="Ready" type="Sprite2D" parent="HUD/Objects"]
+
+[node name="Set" type="Sprite2D" parent="HUD/Objects"]
+
+[node name="Go" type="Sprite2D" parent="HUD/Objects"]
+
+[node name="Sounds" type="Node" parent="HUD"]
+
+[node name="Custom" type="Node" parent="HUD"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+offset = Vector2(640, 360)
+transform = Transform2D(1, 0, 0, 1, 640, 360)
+follow_viewport_enabled = true
+script = ExtResource("15_alv4b")
+
+[node name="Camera" type="Camera2D" parent="Background"]
+ignore_rotation = false
+editor_draw_screen = false
+
+[node name="Characters" type="Node2D" parent="Background"]
+script = ExtResource("15_oinxd")
+
+[node name="Stage" type="Node2D" parent="Background"]
+script = ExtResource("17_6vn3o")
+
+[node name="Custom" type="Node" parent="Background"]
+
+[node name="Script" type="Node" parent="."]
+
+[connection signal="beat_changed" from="HUD/Chart/Timeline" to="HUD/Status" method="_on_timeline_beat_changed"]
+[connection signal="beat_changed" from="HUD/Chart/Timeline" to="Background/Characters" method="_on_timeline_beat_changed"]
+[connection signal="section_changed" from="HUD/Chart/Timeline" to="HUD" method="_on_timeline_section_changed"]
+[connection signal="section_changed" from="HUD/Chart/Timeline" to="Background" method="_on_timeline_section_changed"]
+[connection signal="finished" from="HUD/Chart/Instrumental" to="HUD/Chart" method="_on_instrumental_finished"]
+[connection signal="script_changed" from="Script" to="." method="_on_script_script_changed"]

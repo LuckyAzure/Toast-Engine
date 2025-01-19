@@ -5,7 +5,8 @@ var version = "Toast Engine Open Alpha Test v1.683"
 var mods = null
 var state = {
 	"song": {
-		"name": "tutorial"
+		"name": "well-done",
+		"mod": "Stinkicidal Fungality"
 	},
 	"mode":"freeplay"
 }
