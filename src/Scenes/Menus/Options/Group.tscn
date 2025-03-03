@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtwbs01wwvsek"]
 
 [ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="1_l57pa"]
-[ext_resource type="Script" path="res://src/Scenes/Menus/Options/Group.gd" id="2_7jlc5"]
+[ext_resource type="Script" uid="uid://olgsirkkafy" path="res://src/Scenes/Menus/Options/Group.gd" id="2_7jlc5"]
 
 [sub_resource type="FontVariation" id="FontVariation_dh3er"]
 base_font = ExtResource("1_l57pa")

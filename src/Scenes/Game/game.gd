@@ -6,7 +6,7 @@ var downscroll
 var is_multiplayer = false
 
 var data
-var start_from = 200
+var start_from = 0
 #380
 
 var song

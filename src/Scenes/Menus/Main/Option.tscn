@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cu616qbu6f5hm"]
 
 [ext_resource type="FontFile" uid="uid://bri8baubbs85p" path="res://src/Fonts/Muffninja-Regular-edited.ttf" id="1_pyqjk"]
-[ext_resource type="Script" path="res://src/Scenes/Menus/Main/Option.gd" id="2_xhmyp"]
+[ext_resource type="Script" uid="uid://u20bbyrma4v1" path="res://src/Scenes/Menus/Main/Option.gd" id="2_xhmyp"]
 
 [sub_resource type="FontVariation" id="FontVariation_dh3er"]
 base_font = ExtResource("1_pyqjk")

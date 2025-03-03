@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwenb4ce0j2se"]
 
-[ext_resource type="Script" path="res://src/Scenes/Online/lobbies.gd" id="1_ldqb1"]
+[ext_resource type="Script" uid="uid://4dyu25415hbe" path="res://src/Scenes/Online/lobbies.gd" id="1_ldqb1"]
 [ext_resource type="FontFile" uid="uid://bri8baubbs85p" path="res://src/Fonts/Muffninja-Regular-edited.ttf" id="2_8of6s"]
 
 [sub_resource type="FontVariation" id="FontVariation_pxw4f"]

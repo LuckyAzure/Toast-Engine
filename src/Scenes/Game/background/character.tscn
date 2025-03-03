@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ci36rrfqvk8ke"]
 
-[ext_resource type="Script" path="res://src/Scenes/Game/background/character.gd" id="1_xedd0"]
+[ext_resource type="Script" uid="uid://ck3h1ylyct4x8" path="res://src/Scenes/Game/background/character.gd" id="1_xedd0"]
 
 [node name="Character" type="Marker2D"]
 script = ExtResource("1_xedd0")

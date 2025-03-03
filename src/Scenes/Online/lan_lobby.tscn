@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dore4405xbxkr"]
 
-[ext_resource type="Script" path="res://src/Scenes/Online/lan_lobby.gd" id="1_4k1qi"]
+[ext_resource type="Script" uid="uid://c2xgeqqf8kce6" path="res://src/Scenes/Online/lan_lobby.gd" id="1_4k1qi"]
 [ext_resource type="FontFile" uid="uid://bri8baubbs85p" path="res://src/Fonts/Muffninja-Regular-edited.ttf" id="2_5nc3b"]
 [ext_resource type="FontFile" uid="uid://dhksgx6ga3gp7" path="res://src/Fonts/vcr.ttf" id="2_gfgoc"]
 

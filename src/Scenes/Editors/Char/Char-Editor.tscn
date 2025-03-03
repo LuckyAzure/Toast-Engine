@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://bmqfxmkrh82mi"]
 
-[ext_resource type="Script" path="res://src/Scenes/Editors/Char/Char-Editor.gd" id="1"]
-[ext_resource type="Script" path="res://src/Scenes/Editors/Char/Camera.gd" id="2_6i50t"]
+[ext_resource type="Script" uid="uid://cy3fy46bs8r46" path="res://src/Scenes/Editors/Char/Char-Editor.gd" id="1"]
+[ext_resource type="Script" uid="uid://b8l33b6sheyup" path="res://src/Scenes/Editors/Char/Camera.gd" id="2_6i50t"]
 [ext_resource type="FontFile" uid="uid://bl1fltam42vw3" path="res://src/Fonts/pixel.otf" id="2_e3vst"]
-[ext_resource type="Script" path="res://src/Scenes/Editors/Char/Char.gd" id="2_ordas"]
-[ext_resource type="Script" path="res://src/Scenes/Editors/Char/HUD.gd" id="2_vhxn2"]
+[ext_resource type="Script" uid="uid://owlg1ta5h04o" path="res://src/Scenes/Editors/Char/Char.gd" id="2_ordas"]
+[ext_resource type="Script" uid="uid://dtx26cgfkpppm" path="res://src/Scenes/Editors/Char/HUD.gd" id="2_vhxn2"]
 
 [sub_resource type="FontVariation" id="FontVariation_t6pf1"]
 base_font = ExtResource("2_e3vst")
